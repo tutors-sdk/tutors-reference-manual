@@ -1,3 +1,3 @@
-# Tutors Documentation Set
+# Tutors Reference Manual
 
-A collections of labs and presentations on Tutors.
+A reference manual for tutors course creators
