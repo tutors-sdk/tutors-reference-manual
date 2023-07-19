@@ -192,7 +192,7 @@ There are 2 broad types of learning resources
 - Card Resources
 - Panel Resources
 
-### Card Resources
+## Card Resources
 
 These resources are represented by simple cards that can appear in a topic or unit:
 
@@ -206,7 +206,7 @@ These resources are represented by simple cards that can appear in a topic or un
 | [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)                                       | [Github Repo 1](https://github.com/tutors-sdk/tutors)                                             | [Repos](https://reader.tutors.dev/wall/repo/reference-course) | 
 
 
-#### Talk 
+### Talk 
 
 
 | Example Resource | Display | Cards |
@@ -230,7 +230,7 @@ Lecture 1
 A short summary of the talk, no more than two sentences.
 ~~~
 
-#### Note 
+### Note 
 
 
 | Example Resource | Display | Cards |
@@ -262,7 +262,7 @@ The linked images must be included in the img folder in the note resource. Simil
 Links to external resources can be included with conventional web links.
 
 
-#### Book 
+### Book 
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
@@ -309,7 +309,7 @@ The linked images must be included in the img folder in the lab. Similairly, if 
 
 Links to external resources can be included with conventional web links.
 
-##### Auto Numbering
+#### Auto Numbering
 
 You may prefer all steps in all your labs to be autonumbered. This will preppend a number, starting at 01, to all steps
 
@@ -319,7 +319,7 @@ labStepsAutoNumber: true
 
 This is independent of the 'sort-key' segment in the lab step name.
 
-#### Web 
+### Web 
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
@@ -333,7 +333,7 @@ A simple link to an external web resource.
 | web-link.png | Image for card. File name must be same as .md file. File type can be .png, .jpg, or .jpeg |
 | weburl | the full url for the resource |
 
-#### Archive  
+### Archive  
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
@@ -347,7 +347,7 @@ A link to a downloadable archive (zip). The archive is bundled with the course s
 | archive.png | Image for card. File name must be same as .md file. File type can be .png, .jpg, or .jpeg |
 | archive.zip | The archive that will be downloaded if the card selected |
 
-#### Github 
+### Github 
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
@@ -363,7 +363,7 @@ A link to an GitHub repository.
 | githubid   | Full url of the repo |
 
 
-### Panel Resources
+## Panel Resources
 
 Panels appear directly in a unit or topic, and are not represented by a separate card. Instead, their contents are rendered directly on to the parent topic/unit.
 
@@ -374,7 +374,7 @@ Panels appear directly in a unit or topic, and are not represented by a separate
 | [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote)                               | [Main Note](https://reader.tutors.dev/topic/reference-course/topic-04-panel-note) | 
 
 
-#### Panelvideo 
+### Panelvideo 
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
@@ -389,7 +389,7 @@ A video to be displayed directly on the topic or unit resource.
 
 See video section below for format of this id.
 
-#### Paneltalk 
+### Paneltalk 
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
@@ -403,7 +403,7 @@ A PDF document to be displayed directly on the topic or unit resource.
 | talk.pdf  | The .PDF to display. Its name must be the same as the .md file |
 
 
-#### Panelnote 
+### Panelnote 
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
@@ -433,7 +433,7 @@ The linked images must be included in the img folder in the note resource. Simil
 Links to external resources can be included with conventional web links.
 
 
-#### Videos
+### Videos
 
 Panelvideos above are the primary mechanism for displaying videos prominently. However, most learnings objects can have videos associated with them by dropping in a single file into the Learning Resource folder called:
 
@@ -456,7 +456,7 @@ Hfw1lbErjws
 However, this videoid file can be dropped into most Learningg Resources. If a resource has this file, then a video play button will feature in the Card for the resource, which will trigger the video player. 
 
 
-##### Video Talks
+#### Video Talks
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
@@ -465,7 +465,7 @@ However, this videoid file can be dropped into most Learningg Resources. If a re
 For Talk resources only, it is possible to drop the PDF completely and just include the video only. The card will display as with a PDF 
 
 
-##### Video Chapters
+#### Video Chapters
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
@@ -498,7 +498,7 @@ For the above, the associated videoid files for each chapter would look like thi
 9Srf_ydMdL0?start=2064&6348
 ~~~
 
-##### HEANet Hosted Videos
+#### HEANet Hosted Videos
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
