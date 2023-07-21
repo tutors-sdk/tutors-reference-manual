@@ -1,16 +1,16 @@
 [[toc]]
 
-### What is Tutors
+## What is Tutors
 
-A collection of open source components and services supporting the creation of transformative learning experiences using open web standards. It consists of two key components:
+Tutors is a collection of open source components and services supporting the creation of transformative learning experiences using open web standards. It consists of two key components:
 
 - *Generator:*  transforms a [folder of learning content](https://github.com/tutors-sdk/tutors-reference-course)  into a Tutors course
 
 - *Reader*: presents a Tutors course as an intuitive, discoverable and attractive [Web experience](https://reader.tutors.dev/course/reference-course)
 
-These components are [developed in the open](https://github.com/tutors-sdk/tutors) by an active and friendly community, based one a clear [set of values](https://reader.tutors.dev/course/tutors-reference-manual#tutors-values).
+These components are [developed in the open](https://github.com/tutors-sdk/tutors) by an active and friendly community, based on a clear [set of values](https://reader.tutors.dev/course/tutors-reference-manual#tutors-values).
 
-### Getting Started
+## Getting Started
 
 Visit [this course](https://reader.tutors.dev/course/reference-course) to become familiar with the general structure of the learning experience. [Download the source](https://github.com/tutors-sdk/tutors-reference-course/archive/refs/heads/main.zip) for the course and unzip to a local folder. Spend a few minutes exploring the content of the folder using a good editor, for example [Sublime Text](https://www.sublimetext.com/).
 
