@@ -143,22 +143,23 @@ credits: The course author(s) or organisation
 
 The credits property will appear as a subtitle in the course title bar.
 
-There are a range of other optional properties. See [later in this document](#properties.yaml-1) for a complete list of valid properties.
+There are a range of other optional properties. See [later in this document](https://reader.tutors.dev/course/tutors-reference-manual#properties.yaml-1) for a complete list of valid properties.
 
+### Topic
 
-## Topic
+Top level learning object for a course. Typically encapsulating a session or week of learning material.
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
 | [topic-01-typical](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical) | [Typical Topic](https://reader.tutors.dev/topic/reference-course/topic-01-typical) |
 
-Top level learning object for a course. Typically encapsulating a session or week of learning material.
+Two files are required:
 
 
 | Files  | Purpose  |
 | --------------- | ------------ |
-| topic-title.md  | Topic title + summary. Any file name, file type must be .md file type |
-| topic-title.png | Image for topic. File name must be same as .md file. File type can be .png, .jpg, or .jpeg|
+| topic.md  | Topic title + summary. Any file name, file type must be .md file type |
+| topic.png | Image for topic. File name must be same as .md file. File type can be .png, .jpg, or .jpeg|
 
 #### topic.md
 
@@ -172,23 +173,25 @@ Units with presentations, labs + resources
 
 In addition to the title, subtitle + image specified the file, the topic can contain any number of units (see below) or other learning objects.
 
-## Unit
+### Unit
+
+A unit will encapsulate learning resources, framed by a title. Units can be within topics, or can appear directly in a course folder.
 
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
 | [unit-1](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1) | [Main Lesson](https://reader.tutors.dev/topic/reference-course/topic-01-typical) |
 
-A unit will encapsulate learning resources, framed by a title
+One md file is required:
 
-| Files          | Purpose |
-| -------------- | ------- |
-| main-lesson.md | Title for the unit. The file can have any suitable name, but must be .md file type |
+| Files   | Purpose                                                      |
+| ------- | ------------------------------------------------------------ |
+| unit.md | Title for the unit. The file can have any suitable name, but must be .md file type |
 
 
 The title is specified in a single markdown file:
 
-#### main-lesson.md
+#### unit.md
 
 ~~~markdown
 Main Lesson
@@ -196,25 +199,24 @@ Main Lesson
 
 Units contain any number of learning resources.
 
-## Side
+### Side
+
+A side will encapsulate learning resources, framed by a title. It is equivalent to a Unit (see above), but framed within a side bar.
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
 | [side-unit](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit) | [Labs for this Topic](https://reader.tutors.dev/topic/reference-course/topic-02-side) |
 
-A side will encapsulate learning resources, framed by a title. It is equivalent to a Unit (see above), but framed within a side bar.
+On .md file is required:
 
-- [Example](https://reader.tutors.dev/topic/reference-course/topic-02-side) 
-- [Source ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit)
-
-| File name     | Purpose |
-| ------------- | ------- |
-| topic-labs.md | Title for the side bar The file can have any suitable name, but must be .md file type |
+| File name | Purpose                                                      |
+| --------- | ------------------------------------------------------------ |
+| side.md   | Title for the side bar The file can have any suitable name, but must be .md file type |
 
 
-The title is specified in a single markdown file
+The title is specified in in this file:
 
-#### topic-labs.md
+#### side.md
 
 ~~~markdown
 Labs for this Topic
@@ -229,9 +231,11 @@ There are 2 broad types of learning resources
 - Card Resources
 - Panel Resources
 
+Typically learning resources are child folders within topic, unit or side folders.
+
 ## Card Resources
 
-These resources are represented by simple cards that can appear in a topic or unit:
+These resources are represented by simple cards that can appear in a topic, unit or side:
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
@@ -242,16 +246,15 @@ These resources are represented by simple cards that can appear in a topic or un
 | [Downloadable zip file of resources  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/archive)                      | [Archive 1](https://reader.tutors.dev/wall/archive/reference-course)                              | [Archives](https://reader.tutors.dev/archive/talk/reference-course) |
 | [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)                                       | [Github Repo 1](https://github.com/tutors-sdk/tutors)                                             | [Repos](https://reader.tutors.dev/wall/repo/reference-course) | 
 
-
 ### Talk 
 
+A talk is a PDF presentation, document or other pdf formatted resource.
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
 | [Standard presentation in pdf format](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-1-intro) | [Lecture 1](https://reader.tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-1-intro) | [Talks](https://reader.tutors.dev/wall/talk/reference-course) |
 
-
-A talk is a PDF presentation, document or other pdf formatted resource. The pdf file, markdown description and image file must all have the same file name, which can be whatever you choose. 
+ The pdf file, markdown description and image file must all have the same file name, which can be whatever you choose. 
 
 | File name        | Purpose                                                      |
 | ---------------- | ------------------------------------------------------------ |
@@ -269,12 +272,13 @@ A short summary of the talk, no more than two sentences.
 
 ### Note 
 
+A note is a full web page, authored in markdown.
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
 | [Single web page, authored in markdown ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/note-1) | [Note 1](https://reader.tutors.dev/note/reference-course/topic-01-typical/unit-2/note-1) | [Notes](https://reader.tutors.dev/wall/note/reference-course) | 
 
-A note is a full web page, authored in markdown using the basic syntax:
+Markdown is a simple text format for authoring web content:
 
 - <https://www.markdownguide.org/basic-syntax/>
 
@@ -287,7 +291,6 @@ If you choose to include images or links to zipped archives you wish to be distr
 | img        | A folder containing Images used by the note |
 | archives   | A folder contains any zipped archives referred to in the note |
 
-
 Image links can be structured in include relative references to the image. E.g:
 
 ![](img/img-link.png)
@@ -298,15 +301,16 @@ The linked images must be included in the img folder in the note resource. Simil
 
 Links to external resources can be included with conventional web links.
 
-
 ### Book 
+
+A series of steps/instructions, authored in Markdown
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
 | [Step by step lab instructions, authored in markdown  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/book-a) | [Lab 1](https://reader.tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a) | [Labs](https://reader.tutors.dev/wall/lab/reference-course) |
 
 
-A series of steps/instructions, authored in Markdown, authored in markdown using the basic syntax:
+Markdown is a simple text format for authoring web content:
 
 - <https://www.markdownguide.org/basic-syntax/>
 
@@ -358,11 +362,13 @@ This is independent of the 'sort-key' segment in the lab step name.
 
 ### Web 
 
+A simple link to an external web resource.
+
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
 | [Link to a web site  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/web-1) | [Web Site](https://tutors.dev) | [Web Links](https://reader.tutors.dev/web/talk/reference-course) |
 
-A simple link to an external web resource.
+Three files are required:
 
 | Resource   | Purpose  |
 | ---------- | -------- |
@@ -372,11 +378,13 @@ A simple link to an external web resource.
 
 ### Archive  
 
+A link to a downloadable archive (zip).
+
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
 | [Downloadable zip file of resources  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/archive) | [Archive 1](https://reader.tutors.dev/wall/archive/reference-course) | [Archives](https://reader.tutors.dev/archive/talk/reference-course) |
 
-A link to a downloadable archive (zip). The archive is bundled with the course source and hosted with the course resources.
+The archive is bundled with the course source and hosted with the course resources.
 
 | Resource   | Purpose  |
 | ---------- | -------- |
@@ -386,12 +394,14 @@ A link to a downloadable archive (zip). The archive is bundled with the course s
 
 ### Github 
 
+A link to an GitHub repository.
+
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
 | [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical) | [Github Repo 1](https://github.com/tutors-sdk/tutors) | [Repos](https://reader.tutors.dev/wall/repo/reference-course) | 
 
 
-A link to an GitHub repository.
+Three files are required:
 
 | Resource   | Purpose  |
 | ---------- | -------- |
@@ -402,7 +412,7 @@ A link to an GitHub repository.
 
 ## Panel Resources
 
-Panels appear directly in a unit or topic, and are not represented by a separate card. Instead, their contents are rendered directly on to the parent topic/unit.
+Panels appear directly in a unit or topic, and are not represented by a separate card. Instead, their contents are rendered directly onto the parent topic/unit/side.
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
@@ -410,21 +420,22 @@ Panels appear directly in a unit or topic, and are not represented by a separate
 | [Full screen width  presentation in pdf format    ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-05-panel-talk/paneltalk)    | [Main Talk](https://reader.tutors.dev/topic/reference-course/topic-05-panel-talk) | 
 | [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote)                               | [Main Note](https://reader.tutors.dev/topic/reference-course/topic-04-panel-note) | 
 
-
 ### Panelvideo 
+
+A video to be displayed directly on the topic or unit resource.
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
 | [A full screen width video, hosted in YouTube or HEANet](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/panelvideo-1) | [Main Video](https://reader.tutors.dev/topic/reference-course/topic-03-media) |
 
-A video to be displayed directly on the topic or unit resource.
+Two files are required:
 
 | Resource   | Purpose  |
 | ---------- | -------- |
 | video.md   | Title for the video. The file can have any suitable name, but must be .md file type |
 | videoid    | id of the video |
 
-See video section below for format of this id.
+See video section below for format of this videoid file.
 
 ### Paneltalk 
 
