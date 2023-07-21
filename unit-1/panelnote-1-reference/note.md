@@ -506,18 +506,18 @@ However, this videoid file can be dropped into most Learningg Resources. If a re
 
 #### Video Talks
 
-| Example Resource | Display | 
-| ---------------- | ------- | 
-| [Video Only Talk](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-1/talk-3) | [Lecture 7]https://reader.tutors.dev/video/reference-course/topic-03-media/unit-1/talk-3/x09E7b2ESE8?start=1068&1370) | 
+| Example Resource                                             | Display                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Video Only Talk](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-1/talk-3) | [Lecture 7](https://reader.tutors.dev/video/reference-course/topic-03-media/unit-1/talk-3/x09E7b2ESE8?start=1068&1370) |
 
 For Talk resources only, it is possible to drop the PDF completely and just include the video only. The card will display as with a PDF 
 
 
 #### Video Chapters
 
-| Example Resource | Display | 
-| ---------------- | ------- | 
-| [Video Chapter]](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-1/talk-2)| [Lecture 6](https://reader.tutors.dev/video/reference-course/topic-03-media/unit-1/talk-2/x09E7b2ESE8?start=106&286)) | 
+| Example Resource                                             | Display                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Video Chapter](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-1/talk-2) | [Lecture 6](https://reader.tutors.dev/video/reference-course/topic-03-media/unit-1/talk-2/x09E7b2ESE8?start=106&286)) |
 
 
 Youtube supports start/end times when linking to a video. This is via appending a start/end in seconds to the video id:
@@ -548,9 +548,9 @@ For the above, the associated videoid files for each chapter would look like thi
 
 #### HEANet Hosted Videos
 
-| Example Resource | Display | 
-| ---------------- | ------- | 
-| [Heanet Video]](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-2-heanet)| [HeaNet video example](https://reader.tutors.dev/topic/reference-course/topic-03-media)) | 
+| Example Resource                                             | Display                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Heanet Video](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-2-heanet) | [HeaNet video example](https://reader.tutors.dev/topic/reference-course/topic-03-media)) |
 
 If you require an alternative to Youtube, Tutors support videos hosted on the HEANet media service:
 
@@ -564,8 +564,37 @@ heanet=7e4f1e9afedb40d5996d0703702eaaa4
 
 The id will be generated when you upload the video to the HEAnet media service.
 
-
 ## Latex
+
+Notes and Books can have Latex content, implemented using the [Katex](https://katex.org/) component. 
+
+| Example Resource                                             | Display                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Latex](https://github.com/tutors-sdk/tutors-reference-course/blob/main/topic-01-typical/unit-1/book-a/05.05.md) | [Latex Example](https://reader.tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a/05) |
+
+You can express Latex content between "$" symbols. For example:
+
+~~~latex
+$
+x=\frac{ -b\pm\sqrt{ b^2-4ac } } {2a}
+$
+~~~
+
+Will render as:
+
+$
+x=\frac{ -b\pm\sqrt{ b^2-4ac } } {2a}
+$
+
+You can also express content inline, so thisL
+
+~~~latex
+This is an inline example: $c = \pm\sqrt{a^2 + b^2}$ with text before and after
+~~~
+
+This will render link this:
+
+This is an inline example: $c = \pm\sqrt{a^2 + b^2}$ with text before and after.
 
 ## Ordering Learning Resources
 
@@ -594,9 +623,9 @@ If the resouce is a Lab, then the first step should include the FrontMatter/orde
 
 ## SVG Icons
 
-| Example Resource | Display | 
-| ---------------- | ------- | 
-| [Icon based cards]](https://reader.tutors.dev/topic/reference-course/topic-09-svg)| [Iconify](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-svg) | 
+| Example Resource                                             | Display                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Icon based cards](https://reader.tutors.dev/topic/reference-course/topic-09-svg) | [Iconify](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-svg) |
 
 If no image file is found in a resource, then Tutors will look to display an SVG Icon instead. This Icon is drawn from the Iconify collection:
 
@@ -808,7 +837,7 @@ in the format shown in the example above.
 Using a calendar in conjunction with authentication adds another dimension to TutorsTime, showng estimates of the time online across the semester specified in the calendar file. An instructor can use the PIN code they have set up (`ignorepin`) to reveal data for all students.
 
 
-### Enrollment.yaml
+### Enrollment
 
 If authentication is enabled, then any user with a GitHub account can sign in to a course. In some circumstances that can make interpreting the TutorsTime data difficult, as it may include data from users not strictly students on the course. To this issue you can (optionally) provide an enrolment file -  `enrollment.yaml`. If present, then the TutorsTime reports will be limited to the students listed.
 
