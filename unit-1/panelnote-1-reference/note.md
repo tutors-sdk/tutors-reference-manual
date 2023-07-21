@@ -1,12 +1,7 @@
----
-order: 4
----
-
-# Tutors Reference
 
 [[toc]]
 
-## Cards
+# Cards
 
 The card metaphor is used throughout tutors as a simple visual feature to represent a variety of learning resources. In general the contents of a card are extracted from the following:
 
@@ -15,9 +10,9 @@ The card metaphor is used throughout tutors as a simple visual feature to repres
 
 These resources are typically named to match your context, and are contained in a folder whose name is structured to encode the type of learning resource.
 
-## Semantic Resource Names
+# Semantic Resource Names
 
-### Folders Names
+## Folders Names
 
 Folder names convey the type of learning resource, with the first letters determining its type. Folders starting with the following names have a significance in Tutors:
 
@@ -50,7 +45,7 @@ For all file & folder names, avoid spaces within a file name.
 | topic-01-introduction  | Topic 01 Introduction
 | topic-02-learning-html | Topic 02 Learning HTML
 
-### File Names
+## File Names
 
 Each resource will typically have the following files:
 
@@ -72,7 +67,7 @@ The following filenames are reserved:
 | videoid         | id of  external video         |
 | githubid        | link to github repo           |
 
-## Course Structure
+# Course Structure
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
@@ -86,7 +81,7 @@ The minimum requirements for a course are a folder containing these three files:
 | course.png     | Course image
 | properies.yaml | Course properties
 
-### course.md
+## course.md
 
 A markdown file, structured as follows:
 
@@ -96,7 +91,7 @@ Course Title
 Course information - a course outline, description or any other information. Can be any length. Will appear as slide over if the user presser the Info button on the top left.
 ~~~
 
-### properties.yaml
+## properties.yaml
 
 Course metadata in yaml format. At a minimum, this must contain the following:
 
@@ -109,7 +104,7 @@ The credits property will appear as a subtitle in the course title bar.
 There are a range of other optional properties. See later in this document for a complete list.
 
 
-## Topic
+# Topic
 
 | Example Resource | Display | 
 | ---------------- | ------- | 

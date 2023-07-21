@@ -1,1 +1,1 @@
-Tutors Reference
+Tutors Reference Manual
