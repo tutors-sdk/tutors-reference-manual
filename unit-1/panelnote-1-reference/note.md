@@ -519,13 +519,13 @@ Youtube supports start/end times when linking to a video. This is via appending 
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Video Chapter](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-1/talk-2) | [Lecture 6](https://reader.tutors.dev/video/reference-course/topic-03-media/unit-1/talk-2/x09E7b2ESE8?start=106&286)) |
 
-For exampke, this id specifies a start time:
+For exampke, this id specifies a start time and end time in second (separated by &):
 
 ~~~bash
 x09E7b2ESE8?start=106&286
 ~~~
 
-On youtube, this typically works best if the Youtube description also contains chapter information. Of example, on YouTube Studio, chapters information can be included by inforporating start / end times into the video description. For example:
+On youtube, this typically works best if the Youtube description also contains chapter information. Of example, on YouTube Studio, chapters information can be included by incorporating start / end times into the video description. For example:
 
 ~~~bash
 Introduction 00:00:00
@@ -547,11 +547,13 @@ For the above, the associated videoid files for each chapter would look like thi
 
 #### HEANet Hosted Videos
 
+If you require an alternative to Youtube, you can use the HEANet service.
+
 | Example Resource                                             | Display                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Heanet Video](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-2-heanet) | [HeaNet video example](https://reader.tutors.dev/topic/reference-course/topic-03-media)) |
 
-If you require an alternative to Youtube, Tutors support videos hosted on the HEANet media service:
+Videos can be uploaded here:
 
 - <https://media.heanet.ie/>
 
@@ -597,10 +599,6 @@ This is an inline example: $c = \pm\sqrt{a^2 + b^2}$ with text before and after.
 
 ## Ordering Learning Resources
 
-| Example Resource | Display | 
-| ---------------- | ------- | 
-| [Ordering](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-08-ordering)| [Ordering Example](https://reader.tutors.dev/topic/reference-course/topic-08-ordering) | 
-
 For a topic, unit or side resources, the ordering of the cards is as follows:
 
 - talk
@@ -610,7 +608,13 @@ For a topic, unit or side resources, the ordering of the cards is as follows:
 - github
 - archive
 
-This can be customised via the introduction of [FrontMatter](https://docs.zettlr.com/en/core/yaml-frontmatter/) sections in the corresponding markdown files. This should contain an "order" number, which dictates the sequenceing for the cards.
+This can be customised via the introduction of [FrontMatter](https://docs.zettlr.com/en/core/yaml-frontmatter/) sections in the corresponding markdown files. 
+
+| Example Resource | Display | 
+| ---------------- | ------- | 
+| [Ordering](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-08-ordering)| [Ordering Example](https://reader.tutors.dev/topic/reference-course/topic-08-ordering) | 
+
+This should contain an "order" number, which dictates the sequenceing for the cards.
 
 ~~~yaml
 ---
@@ -622,13 +626,13 @@ If the resouce is a Lab, then the first step should include the FrontMatter/orde
 
 ## SVG Icons
 
-| Example Resource                                             | Display                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Icon based cards](https://reader.tutors.dev/topic/reference-course/topic-09-svg) | [Iconify](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-svg) |
-
 If no image file is found in a resource, then Tutors will look to display an SVG Icon instead. This Icon is drawn from the Iconify collection:
 
 - <https://icon-sets.iconify.design/>
+
+| Example Resource                                             | Display                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [Icon based cards](https://reader.tutors.dev/topic/reference-course/topic-09-svg) | [Iconify](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-svg) |
 
 You can search for an icon in that collection, locate the reference and include this + a colour in a [FrontMatter](https://docs.zettlr.com/en/core/yaml-frontmatter/) section for the Learning Resource. For example:
 
@@ -653,15 +657,14 @@ icon:
 ---
 ~~~
 
-
 ## Properties.yaml
 
 This is a [YAML formatted](https://circleci.com/blog/what-is-yaml-a-beginner-s-guide/) file containing course-wide parameters. It defines the following aspects:
 
 - Course attribution/credit
 - Course Parent
+- Course Icon
 - Course Companion Sites
-- The Course Icon
 - Topic show/hide settings for instructors (including PIN)
 - Authentication + TutorsTime & TutorsLive
 - Global video hide
@@ -900,9 +903,6 @@ and is published here:
 This course illustrates all Tutors featues. It can be downloaded here:
 
 - <https://github.com/tutors-sdk/tutors-reference-course/archive/refs/heads/main.zip>
-
-  
-
 
 ## Tutors Values
 
