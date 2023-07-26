@@ -132,7 +132,7 @@ A markdown file, structured as follows:
 ~~~markdown
 Course Title
 
-Course information - a course outline, description or any other information. Can be any length. Will appear as slide over if the user presser the Info button on the top left.
+Course information - a course outline, description or any other information. Can be any length. Will appear as slide over if the user presses the Info button on the top left.
 ~~~
 
 #### properties.yaml
@@ -147,7 +147,7 @@ The credits property will appear as a subtitle in the course title bar.
 
 There are a range of other optional properties. See [later in this document](https://reader.tutors.dev/course/tutors-reference-manual#properties.yaml-1) for a complete list of valid properties.
 
-A course folder will typically contain topics (see below). Occassioally you may choose to place units directly in a course folder.
+A course folder will typically contain topics (see below). Occasionally  you may choose to place units directly in a course folder.
 
 ### Topic
 
@@ -213,7 +213,7 @@ On .md file is required:
 
 | File name | Purpose                                                      |
 | --------- | ------------------------------------------------------------ |
-| side.md   | Title for the side bar The file can have any suitable name, but must be .md file type |
+| side.md   | Title for the side bar. The file can have any suitable name, but must be .md file type |
 
 The title is specified in in this file:
 
@@ -223,7 +223,7 @@ The title is specified in in this file:
 Labs for this Topic
 ~~~
 
-Side bar cam contain any number of learning resources.
+Side bar can contain any number of learning resources.
 
 ## Learning Resources
 
@@ -292,7 +292,7 @@ If you choose to include local images or links to zipped archives you wish to be
 | img        | A folder containing Images used by the note |
 | archives   | A folder contains any zipped archives referred to in the note |
 
-Image links can be structured in include relative references to the image. E.g:
+Image links can be structured to in include relative references to the image. E.g:
 
 ![](img/img-link.png)
 
@@ -351,7 +351,7 @@ Links to external resources can be included with conventional web links.
 
 #### Auto Numbering
 
-You may prefer all steps in all your labs to be autonumbered. This will preppend a number, starting at 01, to all steps
+You may prefer all steps in all your labs to be autonumbered. This will prepend a number, starting at 01, to all steps
 
 ~~~
 labStepsAutoNumber: true
@@ -519,13 +519,13 @@ Youtube supports start/end times when linking to a video. This is via appending 
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Video Chapter](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-1/talk-2) | [Lecture 6](https://reader.tutors.dev/video/reference-course/topic-03-media/unit-1/talk-2/x09E7b2ESE8?start=106&286)) |
 
-For exampke, this id specifies a start time and end time in second (separated by &):
+For example, this id specifies a start time and end time in second (separated by &):
 
 ~~~bash
 x09E7b2ESE8?start=106&286
 ~~~
 
-On youtube, this typically works best if the Youtube description also contains chapter information. Of example, on YouTube Studio, chapters information can be included by incorporating start / end times into the video description. For example:
+On youtube, this typically works best if the Youtube description also contains chapter information. For example, on YouTube Studio, chapters information can be included by incorporating start / end times into the video description. For example:
 
 ~~~bash
 Introduction 00:00:00
@@ -614,7 +614,7 @@ This can be customised via the introduction of [FrontMatter](https://docs.zettlr
 | ---------------- | ------- | 
 | [Ordering](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-08-ordering)| [Ordering Example](https://reader.tutors.dev/topic/reference-course/topic-08-ordering) | 
 
-This should contain an "order" number, which dictates the sequenceing for the cards.
+This should contain an "order" number, which dictates the sequencing for the cards.
 
 ~~~yaml
 ---
@@ -765,11 +765,11 @@ Consider the following example:
 ~~~yaml
 ignorepin : 4019
 ignore : 
-  # - topic-01-navigation
-  # - topic-02-templating
-  # - topic-03-semantic-code
-  - topic-04-starting-play
-  - topic-05-introducing-mvc
+  - topic-01-navigation
+  - topic-02-templating
+  - topic-03-semantic-code
+  # - topic-04-starting-play
+  # - topic-05-introducing-mvc
 ~~~
 
 If the above course had 5 topics, then topics 04 and 05 will be 'ignored', i.e. not displayed. Effectively, we are 'commenting out' - via the `#` symbol, the first three topics - which means they will be visible to all students.
