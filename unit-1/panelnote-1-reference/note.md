@@ -314,6 +314,16 @@ The linked images must be included in the img folder in the note resource. Simil
 
 Links to external resources can be included with conventional web links.
 
+#### TOC
+
+If the note content includes heading and subheading, then you can insert an automatic Table of Contents via this text:
+
+~~~markdown
+[[toc]]
+~~~
+
+An example of this can be seen [in action here](https://tutors.dev/note/reference-course/topic-07-reference/note-2), this is [the source](https://github.com/tutors-sdk/tutors-reference-course/blob/main/topic-07-reference/note-2/my-note.md) of that example.  Usually you would place this at the top of the note.
+
 ### Book 
 
 A series of steps/instructions, authored in Markdown
