@@ -914,7 +914,7 @@ This is independent of the 'sort-key' segment in the lab step name.
 Tutors provides the following services:
 
 - [Catalogue](https://tutors.dev/catalogue): a general listing of all known Tutors courses
-- [Live](https://tutors.dev/catalogue): live view of which course are active live (all users are anonymous on this view)
+- [Live](https://tutors.dev/live): live view of which course are active live (all users are anonymous on this view)
 
 If you wish your course to be *excluded* from the above, then you can make it private:
 
