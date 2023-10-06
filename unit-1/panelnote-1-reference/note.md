@@ -814,6 +814,20 @@ With this enabled, then entering a topic will trigger an authentication event. U
 
 See [TutorsTime]() for a more detail on data gathering and usage.
 
+### Portfolio
+
+For some courses, you may not wish to have any topics at all, just units and links perhaps to other courses. For example [this course here](https://tutors.dev/course/wit-hdip-comp-sci-2023). Notice that this course does not have:
+
+- Breadcrumbs navigation 
+- Table of Contents 
+
+This is enabled with the 'portfolio' property:
+
+~~~
+portfolio : true
+~~~
+
+This is the [source for a course](https://github.com/wit-hdip-comp-sci-2023/programme-home-page) using this property.
 
 ### Calendar
 
@@ -889,11 +903,24 @@ auth           : 1
 
 You may prefer all steps in all your labs to be autonumbered. This will preppend a number, starting at 01, to all steps
 
-~~~
+~~~yaml
 labStepsAutoNumber: true
 ~~~
 
 This is independent of the 'sort-key' segment in the lab step name.
+
+### Private
+
+Tutors provides the following services:
+
+- [Catalogue](https://tutors.dev/catalogue): a general listing of all known Tutors courses
+- [Live](https://tutors.dev/catalogue): live view of which course are active live (all users are anonymous on this view)
+
+If you wish your course to be *excluded* from the above, then you can make it private:
+
+~~~yaml
+private: 1
+~~~
 
 ## Image resizing
 
