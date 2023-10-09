@@ -923,10 +923,12 @@ This is independent of the 'sort-key' segment in the lab step name.
 
 Tutors provides the following services:
 
+- [Gallery](https://tutors.dev/gallery): a selection of 50  or so unique modules
+
 - [Catalogue](https://tutors.dev/catalogue): a general listing of all known Tutors courses
 - [Live](https://tutors.dev/live): live view of which course are active live (all users are anonymous on this view)
 
-If you wish your course to be *excluded* from the above, then you can make it private:
+If you wish your course to be *excluded* from all of the above, then you can mark it private with the following entry in properties.yaml:
 
 ~~~yaml
 private: 1
