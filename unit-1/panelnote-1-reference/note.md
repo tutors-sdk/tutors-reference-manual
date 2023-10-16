@@ -934,6 +934,8 @@ If you wish your course to be *excluded* from all of the above, then you can mar
 private: 1
 ~~~
 
+In addition to withdrawing a private course from the above services, the course will also remove the Log in / Profile menus from the header, disabling the dashboard and any sign in capabilities.
+
 ## Image resizing
 
 Some images you mau choose to use may be hi-resolution, appearing to be super sized on the canvas. This can be a particular issue with screen shots. This service here:
