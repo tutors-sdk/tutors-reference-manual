@@ -6,9 +6,9 @@ Tutors is a collection of open source components and services supporting the cre
 
 - *Generator:*  transforms a [folder of learning content](https://github.com/tutors-sdk/tutors-reference-course)  into a Tutors course
 
-- *Reader*: presents a Tutors course as an intuitive, discoverable and attractive [Web experience](https://reader.tutors.dev/course/reference-course)
+- *Reader*: presents a Tutors course as an intuitive, discoverable and attractive [Web experience](https://tutors.dev/course/reference-course)
 
-These components are [developed in the open](https://github.com/tutors-sdk/tutors) by an active and friendly community, based on a clear [set of values](https://reader.tutors.dev/course/tutors-reference-manual#tutors-values).
+These components are [developed in the open](https://github.com/tutors-sdk/tutors) by an active and friendly community, based on a clear [set of values](https://tutors.dev/course/tutors-reference-manual#tutors-values).
 
 ## Getting Started
 
@@ -687,6 +687,7 @@ This is a [YAML formatted](https://circleci.com/blog/what-is-yaml-a-beginner-s-g
 - Course Parent
 - Course Icon
 - Course Companion Sites
+- Edit Course Button
 - Topic show/hide settings for instructors (including PIN)
 - Authentication + TutorsTime & TutorsLive
 - Global video hide
@@ -777,6 +778,16 @@ companions:
 ~~~
 
 The above defines a companion icon to a Piazza service.
+
+### Edit Course Button
+
+If your course in on GitHub, and you decide to make repo the course public, then you may like to have tutors include an "Edit this page" button on the main header. To enable this, include  a `github` property in properties.yaml. E.g:
+
+~~~yaml 
+github: https://github.com/tutors-sdk/tutors-reference-course/blob/main
+~~~
+
+Note that we append `/blob/main` to the github url - indicating you published from the `main` branch. You can change this as appropriate.
 
 ### Topic show/hide settings for instructors 
 
