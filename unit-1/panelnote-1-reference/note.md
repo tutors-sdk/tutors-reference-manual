@@ -789,6 +789,16 @@ github: https://github.com/tutors-sdk/tutors-reference-course/blob/main
 
 Note that we append `/blob/main` to the github url - indicating you published from the `main` branch. You can change this as appropriate.
 
+You can see it in action here:
+
+- <https://tutors.dev/course/reference-course>
+
+It can be particularly useful for labs - with the edit button opening the markdown page in edit mode when selected:
+
+- <https://tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a/01>
+
+On GitHub, when an (non-owner) attempts to edit a page then GitHub will prompt the user to fork the repo, and edits will then be proposed as PRs, which the course author can choose to accept or reject.
+
 ### Topic show/hide settings for instructors 
 
 When publishing a course, you may wish hide some topics, but have access to them to check formatting or layout aspects. Also, you may have an entire course already laid out, and wish to just publish a subset of the topics.
