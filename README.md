@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://tutors.dev">
-    <img src="./static/tutors-light.png"
+    <img src="./tutors-light.png"
   </a>
 </p>
 
