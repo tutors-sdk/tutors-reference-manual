@@ -77,6 +77,7 @@ Folder names convey the type of learning resource contained in the folder, with 
 | [side](https://reader.tutors.dev/topic/reference-course/topic-02-side)                       | [Group of learning objects framed in a sidebar  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit)|
 | [archive](https://reader.tutors.dev/wall/archive/reference-course)                           | [Downloadable zip file of resources  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/archive)|
 | [book](https://reader.tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a)        | [Step by step lab instructions, authored in markdown  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/book-a)|
+| [PDF book](https://reader.tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c)    | [Problem or exercises sheet, authored as a PDF  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit/book-c)|
 | [github](https://reader.tutors.dev/wall/github/reference-course)                             | [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)|
 | [note](https://reader.tutors.dev/note/reference-course/topic-01-typical/unit-2/note-1)       | [Single web page, authored in markdown ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/note-1)|
 | [panelvideo](https://reader.tutors.dev/topic/reference-course/topic-03-media)                | [A full screen width video, hosted in YouTube or HEANet](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/panelvideo-1)|
@@ -324,7 +325,7 @@ If the note content includes heading and subheading, then you can insert an auto
 
 An example of this can be seen [in action here](https://tutors.dev/note/reference-course/topic-07-reference/note-2), this is [the source](https://github.com/tutors-sdk/tutors-reference-course/blob/main/topic-07-reference/note-2/my-note.md) of that example.  Usually you would place this at the top of the note.
 
-### Book 
+### Book / Lab
 
 A series of steps/instructions, authored in Markdown
 
@@ -380,6 +381,14 @@ labStepsAutoNumber: true
 ~~~
 
 This is independent of the 'sort-key' segment in the lab step name.
+
+### PDF Book / Lab 
+
+Problem or exercises sheet, authored as a PDF. This resources Will be presented and grouped with Books/Labs. They are structued identically to Talks, except the containing folder starts with `book-*`.
+
+| Example Resource | Display | Cards |
+| ---------------- | ------- | ----- |
+| [Problem or exercises sheet, authored as a PDF  ](https://reader.tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c) | [Lab 1](https://reader.tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-c) | [Labs](https://reader.tutors.dev/wall/lab/reference-course) |
 
 ### Web 
 
