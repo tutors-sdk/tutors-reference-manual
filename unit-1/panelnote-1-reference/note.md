@@ -325,7 +325,7 @@ If the note content includes heading and subheading, then you can insert an auto
 
 An example of this can be seen [in action here](https://tutors.dev/note/reference-course/topic-07-reference/note-2), this is [the source](https://github.com/tutors-sdk/tutors-reference-course/blob/main/topic-07-reference/note-2/my-note.md) of that example.  Usually you would place this at the top of the note.
 
-### Book / Lab
+### BookLab
 
 A series of steps/instructions, authored in Markdown
 
@@ -382,7 +382,7 @@ labStepsAutoNumber: true
 
 This is independent of the 'sort-key' segment in the lab step name.
 
-### PDF Book / Lab 
+### PDFLab
 
 Problem or exercises sheet, authored as a PDF. This resources Will be presented and grouped with Books/Labs. They are structued identically to Talks, except the containing folder starts with `book-*`.
 
