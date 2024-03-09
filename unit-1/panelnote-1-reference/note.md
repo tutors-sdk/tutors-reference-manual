@@ -384,7 +384,7 @@ This is independent of the 'sort-key' segment in the lab step name.
 
 ### PDFLab
 
-Problem or exercises sheet, authored as a PDF. This resources Will be presented and grouped with Books/Labs. They are structued identically to Talks, except the containing folder starts with `book-*`.
+Problem or exercises sheet, authored as a PDF. This resources Will be presented and grouped with Books/Labs. They are structured identically to Talks, except the containing folder name starts with `book-*`.
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
