@@ -388,7 +388,7 @@ Problem or exercises sheet, authored as a PDF. This resources Will be presented 
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Problem or exercises sheet, authored as a PDF  ](https://tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c) | [Problem Sheet 1](https://tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c) | [Labs](https://tutors.dev/wall/lab/reference-course) |
+| [Problem or exercises sheet, authored as a PDF  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit/book-c) | [Problem Sheet 1](https://tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c) | [Labs](https://tutors.dev/wall/lab/reference-course) |
 
 ### Web 
 
