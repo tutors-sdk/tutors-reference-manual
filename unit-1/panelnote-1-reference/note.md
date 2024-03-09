@@ -12,7 +12,7 @@ These components are [developed in the open](https://github.com/tutors-sdk/tutor
 
 ## Getting Started
 
-Visit [this course](https://reader.tutors.dev/course/reference-course) to become familiar with the general structure of the learning experience. [Download the source](https://github.com/tutors-sdk/tutors-reference-course/archive/refs/heads/main.zip) for the course and unzip to a local folder. Spend a few minutes exploring the content of the folder using a good editor, for example [Sublime Text](https://www.sublimetext.com/).
+Visit [this course](https://tutors.dev/course/reference-course) to become familiar with the general structure of the learning experience. [Download the source](https://github.com/tutors-sdk/tutors-reference-course/archive/refs/heads/main.zip) for the course and unzip to a local folder. Spend a few minutes exploring the content of the folder using a good editor, for example [Sublime Text](https://www.sublimetext.com/).
 
 Install the LTS version [Node.js](https://nodejs.org/en) on your computer and create a free account on the [Netlify](https://www.netlify.com/) service.
 
@@ -72,19 +72,19 @@ Folder names convey the type of learning resource contained in the folder, with 
 
 |  Example                                                                                     | Source |
 | -------------------------------------------------------------------------------------------- | ------------------------------------------  |
-| [topic](https://reader.tutors.dev/topic/reference-course/topic-01-typical)                   | [Top level course topic ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)|
-| [unit](https://reader.tutors.dev/topic/reference-course/topic-01-typical)                    | [Group of learning objects within a topic  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1)|
-| [side](https://reader.tutors.dev/topic/reference-course/topic-02-side)                       | [Group of learning objects framed in a sidebar  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit)|
-| [archive](https://reader.tutors.dev/wall/archive/reference-course)                           | [Downloadable zip file of resources  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/archive)|
-| [book](https://reader.tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a)        | [Step by step lab instructions, authored in markdown  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/book-a)|
-| [PDF book](https://reader.tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c)    | [Problem or exercises sheet, authored as a PDF  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit/book-c)|
-| [github](https://reader.tutors.dev/wall/github/reference-course)                             | [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)|
-| [note](https://reader.tutors.dev/note/reference-course/topic-01-typical/unit-2/note-1)       | [Single web page, authored in markdown ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/note-1)|
-| [panelvideo](https://reader.tutors.dev/topic/reference-course/topic-03-media)                | [A full screen width video, hosted in YouTube or HEANet](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/panelvideo-1)|
-| [paneltalk](https://reader.tutors.dev/topic/reference-course/topic-05-panel-talk)            | [Full screen width  presentation in pdf format    ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-05-panel-talk/paneltalk)|
-| [panelnote](https://reader.tutors.dev/topic/reference-course/topic-04-panel-note)            | [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote) |
-| [talk](https://reader.tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-1-intro) | [Standard presentation in pdf format  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-1-intro)|
-| [web](https://reader.tutors.dev/wall/web/reference-course.netlify.app)                       | [Link to an external web site  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/web-1) |
+| [topic](https://tutors.dev/topic/reference-course/topic-01-typical)                   | [Top level course topic ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)|
+| [unit](https://tutors.dev/topic/reference-course/topic-01-typical)                    | [Group of learning objects within a topic  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1)|
+| [side](https://tutors.dev/topic/reference-course/topic-02-side)                       | [Group of learning objects framed in a sidebar  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit)|
+| [archive](https://tutors.dev/wall/archive/reference-course)                           | [Downloadable zip file of resources  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/archive)|
+| [book](https://tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a)        | [Step by step lab instructions, authored in markdown  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/book-a)|
+| [PDF book](https://tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c)    | [Problem or exercises sheet, authored as a PDF  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit/book-c)|
+| [github](https://tutors.dev/wall/github/reference-course)                             | [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)|
+| [note](https://tutors.dev/note/reference-course/topic-01-typical/unit-2/note-1)       | [Single web page, authored in markdown ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/note-1)|
+| [panelvideo](https://tutors.dev/topic/reference-course/topic-03-media)                | [A full screen width video, hosted in YouTube or HEANet](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/panelvideo-1)|
+| [paneltalk](https://tutors.dev/topic/reference-course/topic-05-panel-talk)            | [Full screen width  presentation in pdf format    ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-05-panel-talk/paneltalk)|
+| [panelnote](https://tutors.dev/topic/reference-course/topic-04-panel-note)            | [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote) |
+| [talk](https://tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-1-intro) | [Standard presentation in pdf format  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-1-intro)|
+| [web](https://tutors.dev/wall/web/reference-course.netlify.app)                       | [Link to an external web site  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/web-1) |
 
  To sort the name alphabetically you may append numerals. To enhance meaning, append contextual keywords. For example:
 
@@ -128,7 +128,7 @@ A Tutors course is a folder of learning resources, named according to the conven
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
-| [reference-course](https://github.com/tutors-sdk/tutors-reference-course) | [Reference Course](https://reader.tutors.dev/course/reference-course) |
+| [reference-course](https://github.com/tutors-sdk/tutors-reference-course) | [Reference Course](https://tutors.dev/course/reference-course) |
 
 The minimum requirements for a course are a folder containing these three files:
 
@@ -158,7 +158,7 @@ credits: The course author(s) or organisation
 
 The credits property will appear as a subtitle in the course title bar.
 
-There are a range of other optional properties. See [later in this document](https://reader.tutors.dev/course/tutors-reference-manual#properties.yaml-1) for a complete list of valid properties.
+There are a range of other optional properties. See [later in this document](https://tutors.dev/course/tutors-reference-manual#properties.yaml-1) for a complete list of valid properties.
 
 A course folder will typically contain topics (see below). Occasionally  you may choose to place units directly in a course folder.
 
@@ -168,7 +168,7 @@ Top level learning resource for a course. Typically encapsulating a session or w
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
-| [topic-01-typical](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical) | [Typical Topic](https://reader.tutors.dev/topic/reference-course/topic-01-typical) |
+| [topic-01-typical](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical) | [Typical Topic](https://tutors.dev/topic/reference-course/topic-01-typical) |
 
 Two files are required:
 
@@ -195,7 +195,7 @@ A unit will encapsulate learning resources, framed by a title. Units can be with
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
-| [unit-1](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1) | [Main Lesson](https://reader.tutors.dev/topic/reference-course/topic-01-typical) |
+| [unit-1](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1) | [Main Lesson](https://tutors.dev/topic/reference-course/topic-01-typical) |
 
 One .md file is required:
 
@@ -220,7 +220,7 @@ A side will encapsulate learning resources, framed by a title. It is equivalent 
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
-| [side-unit](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit) | [Labs for this Topic](https://reader.tutors.dev/topic/reference-course/topic-02-side) |
+| [side-unit](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit) | [Labs for this Topic](https://tutors.dev/topic/reference-course/topic-02-side) |
 
 On .md file is required:
 
@@ -253,12 +253,12 @@ These resources are represented by simple cards that can appear in a topic, unit
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Standard presentation in pdf format](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-1-intro)             | [Lecture 1](https://reader.tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-1-intro) | [Talks](https://reader.tutors.dev/wall/talk/reference-course) |
-| [Single web page, authored in markdown ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/note-1)                | [Note 1](https://reader.tutors.dev/note/reference-course/topic-01-typical/unit-2/note-1)          | [Notes](https://reader.tutors.dev/wall/note/reference-course) | 
-| [Step by step lab instructions, authored in markdown  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/book-a) | [Lab 1](https://reader.tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a)            | [Labs](https://reader.tutors.dev/wall/lab/reference-course) |
-| [Link to a web site  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/web-1)                                   | [Web Site](https://tutors.dev)                                                                    | [Web Links](https://reader.tutors.dev/web/talk/reference-course) |
-| [Downloadable zip file of resources  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/archive)                      | [Archive 1](https://reader.tutors.dev/wall/archive/reference-course)                              | [Archives](https://reader.tutors.dev/archive/talk/reference-course) |
-| [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)                                       | [Github Repo 1](https://github.com/tutors-sdk/tutors)                                             | [Repos](https://reader.tutors.dev/wall/repo/reference-course) | 
+| [Standard presentation in pdf format](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-1-intro)             | [Lecture 1](https://tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-1-intro) | [Talks](https://tutors.dev/wall/talk/reference-course) |
+| [Single web page, authored in markdown ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/note-1)                | [Note 1](https://tutors.dev/note/reference-course/topic-01-typical/unit-2/note-1)          | [Notes](https://tutors.dev/wall/note/reference-course) | 
+| [Step by step lab instructions, authored in markdown  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/book-a) | [Lab 1](https://tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a)            | [Labs](https://tutors.dev/wall/lab/reference-course) |
+| [Link to a web site  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/web-1)                                   | [Web Site](https://tutors.dev)                                                                    | [Web Links](https://tutors.dev/web/talk/reference-course) |
+| [Downloadable zip file of resources  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/archive)                      | [Archive 1](https://tutors.dev/wall/archive/reference-course)                              | [Archives](https://tutors.dev/archive/talk/reference-course) |
+| [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)                                       | [Github Repo 1](https://github.com/tutors-sdk/tutors)                                             | [Repos](https://tutors.dev/wall/repo/reference-course) | 
 
 ### Talk 
 
@@ -266,7 +266,7 @@ A talk is a PDF presentation, document or other pdf formatted resource.
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Standard presentation in pdf format](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-1-intro) | [Lecture 1](https://reader.tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-1-intro) | [Talks](https://reader.tutors.dev/wall/talk/reference-course) |
+| [Standard presentation in pdf format](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-1-intro) | [Lecture 1](https://tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-1-intro) | [Talks](https://tutors.dev/wall/talk/reference-course) |
 
  The pdf file, markdown description and image file must all have the same file name, which can be whatever you choose. 
 
@@ -290,7 +290,7 @@ A note is a full web page, authored in markdown.
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Single web page, authored in markdown ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/note-1) | [Note 1](https://reader.tutors.dev/note/reference-course/topic-01-typical/unit-2/note-1) | [Notes](https://reader.tutors.dev/wall/note/reference-course) | 
+| [Single web page, authored in markdown ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/note-1) | [Note 1](https://tutors.dev/note/reference-course/topic-01-typical/unit-2/note-1) | [Notes](https://tutors.dev/wall/note/reference-course) | 
 
 Markdown is a simple text format for authoring web content:
 
@@ -331,7 +331,7 @@ A series of steps/instructions, authored in Markdown
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Step by step lab instructions, authored in markdown  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/book-a) | [Lab 1](https://reader.tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a) | [Labs](https://reader.tutors.dev/wall/lab/reference-course) |
+| [Step by step lab instructions, authored in markdown  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/book-a) | [Lab 1](https://tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a) | [Labs](https://tutors.dev/wall/lab/reference-course) |
 
 Markdown is a simple text format for authoring web content:
 
@@ -388,7 +388,7 @@ Problem or exercises sheet, authored as a PDF. This resources Will be presented 
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Problem or exercises sheet, authored as a PDF  ](https://reader.tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c) | [Lab 1](https://reader.tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-c) | [Labs](https://reader.tutors.dev/wall/lab/reference-course) |
+| [Problem or exercises sheet, authored as a PDF  ](https://tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c) | [Lab 1](https://tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-c) | [Labs](https://tutors.dev/wall/lab/reference-course) |
 
 ### Web 
 
@@ -396,7 +396,7 @@ A simple link to an external web resource.
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Link to a web site  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/web-1) | [Web Site](https://tutors.dev) | [Web Links](https://reader.tutors.dev/web/talk/reference-course) |
+| [Link to a web site  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/web-1) | [Web Site](https://tutors.dev) | [Web Links](https://tutors.dev/web/talk/reference-course) |
 
 Three files are required:
 
@@ -412,7 +412,7 @@ A link to a downloadable archive (zip).
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Downloadable zip file of resources  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/archive) | [Archive 1](https://reader.tutors.dev/wall/archive/reference-course) | [Archives](https://reader.tutors.dev/archive/talk/reference-course) |
+| [Downloadable zip file of resources  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/archive) | [Archive 1](https://tutors.dev/wall/archive/reference-course) | [Archives](https://tutors.dev/archive/talk/reference-course) |
 
 The archive is bundled with the course source and hosted with the course resources.
 
@@ -428,7 +428,7 @@ A link to an GitHub repository.
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical) | [Github Repo 1](https://github.com/tutors-sdk/tutors) | [Repos](https://reader.tutors.dev/wall/repo/reference-course) | 
+| [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical) | [Github Repo 1](https://github.com/tutors-sdk/tutors) | [Repos](https://tutors.dev/wall/repo/reference-course) | 
 
 Three files are required:
 
@@ -444,9 +444,9 @@ Panels appear directly in a unit or topic, and are not represented by a separate
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
-| [A full screen width video, hosted in YouTube or HEANet](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/panelvideo-1) | [Main Video](https://reader.tutors.dev/topic/reference-course/topic-03-media)     |
-| [Full screen width  presentation in pdf format    ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-05-panel-talk/paneltalk)    | [Main Talk](https://reader.tutors.dev/topic/reference-course/topic-05-panel-talk) | 
-| [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote)                               | [Main Note](https://reader.tutors.dev/topic/reference-course/topic-04-panel-note) | 
+| [A full screen width video, hosted in YouTube or HEANet](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/panelvideo-1) | [Main Video](https://tutors.dev/topic/reference-course/topic-03-media)     |
+| [Full screen width  presentation in pdf format    ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-05-panel-talk/paneltalk)    | [Main Talk](https://tutors.dev/topic/reference-course/topic-05-panel-talk) | 
+| [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote)                               | [Main Note](https://tutors.dev/topic/reference-course/topic-04-panel-note) | 
 
 ### Panelvideo 
 
@@ -454,7 +454,7 @@ A video to be displayed directly on the topic or unit resource.
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
-| [A full screen width video, hosted in YouTube or HEANet](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/panelvideo-1) | [Main Video](https://reader.tutors.dev/topic/reference-course/topic-03-media) |
+| [A full screen width video, hosted in YouTube or HEANet](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/panelvideo-1) | [Main Video](https://tutors.dev/topic/reference-course/topic-03-media) |
 
 Two files are required:
 
@@ -471,7 +471,7 @@ A PDF document to be displayed directly on the parent resource.
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
-| [Full screen width  presentation in pdf format    ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-05-panel-talk/paneltalk) | [Main Talk](https://reader.tutors.dev/topic/reference-course/topic-05-panel-talk) | 
+| [Full screen width  presentation in pdf format    ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-05-panel-talk/paneltalk) | [Main Talk](https://tutors.dev/topic/reference-course/topic-05-panel-talk) | 
 
 Two files are required:
 
@@ -487,7 +487,7 @@ A panel note is a full web page layed out directly on the parent resource.
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
-| [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote) | [Main Note](https://reader.tutors.dev/topic/reference-course/topic-04-panel-note) | 
+| [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote) | [Main Note](https://tutors.dev/topic/reference-course/topic-04-panel-note) | 
 
 The content is authored in markdown using the basic syntax:
 
@@ -538,7 +538,7 @@ However, this videoid file can be dropped into most learning resources. If a res
 
 | Example Resource                                             | Display                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Video Only Talk](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-1/talk-3) | [Lecture 7](https://reader.tutors.dev/video/reference-course/topic-03-media/unit-1/talk-3/x09E7b2ESE8?start=1068&1370) |
+| [Video Only Talk](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-1/talk-3) | [Lecture 7](https://tutors.dev/video/reference-course/topic-03-media/unit-1/talk-3/x09E7b2ESE8?start=1068&1370) |
 
 For Talk resources only, it is possible to drop the PDF completely and just include the video only. The card will display as with a PDF 
 
@@ -548,7 +548,7 @@ Youtube supports start/end times when linking to a video. This is via appending 
 
 | Example Resource                                             | Display                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Video Chapter](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-1/talk-2) | [Lecture 6](https://reader.tutors.dev/video/reference-course/topic-03-media/unit-1/talk-2/x09E7b2ESE8?start=106&286)) |
+| [Video Chapter](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-1/talk-2) | [Lecture 6](https://tutors.dev/video/reference-course/topic-03-media/unit-1/talk-2/x09E7b2ESE8?start=106&286)) |
 
 For example, this id specifies a start time and end time in second (separated by &):
 
@@ -582,7 +582,7 @@ If you require an alternative to Youtube, you can use the HEANet service.
 
 | Example Resource                                             | Display                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Heanet Video](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-2-heanet) | [HeaNet video example](https://reader.tutors.dev/topic/reference-course/topic-03-media)) |
+| [Heanet Video](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-2-heanet) | [HeaNet video example](https://tutors.dev/topic/reference-course/topic-03-media)) |
 
 Videos can be uploaded here:
 
@@ -602,7 +602,7 @@ Notes and Books can have Latex content, implemented using the [Katex](https://ka
 
 | Example Resource                                             | Display                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Latex](https://github.com/tutors-sdk/tutors-reference-course/blob/main/topic-01-typical/unit-1/book-a/05.05.md) | [Latex Example](https://reader.tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a/05) |
+| [Latex](https://github.com/tutors-sdk/tutors-reference-course/blob/main/topic-01-typical/unit-1/book-a/05.05.md) | [Latex Example](https://tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a/05) |
 
 You can express Latex content between "$" symbols. For example:
 
@@ -643,7 +643,7 @@ This can be customised via the introduction of [FrontMatter](https://docs.zettlr
 
 | Example Resource | Display | 
 | ---------------- | ------- | 
-| [Ordering](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-08-ordering)| [Ordering Example](https://reader.tutors.dev/topic/reference-course/topic-08-ordering) | 
+| [Ordering](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-08-ordering)| [Ordering Example](https://tutors.dev/topic/reference-course/topic-08-ordering) | 
 
 This should contain an "order" number, which dictates the sequencing for the cards.
 
@@ -663,7 +663,7 @@ If no image file is found in a resource, then Tutors will look to display an SVG
 
 | Example Resource                                             | Display                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Icon based cards](https://reader.tutors.dev/topic/reference-course/topic-09-svg) | [Iconify](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-svg) |
+| [Icon based cards](https://tutors.dev/topic/reference-course/topic-09-svg) | [Iconify](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-svg) |
 
 You can search for an icon in that collection, locate the reference and include this + a colour in a [FrontMatter](https://docs.zettlr.com/en/core/yaml-frontmatter/) section for the Learning Resource. For example:
 
@@ -983,7 +983,7 @@ A reference course is located here:
 
 and is published here:
 
-- <https://reader.tutors.dev/course/reference-course>
+- <https://tutors.dev/course/reference-course>
 
 This course illustrates all Tutors featues. It can be downloaded here:
 
