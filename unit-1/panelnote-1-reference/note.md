@@ -12,7 +12,7 @@ These components are [developed in the open](https://github.com/tutors-sdk/tutor
 
 ## Getting Started
 
-Visit [this course](https://tutors.dev/course/reference-course) to become familiar with the general structure of the learning experience. [Download the source](https://github.com/tutors-sdk/tutors-reference-course/archive/refs/heads/main.zip) for the course and unzip to a local folder. Spend a few minutes exploring the content of the folder using a good editor, for example [Sublime Text](https://www.sublimetext.com/).
+Visit [this course](https://tutors.dev/course/reference-course) to become familiar with the general structure of the learning experience. [Download the source](archives/reference-course.zip) for the course and unzip to a local folder. Spend a few minutes exploring the content of the folder using a good editor, for example [Sublime Text](https://www.sublimetext.com/).
 
 Install the LTS version [Node.js](https://nodejs.org/en) on your computer and create a free account on the [Netlify](https://www.netlify.com/) service.
 
