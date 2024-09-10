@@ -346,7 +346,7 @@ The step files are named with three dot separated segments as follows:
 Where:
 
 - [sort-key] ensures the step sequential position, sorted alphabetically/numerically. Typlicaly you might use a sequence like: 01, 02, 03, 04 etc...
-- [short-titie] is a title used for constrained screen widths
+- [short-title] is a title used for constrained screen widths
 
 For example:
 
