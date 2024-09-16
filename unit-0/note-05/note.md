@@ -3,7 +3,7 @@ icon:
   type: flat-color-icons:rotate-to-portrait
 ---
 
-# Panel Learning Objects
+# Panels
 
 The Panel Learning Objects
 

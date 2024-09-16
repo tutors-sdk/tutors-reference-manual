@@ -5,7 +5,7 @@ icon:
 
 # Getting Started
 
-The bascs model of Tutors
+The basic model of Tutors
 
 Tutors is a collection of open source components and services supporting the creation of transformative learning experiences using open web standards. It consists of two key components:
 

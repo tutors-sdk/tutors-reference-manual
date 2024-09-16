@@ -5,10 +5,9 @@ icon:
 
 # Learning Resources
 
-A catalogue of Tutors Learning Obejcts
+Ennumerating the Tutors Learning Obejcts
 
 ## Learning Resources
-
 
 There are 2 broad types of learning resources
 
