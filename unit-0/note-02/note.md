@@ -5,7 +5,7 @@ icon:
 
 # Cards & Resources
 
-Whar Cards represent in Tutors
+What Cards represent in Tutors
 
 ## Cards
 

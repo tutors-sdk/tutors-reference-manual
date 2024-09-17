@@ -13,7 +13,7 @@ Tutors is a collection of open source components and services supporting the cre
 
 - *Reader*: presents a Tutors course as an intuitive, discoverable and attractive [Web experience](https://tutors.dev/course/reference-course)
 
-These components are [developed in the open](https://github.com/tutors-sdk/tutors) by an active and friendly community, based on a clear [set of values](https://tutors.dev/course/tutors-reference-manual#tutors-values).
+These components are [developed in the open](https://github.com/tutors-sdk/tutors) by an active and friendly community, based on a clear [set of values](https://tutors.dev/note/tutors-reference-manual/unit-0/note-12).
 
 ## Getting Started
 

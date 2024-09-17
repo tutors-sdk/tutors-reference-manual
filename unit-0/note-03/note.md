@@ -44,7 +44,7 @@ credits: The course author(s) or organisation
 
 The credits property will appear as a subtitle in the course title bar.
 
-There are a range of other optional properties. See [later in this document](https://tutors.dev/course/tutors-reference-manual#properties.yaml-1) for a complete list of valid properties.
+There are a range of other optional properties. See [later in this document]( https://tutors.dev/note/tutors-reference-manual/unit-0/note-10)for a complete list of valid properties.
 
 A course folder will typically contain topics (see below). Occasionally  you may choose to place units directly in a course folder.
 
