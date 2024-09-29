@@ -5,7 +5,7 @@ icon:
 
 # Tutors Values
 
-*The value of the Tutors Open Source Project*
+*The values of the Tutors Open Source Project*
 
 *Tutors: An Open Learning Web Toolkit*
 
