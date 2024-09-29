@@ -1,6 +1,7 @@
 ---
 icon:
   type: flat-color-icons:like
+order: 6
 ---
 
 # Tutors Values

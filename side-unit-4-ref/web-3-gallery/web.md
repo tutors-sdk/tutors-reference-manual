@@ -1,6 +1,7 @@
 ---
 icon:
   type: flat-color-icons:video-projector
+order: 4
 ---
 
 # Gallery

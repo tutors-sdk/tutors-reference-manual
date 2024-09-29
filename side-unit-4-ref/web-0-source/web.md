@@ -1,6 +1,7 @@
 ---
 icon:
   type: logos:github-octocat
+order: 1
 ---
 
 # Tutors Source
