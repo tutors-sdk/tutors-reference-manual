@@ -1,3 +1,3 @@
 # Layouts
 
-Alternative layouts & nesting
+*Example course with alternative layouts & nesting*

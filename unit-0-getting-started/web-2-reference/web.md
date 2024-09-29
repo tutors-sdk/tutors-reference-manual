@@ -1,3 +1,3 @@
 # Reference Course
 
-Course containing all Tutors learning objects
+*Example Course containing all Tutors learning objects*
