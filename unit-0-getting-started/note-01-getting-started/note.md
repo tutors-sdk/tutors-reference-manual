@@ -69,14 +69,14 @@ This will also generate a folder of content in the course folder - this time in 
 
 The first course example above is a typicaly tutors course, with a basic structure. This example:
 
-- [Layouts](/course/layout-reference-course)
+- [Alternative Layouts](/course/layout-reference-course)
 
 ... incorporates different layouts + nesting of learning objects in various confurations. Download the source [here](https://github.com/tutors-sdk/layout-reference-course/archive/refs/heads/main.zip) 
 
 
 This example is a complete reference course illustrating all Tutors features:
 
-- [Layouts](/course/reference-course)
+- [Reference Course](/course/reference-course)
 
-Download the source [here](https://github.com/tutors-sdk/reference-course/archive/refs/heads/main.zip) 
+Download the source [here](https://github.com/tutors-sdk/tutors-reference-course/archive/refs/heads/main.zip) 
 
