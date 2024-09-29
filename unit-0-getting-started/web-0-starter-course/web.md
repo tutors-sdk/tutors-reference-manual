@@ -1,3 +1,3 @@
-# Simple Course
+# Simple Starter
 
 *A simple example starter course*
