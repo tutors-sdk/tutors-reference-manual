@@ -99,8 +99,8 @@ companions:
     link: https://piazza.com/
     title: Piazza Q & A for this course
     icon:
-      icon: academicons:piazza
-      colour: info
+      type: academicons:piazza
+      color: info
 ~~~
 
 The above defines a companion icon to a Piazza service.
