@@ -139,7 +139,25 @@ The linked images must be included in the img folder in the lab. Similairly, if 
 
 ![](img/zip-link.png)
 
+#### Links within Labs
+
 Links to external resources can be included with conventional web links.
+
+If you wish to link to another step in the same lab, identify the url for the step, for instance:
+
+~~~hmtl
+https://tutors.dev/lab/tutors-test-2/topic-01-typical/unit-1/book-a/04
+~~~
+
+... and formulate a link, trimming the `https://tutors.dev`, leaving the remaining segments:
+
+~~~
+/lab/tutors-test-2/topic-01-typical/unit-1/book-a/04
+~~~
+
+You can then formulate a link using the conventional markdown link syntax:
+
+![](img/lab-step-link.png)
 
 #### Auto Numbering
 
