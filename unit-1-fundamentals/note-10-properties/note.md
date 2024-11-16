@@ -18,6 +18,7 @@ This is a [YAML formatted](https://circleci.com/blog/what-is-yaml-a-beginner-s-g
 - Authentication + TutorsTime & TutorsLive
 - Global video hide
 - Global Lab Autonumbering
+- Default PDF Reader
 
 In addition, two (optional) supporting files :
 
