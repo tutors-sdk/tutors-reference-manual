@@ -283,6 +283,27 @@ private: 1
 
 In addition to withdrawing a private course from the above services, the course will also remove the Log in / Profile menus from the header, disabling the dashboard and any sign in capabilities.
 
+### Default PDF reader
+
+The tutors reader will render talks using the [Adobe PDF Embed API](https://developer.adobe.com/document-services/docs/overview/pdf-embed-api/). An alternative reader based on the [Mozilla pdf.js](https://mozilla.github.io/pdf.js/) project is also available. 
+
+To mozilla by default in all Talks:
+
+~~~yaml
+defaultPdfReader: mozilla
+~~~
+
+To use Adove:
+
+~~~yaml
+defaultPdfReader: adobe
+~~~
+
+Adobe is also the default.
+
+
+
+
 ## Image resizing
 
 Some images you mau choose to use may be hi-resolution, appearing to be super sized on the canvas. This can be a particular issue with screen shots. This service here:
