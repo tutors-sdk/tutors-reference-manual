@@ -288,13 +288,13 @@ In addition to withdrawing a private course from the above services, the course 
 
 The tutors reader will render talks using the [Adobe PDF Embed API](https://developer.adobe.com/document-services/docs/overview/pdf-embed-api/). An alternative reader based on the [Mozilla pdf.js](https://mozilla.github.io/pdf.js/) project is also available. 
 
-To mozilla by default in all Talks:
+To use Mozilla by default in all Talks:
 
 ~~~yaml
 defaultPdfReader: mozilla
 ~~~
 
-To use Adove:
+To use Adobe:
 
 ~~~yaml
 defaultPdfReader: adobe
