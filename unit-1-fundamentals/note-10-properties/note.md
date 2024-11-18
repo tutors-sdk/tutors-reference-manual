@@ -19,6 +19,8 @@ This is a [YAML formatted](https://circleci.com/blog/what-is-yaml-a-beginner-s-g
 - Global video hide
 - Global Lab Autonumbering
 - Default PDF Reader
+- Private mode
+- Autonumbering Lab Steps
 
 In addition, two (optional) supporting files :
 
