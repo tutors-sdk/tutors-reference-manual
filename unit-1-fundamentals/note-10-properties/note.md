@@ -21,6 +21,7 @@ This is a [YAML formatted](https://circleci.com/blog/what-is-yaml-a-beginner-s-g
 - Default PDF Reader
 - Private mode
 - Autonumbering Lab Steps
+- Large Language Model support
 
 In addition, two (optional) supporting files :
 
@@ -305,7 +306,25 @@ defaultPdfReader: adobe
 Adobe is also the default.
 
 
+### Large Language Model support
 
+You can enable the availability of versions of a course suitable for processing by Large Language Models (LLMs). To enable this, include the following entry in properties.yaml:
+
+~~~yaml 
+llms: true
+~~~
+
+This will provide a link in the Navigator (next to the search button) to and Llm page for your course. This page will provide a selection of links to versions of the course that are suited to processing by LLMs. This is [an example here](https://tutors.dev/course/tutors-reference-manual). The LLMs links page will look like this:
+
+> We support the [llms.txt](https://llmstxt.org/) convention for making documentation available to large language models and the applications that make use of them.
+> Currently, we have the following files...
+> - [llms-full.txt](https://tutors-reference-manual.netlify.app/llms-full.txt) — the complete course
+> - [llms-labs.txt](https://tutors-reference-manual.netlify.app/llms-labs.txt) — just the labs
+> - [llms-notes.txt](https://tutors-reference-manual.netlify.app/llms-notes.txt) — just the notes
+
+The content of these files can be saved and uploaded to ChatGPT, Claude or one of the other LLMs.
+
+Text in Talks (pdfs) is currently not represented (yet).
 
 ## Image resizing
 
