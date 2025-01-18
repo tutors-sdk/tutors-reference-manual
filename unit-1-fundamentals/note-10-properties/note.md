@@ -274,7 +274,7 @@ This is independent of the 'sort-key' segment in the lab step name.
 
 Tutors provides the following services:
 
-- [Gallery](https://tutors.dev/gallery): a selection of 50  or so unique modules
+- [Gallery](): a selection of 50  or so unique modules
 
 - [Catalogue](https://tutors.dev/catalogue): a general listing of all known Tutors courses
 - [Live](https://tutors.dev/live): live view of which course are active live (all users are anonymous on this view)
