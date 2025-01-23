@@ -305,26 +305,47 @@ defaultPdfReader: adobe
 
 Adobe is also the default.
 
-
 ### Large Language Model support
 
-Your course can be made available in a format suitable for processing by Large Language Models (LLMs). Include the following entry in properties.yaml to enable this:
+Your course can be made available in a format suitable for processing by Large Language Models (LLMs). This takes the form of a dedicated page on your course. If this is your course url:
+
+- https://tutors.dev/course/tutors-starter-course
+
+Then this is could be the llm page:
+
+- https://tutors.dev/llm/tutors-starter-course
+
+*(llm* instead of *course* in the route). Your course may need to re-deployed with the latest tutors-publish for this to be available.
+
+This llm makes available the following assets:
+
+- A link to a markdown version of the entire course, as a singe standalone page
+- A link to a zip archive of all Talks in the course
+- Links to the YouTube videos
+
+This is followed by a version of the above for each topic only. This will be in the form of links under each topic in your course.
+
+You can submit all of the above to many Llms. For Pdfs, you may need to upload pdf files individually. Sometimes it is more useful to submit resources by topic. [Google Notebook LLM](https://notebooklm.google.com/) for instance works well for topic based resources. So you could create a Notebook for each topic - and then generate notes, quizzes, FAQs, and Podcasts! confined to each individual topic.
+
+If you would like to advertise the link to these resources, then place this in the properties.yaml:
 
 ~~~yaml 
-llms: true
+llm: 2
 ~~~
 
-This will provide a link in the Navigator (next to the search button) to and Llm page for your course.  This is [an example here](https://tutors.dev/llms/tutors-reference-manual). The LLMs links page will look like this:
+This will place a small 'idea' icon next to the search button in the course navigator. If you would like to keep the page, but not advertise the link then:
 
-> We support the [llms.txt](https://llmstxt.org/) convention for making documentation available to large language models and the applications that make use of them.
-> Currently, we have the following files...
-> - [llms-full.txt](https://tutors-reference-manual.netlify.app/llms-full.txt) — the complete course
-> - [llms-labs.txt](https://tutors-reference-manual.netlify.app/llms-labs.txt) — just the labs
-> - [llms-notes.txt](https://tutors-reference-manual.netlify.app/llms-notes.txt) — just the notes
+~~~yaml
+llm: 1
+~~~
 
-The content of these files can be saved and uploaded to ChatGPT, Claude or one of the other LLMs.
+If you would like the page to be disabled - and not available to anyone, then:
 
-Text in Talks (pdfs) is currently not represented (yet).
+~~~yaml
+llm: 0
+~~~
+
+*llm: 1* is the default behaviour if you do not include any llm value in the properties.
 
 ## Image resizing
 
