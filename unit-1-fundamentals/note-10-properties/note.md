@@ -317,7 +317,7 @@ Then this is could be the llm page:
 
 *(llm* instead of *course* in the route). Your course may need to re-deployed with the latest tutors-publish for this to be available.
 
-This llm makes available the following assets:
+This Llm page makes available the following assets:
 
 - A link to a markdown version of the entire course, as a singe standalone page
 - A link to a zip archive of all Talks in the course
