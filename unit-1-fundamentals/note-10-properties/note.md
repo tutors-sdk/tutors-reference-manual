@@ -323,7 +323,7 @@ This Llm page makes available the following assets:
 - A link to a zip archive of all Talks in the course
 - Links to the YouTube videos
 
-This is followed by a version of the above for each topic only. This will be in the form of links under each topic in your course.
+This is followed by a version of the above for each topic only. This will be in the form of links under each topic in your course. See this [example here](https://tutors.dev/llm/tutors-starter-course).
 
 You can submit all of the above to many Llms. For Pdfs, you may need to upload pdf files individually. Sometimes it is more useful to submit resources by topic. [Google Notebook LLM](https://notebooklm.google.com/) for instance works well for topic based resources. So you could create a Notebook for each topic - and then generate notes, quizzes, FAQs, and Podcasts! confined to each individual topic.
 
