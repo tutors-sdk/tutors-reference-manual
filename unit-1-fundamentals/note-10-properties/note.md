@@ -305,6 +305,14 @@ defaultPdfReader: adobe
 
 Adobe is also the default.
 
+If you use Adobe, the default mode will be to display the pdf in "presentation" mode - displaying a single slide at a time. If you would prefer a light box style display, the include the following:
+
+~~~yaml
+lightboxpdf: true
+~~~
+
+If enabled, this option will  display multiple pages with various options on the sidebar.
+
 ### Large Language Model support
 
 Your course can be made available in a format suitable for processing by Large Language Models (LLMs). This takes the form of a dedicated page on your course. If this is your course url:
