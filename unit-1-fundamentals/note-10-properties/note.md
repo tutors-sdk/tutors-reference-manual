@@ -347,13 +347,13 @@ This will place a small 'idea' icon next to the search button in the course navi
 llm: 1
 ~~~
 
-If you would like the page to be disabled - and not available to anyone, then:
+If you would like the page to be disabled - and no llm content generate then set to 0:
 
 ~~~yaml
 llm: 0
 ~~~
 
-*llm: 1* is the default behaviour if you do not include any llm value in the properties.
+llm: 0 is the default behaviour if no setting is found, i.e. no llm content is generated be default.
 
 ## Image resizing
 
