@@ -2,36 +2,19 @@
 icon:
   type: flat-color-icons:view-details
 ---
+# Course Properties
 
 [[toc]]
 
-# Course Properties
 
 *The contents of the properties.yaml file*
 
-This is a [YAML formatted](https://circleci.com/blog/what-is-yaml-a-beginner-s-guide/) file containing course-wide parameters. It defines the following aspects:
-
-- Course attribution/credit
-- Course Parent
-- Course Icon
-- Course Companion Sites
-- Edit Course Button
-- Topic show/hide settings for instructors (including PIN)
-- Authentication + TutorsTime & TutorsLive
-- Global video hide
-- Global Lab Autonumbering
-- Default PDF Reader
-- Private mode
-- Autonumbering Lab Steps
-- Large Language Model support
-
-In addition, two (optional) supporting files :
+This is a [YAML formatted](https://circleci.com/blog/what-is-yaml-a-beginner-s-guide/) file containing course-wide parameters. In addition, two (optional) supporting files :
 
 - calendar.yaml
 - enrolment.yaml
 
 allow additional aspects to be specified.
-
 
 ### Course attribution/credit
 
