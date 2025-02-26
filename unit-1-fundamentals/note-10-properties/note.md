@@ -3,6 +3,8 @@ icon:
   type: flat-color-icons:view-details
 ---
 
+[[toc]]
+
 # Course Properties
 
 *The contents of the properties.yaml file*
@@ -305,13 +307,12 @@ defaultPdfReader: adobe
 
 Adobe is also the default.
 
-If you use Adobe, the default mode will be to display the pdf in "presentation" mode - displaying a single slide at a time. If you would prefer a light box style display, the include the following:
+If you use Adobe, the default mode will be to display the pdf in "landscape" orientation - displaying a single slide at a time in a 16:9 aspect ratio. This is best for presentations / slides. If you would prefer a portrait style display - perhpas an A4 document, then include the following:
 
 ~~~yaml
-lightboxpdf: true
+pdfOrientation : portrait
 ~~~
 
-If enabled, this option will  display multiple pages with various options on the sidebar.
 
 ### Large Language Model support
 
