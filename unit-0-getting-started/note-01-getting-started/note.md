@@ -98,7 +98,7 @@ deno run -A jsr:@tutors/tutors-lite
 
 This will also generate a folder of content in the course folder - this time in a **html** subfolder. You can open this folder and load the **home.html** therein in a browser (generally just double click).  This will open a local version of the course offline (on your workstation only). This is an example here:
 
-- [Tutors Reference Course](https://tutors-reference-course-html.netlify.app/home)
+- [Tutors Reference Course](https://tutors-reference-course-html.netlify.app/index.html)
 
 This does not provide the complete Tutors user experience, but can be a useful as a backup, an alternative UX and also perhaps as the basis for an archive of the course that can be distributed as a zip file (compress and distribute the html folder only) when a course concludes. The archive can be opened by the students independently, with all course assets held locally, except for videos. The **html** folder can also be published to any web server, including Netlify using the same process as outlined above.
 
