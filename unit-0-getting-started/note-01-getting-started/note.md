@@ -38,7 +38,7 @@ You can also create a free account on the [Netlify](https://www.netlify.com/) se
 Open a [command prompt/terminal at the course folder](https://www.groovypost.com/howto/open-command-window-terminal-window-specific-folder-windows-mac-linux/) you created above and enter the following command:
 
 ~~~bash
-deno run -A jsr:@tutors/tutors-publish
+deno run -A jsr:@tutors/tutors
 ~~~
 
 This should generate a response like this (shortened here):
@@ -75,7 +75,7 @@ This will require you to import the project into Netlify:
 Once imported, the **Build Command** should be:
 
 ~~~
-deno run -A jsr:@tutors/tutors-publish
+deno run -A jsr:@tutors/tutors
 ~~~
 
 Then **Publish directory**:
@@ -84,7 +84,7 @@ Then **Publish directory**:
 json
 ~~~
 
-![](img/netlify-2.png)
+![](img/netlify-3.png)
 
 Any push to the repo will trigger a rebuild of the site.
 
@@ -93,7 +93,7 @@ Any push to the repo will trigger a rebuild of the site.
 There is secondary publication mechanism, which is invoked as above, but with a different command:
 
 ~~~bash
-deno run -A jsr:@tutors/tutors-publish-html
+deno run -A jsr:@tutors/tutors-lite
 ~~~
 
 This will also generate a folder of content in the course folder - this time in a **html** subfolder. You can open this folder and load the **home.html** therein in a browser (generally just double click).  This will open a local version of the course offline (on your workstation only). This is an example here:
