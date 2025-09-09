@@ -1,1 +1,1 @@
-https://tutors.dev/course/reference-course
+/course/reference-course

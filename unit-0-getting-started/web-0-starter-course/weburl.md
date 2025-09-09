@@ -1,1 +1,1 @@
-https://tutors.dev/course/tutors-starter-course
+/course/tutors-starter-course
