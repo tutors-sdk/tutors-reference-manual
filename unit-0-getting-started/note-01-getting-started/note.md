@@ -96,7 +96,7 @@ There is secondary publication mechanism, which is invoked as above, but with a 
 deno run -A jsr:@tutors/tutors-lite
 ~~~
 
-This will also generate a folder of content in the course folder - this time in a **html** subfolder. You can open this folder and load the **home.html** therein in a browser (generally just double click).  This will open a local version of the course offline (on your workstation only). This is an example here:
+This will also generate a folder of content in the course folder - this time in a **html** subfolder. You can open this folder and load the **index.html** therein in a browser (generally just double click).  This will open a local version of the course offline (on your workstation only). This is an example here:
 
 - [Tutors Reference Course](https://tutors-reference-course-html.netlify.app/index.html)
 
