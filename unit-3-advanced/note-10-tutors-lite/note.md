@@ -74,7 +74,7 @@ If you have your course on GitHub - and the course repo is public - you can set 
 
 - Create a new folder in your repo called `.github/workflows`
 
-- In that folder create a file called publish-tutors-lite.yml containing:
+- In that folder create a file called publish-tutors-lite.yaml containing:
 
 ~~~yaml
 name: Publish and Deploy Tutors Lite Site
