@@ -5,7 +5,7 @@ icon:
 
 # Course Structure
 
-*Ths structure of a tutors course*
+*The structure of a tutors course*
 
 
 ## Course Structure

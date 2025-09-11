@@ -4,10 +4,10 @@ icon:
 ---
 # Course Properties
 
+*The properties.yaml file*
+
 [[toc]]
 
-
-*The contents of the properties.yaml file*
 
 This is a [YAML formatted](https://circleci.com/blog/what-is-yaml-a-beginner-s-guide/) file containing course-wide parameters. In addition, two (optional) supporting files :
 
