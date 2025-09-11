@@ -4,7 +4,7 @@
 
 [[toc]]
 
-## What is Tutors Lite?
+## 1. What is Tutors Lite?
 
 As well as rendering core turors course content, the default tutors experience encompases:
 
@@ -20,7 +20,7 @@ All of the above are delivered via the Tutors Reader application. This is a full
 
 Tutors Lite is a lightweight alternative which does not require Tutors Reader. This means a course can be loaded locally (before publication) and can be deployed on any web server. The format of the course 'source' is identical, although some aspects will be ignored (auth, calendar). The generated course web will not have any of the features listed above - but it will match the overal learning experience for the core course content.
 
-## Why would I use TutorsLite?
+## 2. Why would I use TutorsLite?
 
 Several reasons :
 
@@ -36,7 +36,7 @@ Several reasons :
 
 - A backup - if there is some issue with Tutors Reader, or if application like Tutors Reader are blocked for some reason.
 
-## How do I use Tutors Lite:
+## 3. How do I use Tutors Lite:
 
 This is the command to build a TutorsLite version:
 
@@ -46,7 +46,7 @@ deno run -A jsr:@tutors/tutors-lite
 
 This will also generate a folder of content in the course folder - this time in a **html** subfolder. You can open this folder and load the **index.html** therein in a browser (generally just double click).  
 
-## Any examples I can look at?
+## 4. Any examples I can look at?
 
 Here is a the Lite version:
 
@@ -57,7 +57,7 @@ This is the full Tutors experience for the same course:
 - <https://tutors.dev/course/wit-hdip-comp-sci-2024-full-stack-1>
 
 
-## How would I publish a TutorsLite version on Netlify?
+## 5. How would I publish a TutorsLite version on Netlify?
 
 Any hosing provider for simple web sites should do. I you want to try on Netlify, then these are the key settings:
 
@@ -66,7 +66,7 @@ Build command     : deno run -A jsr:@tutors/tutors-lite
 Publish directory : html
 ~~~
 
-## How would I publish a TutorsLite version on Github Pages?
+## 6. How would I publish a TutorsLite version on Github Pages?
 
 If you have your course on github - and the course repo is public - you can set up the repo such that any git push will also publish the TutorsLite version as a web site hosted on the [Github Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) facility on your repo. Here is how to do this.
 
@@ -74,9 +74,9 @@ If you have your course on github - and the course repo is public - you can set 
 
 ![](img/gh-pages.png)
 
-2. Create a new folder in your repo called `.github/workflows`
+- Create a new folder in your repo called `.github/workflows`
 
-3. In that folder create a file called publish-tutors-lite.html containing:
+- In that folder create a file called publish-tutors-lite.html containing:
 
 ~~~yaml
 name: Publish and Deploy Tutors Lite Site
@@ -120,9 +120,9 @@ jobs:
           artifact_name: github-pages-${{ github.run_id }}
 ~~~
 
-4. Commit and push the `.github/workflows/publish-tutors-lite.yaml` file above.
+- Commit and push the `.github/workflows/publish-tutors-lite.yaml` file above.
 
-5: On github navigate to the `Actions` tab for your repo:
+- On github navigate to the `Actions` tab for your repo:
 
 ![](img/workflow-1.png)
 
