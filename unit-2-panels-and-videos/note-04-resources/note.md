@@ -94,7 +94,7 @@ A note is a full web page, authored in markdown. Is represented in a different c
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Single web page, authored in markdown](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-2) | [Tutorial 2](https://tutors.dev/course/reference-course/topic-07-reference/tutorial-2)]|[Tutorials](https://tutors.dev/tutorial/reference-course)
+| [Single web page, authored in markdown](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-2) | [Tutorial 2](https://tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-2)]|[Tutorials](https://tutors.dev/tutorial/reference-course)
 
 
 Markdown is a simple text format for authoring web content:
@@ -126,7 +126,7 @@ A pdf presented in portrait, intended for problem sets or worksheets. Is categor
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Document pdf format](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-1) | [Tutorial-1](tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-1)| [Tutorials](https://tutors.dev/tutorial/note/reference-course) |
+| [Document pdf format](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-1) | [Tutorial-1](tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-1)| [Tutorials](https://tutors.dev/tutorial/reference-course) |
 
  The pdf file, markdown description and image file must all have the same file name, which can be whatever you choose. 
 
