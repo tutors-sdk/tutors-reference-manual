@@ -94,7 +94,7 @@ A note is a full web page, authored in markdown. Is represented in a different c
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Single web page, authored in markdown](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-2) | [Tutorial 2](https://tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-2)|[Tutorials](https://next.tutors.dev/wall/tutorial/reference-course)
+| [Single web page, authored in markdown](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-2) | [Tutorial 2](https://tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-2)|[Tutorials](https://tutors.dev/wall/tutorial/reference-course)
 
 
 Markdown is a simple text format for authoring web content:
@@ -120,13 +120,13 @@ The linked images must be included in the img folder in the note resource. Simil
 
 Links to external resources can be included with conventional web links.
 
-### PDFNote
+### PDF Tutorial
 
-A pdf presented in portrait, intended for problem sets or worksheets. Is categorised with the Tutorial learning objects (see above).
+A pdf presented in portrait orientation, intended for problem sets or worksheets. Is categorised with the Tutorial learning objects (see above).
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Document pdf format](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-1) | [Tutorial-1](tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-1)| [Tutorials](https://next.tutors.dev/wall/tutorial/reference-course) |
+| [Document pdf format](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-1) | [Tutorial-1](tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-1)| [Tutorials](https://tutors.dev/wall/tutorial/reference-course) |
 
  The pdf file, markdown description and image file must all have the same file name, which can be whatever you choose. 
 
