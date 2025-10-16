@@ -84,6 +84,56 @@ The linked images must be included in the img folder in the note resource. Simil
 
 Links to external resources can be included with conventional web links.
 
+### Tutorial 
+
+A note is a full web page, authored in markdown. Is represented in a different category, with a different colour/icon from Notes
+
+| Example Resource | Display | Cards |
+| ---------------- | ------- | ----- |
+| [Single web page, authored in markdown](tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-2) | [Tutorial 2 ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-2)|[Tutorials](https://tutors.dev/tutorial/note/reference-course)
+
+
+Markdown is a simple text format for authoring web content:
+
+- <https://www.markdownguide.org/basic-syntax/>
+
+If you choose to include local images or links to zipped archives you wish to be distributed with the note, you must include these in the note folder in specific subfolders:
+
+| Resource   | Purpose  |
+| ---------- | -------- |
+| tutorial.md    | The content of the note. Any suitable name, type must be .md |
+| tutorial.png   | Image for card. File name must be same as .md file. File type can be .png, .jpg, or .jpeg |
+| img        | A folder containing Images used by the note |
+| archives   | A folder contains any zipped archives referred to in the note |
+
+Image links can be structured to in include relative references to the image. E.g:
+
+![](img/img-link.png)
+
+The linked images must be included in the img folder in the note resource. Similairly, if you wish to distributed a zipped archive of learning resources, include the zip file(s) in the archives folder, and link like this:
+
+![](img/zip-link.png)
+
+Links to external resources can be included with conventional web links.
+
+### PDFNote
+
+A pdf presented in portrait, intended for problem sets or worksheets. Is categorised with the Tutorial learning objects (see above).
+
+| Example Resource | Display | Cards |
+| ---------------- | ------- | ----- |
+| [Document pdf format](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-1) | [Tutorial-1](tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-1)| [Tutorials](https://tutors.dev/tutorial/note/reference-course) |
+
+ The pdf file, markdown description and image file must all have the same file name, which can be whatever you choose. 
+
+| File name        | Purpose                                                      |
+| ---------------- | ------------------------------------------------------------ |
+| tutorial.md  | Title + short summary for the talk. The file can have any suitable name, but must be .md file type |
+| tutorial.png | Image for card. File name must be same as .md file. File type can be .png, .jpg, or .jpeg |
+| tutorial.pdf | Pdf to be rendered if the card is selected. The name must match the .md file name precicely |
+
+The .md file provides the card title + subtitle:
+
 #### TOC
 
 If the note content includes heading and subheading, then you can insert an automatic Table of Contents via this text:
