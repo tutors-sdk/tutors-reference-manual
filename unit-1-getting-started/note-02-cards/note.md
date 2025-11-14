@@ -24,21 +24,22 @@ Folder names convey the type of learning resource contained in the folder, with 
 
 |  Example                                                                                     | Source |
 | -------------------------------------------------------------------------------------------- | ------------------------------------------  |
-| [topic](https://tutors.dev/topic/reference-course/topic-01-typical)                   | [Top level course topic ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)|
-| [unit](https://tutors.dev/topic/reference-course/topic-01-typical)                    | [Group of learning objects within a topic  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1)|
-| [side](https://tutors.dev/topic/reference-course/topic-02-side)                       | [Group of learning objects framed in a sidebar  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit)|
-| [archive](https://tutors.dev/wall/archive/reference-course)                         | [Downloadable zip file of resources  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/archive)|
-| [book](https://tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a)        | [Step by step lab instructions, authored in markdown  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/book-a)|
-| [PDF book](https://tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c)    | [Problem or exercises sheet, authored as a PDF  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit/book-c)|
-| [github](https://tutors.dev/wall/github/reference-course)                             | [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)|
-| [note](https://tutors.dev/note/reference-course/topic-01-typical/unit-2/note-1)       | [Single web page, authored in markdown ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/note-1)|
-| [tutorial](https://tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-2)        | [Single web page, authored in markdown ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-2)|
-| [PDF tutorial](https://tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-1)    | [Portrait oriented PDF ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-1)|
-| [panelvideo](https://tutors.dev/topic/reference-course/topic-03-media)                | [A full screen width video, hosted in YouTube or HEANet](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/panelvideo-1)|
-| [paneltalk](https://tutors.dev/topic/reference-course/topic-05-panel-talk)            | [Full screen width  presentation in pdf format    ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-05-panel-talk/paneltalk)|
-| [panelnote](https://tutors.dev/topic/reference-course/topic-04-panel-note)            | [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote) |
-| [talk](https://tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-1-intro) | [Standard presentation in pdf format  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-1-intro)|
-| [web](https://tutors.dev/wall/web/reference-course.netlify.app)                       | [Link to an external web site  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/web-1) |
+| [topic](https://tutors.dev/topic/reference-course/topic-01-typical)                          | [Top level course topic ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)|
+| [unit](https://tutors.dev/topic/reference-course/topic-01-typical)                           | [Group of learning objects within a topic  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1)|
+| [side](https://tutors.dev/topic/reference-course/topic-02-side)                              | [Group of learning objects framed in a sidebar  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit)|
+| [archive](https://tutors.dev/wall/archive/reference-course)                                  | [Downloadable zip file of resources  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/archive)|
+| [book](https://tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a)               | [Step by step lab instructions, authored in markdown  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/book-a)|
+| [PDF book](https://tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c)           | [Problem or exercises sheet, authored as a PDF  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit/book-c)|
+| [github](https://tutors.dev/wall/github/reference-course)                                    | [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)|
+| [note](https://tutors.dev/note/reference-course/topic-01-typical/unit-2/note-1)              | [Single web page, authored in markdown ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/note-1)|
+| [tutorial](https://tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-2)       | [Single web page, authored in markdown ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-2)|
+| [PDF tutorial](https://tutors.dev/tutorial/reference-course/topic-07-reference/tutorial-1)   | [Portrait oriented PDF ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/tutorial-1)|
+| [panelvideo](https://tutors.dev/topic/reference-course/topic-03-media)                       | [A full screen width video, hosted in YouTube or HEANet](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/panelvideo-1)|
+| [paneltalk](https://tutors.dev/topic/reference-course/topic-05-panel-talk)                   | [Full screen width  presentation in pdf format    ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-05-panel-talk/paneltalk)|
+| [panelnote](https://tutors.dev/topic/reference-course/topic-04-panel-note)                   | [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote) |
+| [talk](https://tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-1-intro)        | [Standard presentation in pdf format  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-1-intro)|
+| [web](https://tutors.dev/wall/web/reference-course.netlify.app)                              | [Link to an external web site  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/web-1) |
+| [podcast](https://tutors.dev/topic/reference-course/topic-09-podcasts)                       | [Podcast Player](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-podcasts/side-unit/podcast) |
 
  To sort the name alphabetically you may append numerals. To enhance meaning, append contextual keywords. For example:
 
