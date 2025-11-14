@@ -249,18 +249,18 @@ Three files are required:
 
 ### Podcast 
 
-A podcast player, currenty provided by 
+A podcast player, currenty provided by Spotify
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Podcast](https://tutors.dev/topic/reference-course/topic-09-podcasts) | [Podcast Player](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-podcasts/side-unit/podcast) | | [Podcasts](https://tutors.dev/wall/podcast/reference-course) |
+| [Podcast](https://tutors.dev/topic/reference-course/topic-09-podcasts) | [Podcast Player](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-podcasts/side-unit/podcast) |  [Podcasts](https://tutors.dev/wall/podcast/reference-course) |
 
 
 Three files are required:
 
 | Resource   | Purpose  |
 | ---------- | -------- |
-| poedcast.md  | Title + short summary for the podcast. The file can have any suitable name, but must be .md file type |
+| podcast.md  | Title + short summary for the podcast. The file can have any suitable name, but must be .md file type |
 | episode | the podcast episode identifier|
 
 Currently supports the Spotify player, which requires the spotify episode id in this format:
@@ -271,7 +271,7 @@ spotify=722LWsc3uWc0zAqUHP8QHs
 
 You can identify this id by locating the podcast on Spotify and select "Share->Copy link to episode". This should look like:
 
-~~~url
+~~~yaml
 https://open.spotify.com/episode/3cqFe6wRbaadmPosSwckXh?si=8e60d1b6aa884327
 ~~~
 

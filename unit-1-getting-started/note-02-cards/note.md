@@ -39,7 +39,7 @@ Folder names convey the type of learning resource contained in the folder, with 
 | [panelnote](https://tutors.dev/topic/reference-course/topic-04-panel-note)                   | [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote) |
 | [talk](https://tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-1-intro)        | [Standard presentation in pdf format  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-1-intro)|
 | [web](https://tutors.dev/wall/web/reference-course.netlify.app)                              | [Link to an external web site  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/web-1) |
-| [podcast](https://tutors.dev/topic/reference-course/topic-09-podcasts)                       | [Podcast Player](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-podcasts/side-unit/podcast) |
+| [podcast](https://tutors.dev/topic/reference-course/topic-09-podcasts)                       | [Podcast episode](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-podcasts/side-unit/podcast) |
 
  To sort the name alphabetically you may append numerals. To enhance meaning, append contextual keywords. For example:
 
