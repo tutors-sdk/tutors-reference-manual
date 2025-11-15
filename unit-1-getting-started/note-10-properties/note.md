@@ -225,23 +225,17 @@ students:
     github: github-id-2
 ~~~
 
-
-
 ### Whitelisting
 
-By default, the contents of the enrollment file is not a Whitelist as such - ie. non-students can still access the module. If you would like to only permit the students listed in the enrolment file to access the course, then include the following:
+By default, the contents of the enrollment file is not a Whitelist as such - ie. non-students can still access the module. If you would like to only permit the students listed in the enrolment file to access the course, then include the following in the enrollment file:
 
 ~~~yaml
-whitelist      : 1
+authorisedIds:
+- github-id-1
+- github-id-2
 ~~~
 
-Remember, authentication must also be enabled for this to work:
-
-~~~yaml
-auth           : 1
-~~~
-
-For this to work, you need an additional section in the file listing the valid student github ids:
+So a complete enrollment file might look like this:
 
 ~~~yaml
 authorisedIds:
@@ -254,7 +248,11 @@ students:
     github: github-id-2
 ~~~
 
+Remember, authentication must also be enabled for this to work:
 
+~~~yaml
+auth           : 1
+~~~
 
 ## Auto Numbering
 
