@@ -218,15 +218,14 @@ Using a calendar in conjunction with authentication adds another dimension to Tu
 If authentication is enabled, then any user with a GitHub account can sign in to a course. In some circumstances that can make interpreting the TutorsTime data difficult, as it may include data from users not strictly students on the course. To this issue you can (optionally) provide an enrolment file -  `enrollment.yaml`. If present, then the TutorsTime reports will be limited to the students listed.
 
 ~~~yaml
-- github-student-id-1
-- github-student-id-2
-- github-student-id-3
-- github-student-id-4
-- github-student-id-5
+students:
+  - name: Student McStudious
+    github: github-id-1
+  - name: Tutors McTutorios
+    github: github-id-2
 ~~~
 
 
-How to get the IDs? The simplest method is to wait for a few sessions, and all students have logged in. Then, in TutorsTime enter the `ignore pin` to reveal `Labs for All Students`. The green export icon (a small disk) will allow you to export all data to an Excel file. 
 
 ### Whitelisting
 
@@ -242,7 +241,19 @@ Remember, authentication must also be enabled for this to work:
 auth           : 1
 ~~~
 
-... and you must, of course, have an accompanying enrollment file. 
+For this to work, you need an additional section in the file listing the valid student github ids:
+
+~~~yaml
+authorisedIds:
+- github-id-1
+- github-id-2
+students:
+  - name: Student McStudious
+    github: github-id-1
+  - name: Tutors McTutorios
+    github: github-id-2
+~~~
+
 
 
 ## Auto Numbering
