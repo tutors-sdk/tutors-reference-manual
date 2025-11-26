@@ -91,7 +91,7 @@ Any push to the repo will trigger a rebuild of the site.
 
 ### Publish to Vercel
 
-Create an account on [Vercel](https://vercel.com). Once logged in, create a new project. You will need to link the project to a github repo containind the tutors course. Include the following file in your courese:
+Create an account on [Vercel](https://vercel.com). Once logged in, create a new project. You will need to link the project to a github repo containing the tutors course. Include the following file in your courese:
 
 #### vercel.json
 
@@ -106,7 +106,7 @@ Create an account on [Vercel](https://vercel.com). Once logged in, create a new 
 
 Whenever you push an update to the repo, it will build and deploy on Vercel.
 
-For ythe hobby (free) account, your course repo must be public.
+For the hobby (free) account, your course repo must be public.
 
 ### Alternative Static Site Publish
 
