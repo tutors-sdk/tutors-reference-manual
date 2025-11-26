@@ -33,7 +33,7 @@ curl -fsSL https://deno.land/install.sh | sh
 
 You can also create a free account on the [Netlify](https://www.netlify.com/) service.
 
-### Publish
+### Publish to Netlify
 
 Open a [command prompt/terminal at the course folder](https://www.groovypost.com/howto/open-command-window-terminal-window-specific-folder-windows-mac-linux/) you created above and enter the following command:
 
@@ -87,6 +87,26 @@ json
 ![](img/netlify-3.png)
 
 Any push to the repo will trigger a rebuild of the site.
+
+
+### Publish to Vercel
+
+Create an account on [Vercel](https://vercel.com). Once logged in, create a new project. You will need to link the project to a github repo containind the tutors course. Include the following file in your courese:
+
+#### vercel.json
+
+~~~json
+{
+  "version": 2,
+  "buildCommand": "npx -y deno-bin@latest run -A jsr:@tutors/tutors",
+  "outputDirectory": "json",
+  "framework": null
+}
+~~~
+
+Whenever you push an update to the repo, it will build and deploy on Vercel.
+
+For ythe hobby (free) account, your course repo must be public.
 
 ### Alternative Static Site Publish
 
