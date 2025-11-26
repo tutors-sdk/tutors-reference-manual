@@ -4,4 +4,4 @@ icon:
 ---
 LLM Notebook
 
-A pretrained LLM on this topic
+A Notebook LLM trained on Tutors
