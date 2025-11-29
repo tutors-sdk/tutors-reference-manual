@@ -31,7 +31,7 @@ A markdown file, structured as follows:
 ~~~markdown
 Course Title
 
-Course information - a course outline, description or any other information. Can be any length. Will appear as slide over if the user presses the Info button on the top left.
+Course information - a course outline, description or any other information. 
 ~~~
 
 #### properties.yaml
