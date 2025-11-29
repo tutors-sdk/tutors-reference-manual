@@ -5,6 +5,8 @@ icon:
 
 # Tutors Time
 
+Exploring Tutors interaction patterns
+
 With authentication enabled, the user will be required to authenticate using a pre-existing GitHub account. Tutors will then record how much time each view is active (in minutes) and send this to the TutorsTime data store. This can be viewed via the TutorsTime feature on the course Navigator. This data is available to  student + the instructor of the course, but not to other students. No other data is gathered, nor is this data transmitted anywhere other than the TutorsTime data store. 
 
 This data is gathered largely for course management purposes. For example, time spent on lab steps is valuable intelligence that will feed into the design of the labs. Also, averaged lab times across the course can help course authors better understand course load and relative load across modules.
