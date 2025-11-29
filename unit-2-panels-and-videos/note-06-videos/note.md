@@ -3,9 +3,9 @@ icon:
   type: flat-color-icons:slr-back-side
 ---
 
-[[toc]]
-
 # Videos
+
+[[toc]]
 
 *How to include and configure videos*
 
