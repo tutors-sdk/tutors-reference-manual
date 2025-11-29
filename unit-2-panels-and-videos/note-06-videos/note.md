@@ -55,7 +55,7 @@ The above is displayed using a convenient shortcut like this:
 
 You can also associate a "poster" image, displayed before the image is played:
 
-::video[src="./img/video.mov" poster="img/01.png"]::
+::video[src="./img/video.mov" poster="img/poster.png"]::
 
 ![](img/video-2.png)
 
