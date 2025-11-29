@@ -3,7 +3,7 @@ icon:
   type: flat-color-icons:slr-back-side
 ---
 
-# Videos
+# Videos & Podcasts
 
 [[toc]]
 
@@ -71,6 +71,15 @@ This is how it will look:
 
 ::video[src="O6Jh_1bxDs4"]::
 
+### Podcasts
+
+There is a separate [Podcast learning object](/note/tutors-reference-manual/unit-2-panels-and-videos/note-a-resources#podcast) if you would like a standalone player card on a course.
+
+If you wish to embed a podscast player in a Note or Lab, then use the podcast custom element:
+
+![](img/podcast-1.png)
+
+Currently supports the Spotify player, which requires the spotify episode id. You can identify this id by locating the podcast on Spotify and select "Share->Copy link to episode".
 
 
 ## Video Chapters on Youtube
