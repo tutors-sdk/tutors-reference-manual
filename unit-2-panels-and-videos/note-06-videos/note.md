@@ -3,11 +3,13 @@ icon:
   type: flat-color-icons:slr-back-side
 ---
 
+[[toc]]
+
 # Videos
 
 *How to include and configure videos*
 
-### Videos
+## Panelvideos
 
 Panelvideos above are the primary mechanism for displaying videos prominently. The video is referenced in file always called:
 
@@ -29,7 +31,7 @@ Hfw1lbErjws
 
 However, this videoid file can be dropped into most learning resources. If a resource has this file, then a video play button will feature in the Card for the resource, which will trigger the video player. 
 
-#### Video Talks
+## Video Talks
 
 | Example Resource                                             | Display                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -37,7 +39,41 @@ However, this videoid file can be dropped into most learning resources. If a res
 
 For Talk resources only, it is possible to drop the PDF completely and just include the video only. The card will display as with a PDF 
 
-#### Video Chapters
+## Videos in Labs & Notes
+
+You can have either short videos, that can be bundled into the img folder, or you can have a youtube player.
+
+### Short Video
+
+An example of a short bundled video:
+
+::video[src="./img/video.mov"]::
+
+The above is displayed using a convenient shortcut like this:
+
+![](img/video-1.png)
+
+You can also associate a "poster" image, displayed before the image is played:
+
+::video[src="./img/video.mov" poster="img/01.png"]::
+
+![](img/video-2.png)
+
+The video file and the poster must be in the img folder.
+
+### Embedded Youtube Player
+
+You will need the id from Youtube, then include like this:
+
+![](img/video-3.png)
+
+This is how it will look:
+
+::video[src="O6Jh_1bxDs4"]::
+
+
+
+## Video Chapters on Youtube
 
 Youtube supports start/end times when linking to a video. This is via appending a start/end in seconds to the videoid file
 
@@ -71,7 +107,7 @@ For the above, the associated videoid files for each chapter would look like thi
 9Srf_ydMdL0?start=2064&6348
 ~~~
 
-#### HEANet Hosted Videos
+## HEANet Hosted Videos
 
 If you require an alternative to Youtube, you can use the HEANet service.
 
