@@ -11,7 +11,7 @@ icon:
 [[toc]]
 
 
-## Learning Resources
+# Learning Resources
 
 There are 2 broad types of learning resources
 
@@ -20,7 +20,7 @@ There are 2 broad types of learning resources
 
 Typically card or panel learning resources are child folders within topic, unit or side folders.
 
-## Card Resources
+# Card Resources
 
 These resources are represented by simple cards that can appear in a topic, unit or side:
 
@@ -33,7 +33,7 @@ These resources are represented by simple cards that can appear in a topic, unit
 | [Downloadable zip file of resources  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/archive)                      | [Archive 1](https://tutors.dev/wall/archive/reference-course)                              | [Archives](https://tutors.dev/archive/talk/reference-course) |
 | [Link to a GitHub repository  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical)                                       | [Github Repo 1](https://github.com/tutors-sdk/tutors)                                             | [Repos](https://tutors.dev/wall/repo/reference-course) | 
 
-### Talk 
+## Talk 
 
 A talk is a PDF presentation, document or other pdf formatted resource.
 
@@ -57,7 +57,7 @@ Lecture 1
 A short summary of the talk, no more than two sentences.
 ~~~
 
-### Note 
+## Note 
 
 A note is a full web page, authored in markdown.
 
@@ -88,7 +88,7 @@ The linked images must be included in the img folder in the note resource. Simil
 
 Links to external resources can be included with conventional web links.
 
-### Tutorial 
+## Tutorial 
 
 A note is a full web page, authored in markdown. Is represented in a different category, with a different colour/icon from Notes
 
@@ -120,7 +120,7 @@ The linked images must be included in the img folder in the note resource. Simil
 
 Links to external resources can be included with conventional web links.
 
-### PDF Tutorial
+## PDF Tutorial
 
 A pdf presented in portrait orientation, intended for problem sets or worksheets. Is categorised with the Tutorial learning objects (see above).
 
@@ -138,7 +138,7 @@ A pdf presented in portrait orientation, intended for problem sets or worksheets
 
 The .md file provides the card title + subtitle:
 
-#### TOC
+## TOC
 
 If the note content includes heading and subheading, then you can insert an automatic Table of Contents via this text:
 
@@ -148,7 +148,7 @@ If the note content includes heading and subheading, then you can insert an auto
 
 An example of this can be seen [in action here](https://tutors.dev/note/reference-course/topic-07-reference/note-2), this is [the source](https://github.com/tutors-sdk/tutors-reference-course/blob/main/topic-07-reference/note-2/my-note.md) of that example.  Usually you would place this at the top of the note.
 
-### BookLab
+## BookLab
 
 A series of steps/instructions, authored in Markdown
 
@@ -193,7 +193,7 @@ The linked images must be included in the img folder in the lab. Similairly, if 
 
 ![](img/zip-link.png)
 
-#### Links within Labs
+## Links within Labs
 
 Links to external resources can be included with conventional web links.
 
@@ -213,7 +213,7 @@ You can then formulate a link using the conventional markdown link syntax:
 
 ![](img/lab-step-link.png)
 
-#### Auto Numbering
+## Auto Numbering
 
 You may prefer all steps in all your labs to be autonumbered. This will prepend a number, starting at 01, to all steps
 
@@ -223,7 +223,7 @@ labStepsAutoNumber: true
 
 This is independent of the 'sort-key' segment in the lab step name.
 
-### PDFLab
+## PDFLab
 
 Problem or exercises sheet, authored as a PDF. This resources Will be presented and grouped with Books/Labs. They are structured identically to Talks, except the containing folder name starts with `book-*`.
 
@@ -231,7 +231,7 @@ Problem or exercises sheet, authored as a PDF. This resources Will be presented 
 | ---------------- | ------- | ----- |
 | [Problem or exercises sheet, authored as a PDF  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit/book-c) | [Problem Sheet 1](https://tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c) | [Labs](https://tutors.dev/wall/lab/reference-course) |
 
-### Web 
+## Web 
 
 A simple link to an external web resource.
 
@@ -247,7 +247,7 @@ Three files are required:
 | web-link.png | Image for card. File name must be same as .md file. File type can be .png, .jpg, or .jpeg |
 | weburl | the full url for the resource |
 
-### Podcast 
+## Podcast 
 
 A podcast player, currenty provided by Spotify
 
@@ -283,7 +283,7 @@ spotify=3cqFe6wRbaadmPosSwckXh
 
 
 
-### Archive  
+## Archive  
 
 A link to a downloadable archive (zip).
 
@@ -299,7 +299,7 @@ The archive is bundled with the course source and hosted with the course resourc
 | archive.png | Image for card. File name must be same as .md file. File type can be .png, .jpg, or .jpeg |
 | archive.zip | The archive that will be downloaded if the card selected |
 
-### Github 
+## Github 
 
 A link to an GitHub repository.
 
@@ -315,7 +315,7 @@ Three files are required:
 | github.png | Image for card. File name must be same as .md file. File type can be .png, .jpg, or .jpeg |
 | githubid   | Full url of the repo |
 
-## Panel Resources
+# Panel Resources
 
 Panels appear directly in a unit or topic, and are not represented by a separate card. Instead, their contents are rendered directly onto the parent topic/unit/side.
 
@@ -325,7 +325,7 @@ Panels appear directly in a unit or topic, and are not represented by a separate
 | [Full screen width  presentation in pdf format    ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-05-panel-talk/paneltalk)    | [Main Talk](https://tutors.dev/topic/reference-course/topic-05-panel-talk) | 
 | [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote)                               | [Main Note](https://tutors.dev/topic/reference-course/topic-04-panel-note) | 
 
-### Panelvideo 
+## Panelvideo 
 
 A video to be displayed directly on the topic or unit resource.
 
@@ -342,7 +342,7 @@ Two files are required:
 
 See video section below for format of this videoid file.
 
-### Paneltalk 
+## Paneltalk 
 
 A PDF document to be displayed directly on the parent resource.
 
@@ -358,7 +358,7 @@ Two files are required:
 | talk.pdf  | The .PDF to display. Its name must be the same as the .md file |
 
 
-### Panelnote 
+## Panelnote 
 
 A panel note is a full web page layed out directly on the parent resource.
 
@@ -389,7 +389,7 @@ The linked images must be included in the img folder in the note resource. Simil
 
 Links to external resources can be included with conventional web links.
 
-### Videos
+## Videos
 
 Panelvideos above are the primary mechanism for displaying videos prominently. The video is referenced in file always called:
 
@@ -411,7 +411,7 @@ Hfw1lbErjws
 
 However, this videoid file can be dropped into most learning resources. If a resource has this file, then a video play button will feature in the Card for the resource, which will trigger the video player. 
 
-#### Video Talks
+## Video Talks
 
 | Example Resource                                             | Display                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -419,7 +419,7 @@ However, this videoid file can be dropped into most learning resources. If a res
 
 For Talk resources only, it is possible to drop the PDF completely and just include the video only. The card will display as with a PDF 
 
-#### Video Chapters
+## Video Chapters
 
 Youtube supports start/end times when linking to a video. This is via appending a start/end in seconds to the videoid file
 
@@ -453,7 +453,7 @@ For the above, the associated videoid files for each chapter would look like thi
 9Srf_ydMdL0?start=2064&6348
 ~~~
 
-#### HEANet Hosted Videos
+## HEANet Hosted Videos
 
 If you require an alternative to Youtube, you can use the HEANet service.
 
@@ -473,7 +473,7 @@ heanet=7e4f1e9afedb40d5996d0703702eaaa4
 
 The id will be generated when you upload the video to the HEAnet media service.
 
-## Latex
+# Latex
 
 Notes and Books can have Latex content, implemented using the [Katex](https://katex.org/) component. 
 
@@ -505,7 +505,7 @@ This will render link this:
 
 This is an inline example: $c = \pm\sqrt{a^2 + b^2}$ with text before and after.
 
-## Ordering Learning Resources
+# Ordering Learning Resources
 
 For a topic, unit or side resources, the ordering of the cards is as follows:
 
@@ -532,7 +532,7 @@ order: 1
 
 If the resouce is a Lab, then the first step should include the FrontMatter/order paramater.
 
-## SVG Icons
+# SVG Icons
 
 If no image file is found in a resource, then Tutors will look to display an SVG Icon instead. This Icon is drawn from the Iconify collection:
 
@@ -566,7 +566,7 @@ icon:
 ~~~
 
 
-## Image resizing
+# Image resizing
 
 Some images you mau choose to use may be hi-resolution, appearing to be super sized on the canvas. This can be a particular issue with screen shots. This service here:
 
@@ -575,7 +575,7 @@ Some images you mau choose to use may be hi-resolution, appearing to be super si
 Allows you to resize the image to a suitable 'canvas' size.
 
 
-## Reference Course
+# Reference Course
 
 A reference course is located here:
 

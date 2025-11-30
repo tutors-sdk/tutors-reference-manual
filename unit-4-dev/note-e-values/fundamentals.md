@@ -18,7 +18,7 @@ A collection of open source components & services supporting the creation of tra
 
 - The ***Developer Experience*** prioritises the specification and implementation of **robust**, **well documented**, **loosely coupled components & services**, integrated into a **coherent toolkit** open to contributions from **diverse skill sets**.
 
-### Learner Experience
+# Learner Experience
 
 > The ***Learner Experience*** prioritises web interactions that are **engaging**, **contextual**, **linkable**, **searchable**, **accessible** and **responsive**. In addition the experience should foster a sense of **community** and **connection** among fellow learners.
 
@@ -38,7 +38,7 @@ A collection of open source components & services supporting the creation of tra
 
 **Connection**: A Learner should be able to reach out to fellow learners within the current context, initiating chat, content sharing or other meaningful exchange.
 
-### Educator Experience
+# Educator Experience
 
 > The ***Educator Experience*** prioritises the creation of a **guided paths** through a curriculum via the creation of learning materials that are **structurally aligned**, **composable**, **auditable**, **extensible**, **versioned**, **independent** & **autonomous**.
 
@@ -58,7 +58,7 @@ A collection of open source components & services supporting the creation of tra
 
 **Autonomous**: Learning resources should be capable of being self hosted, independent of any tutors cloud services.
 
-### Developer Experience
+# Developer Experience
 
 > The ***Developer Experience*** prioritises the specification and implementation of **robust**, **well documented**, **loosely coupled components & services**, integrated into a **coherent toolkit** open to contributions from **diverse skill sets**.
 

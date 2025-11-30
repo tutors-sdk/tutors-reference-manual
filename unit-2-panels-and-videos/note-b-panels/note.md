@@ -7,7 +7,10 @@ icon:
 
 *The Panel Learning Objects*
 
-## Panel Resources
+[[toc]]
+
+
+# Panel Resources
 
 Panels appear directly in a unit or topic, and are not represented by a separate card. Instead, their contents are rendered directly onto the parent topic/unit/side.
 
@@ -17,7 +20,7 @@ Panels appear directly in a unit or topic, and are not represented by a separate
 | [Full screen width  presentation in pdf format    ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-05-panel-talk/paneltalk)    | [Main Talk](https://tutors.dev/topic/reference-course/topic-05-panel-talk) | 
 | [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote)                               | [Main Note](https://tutors.dev/topic/reference-course/topic-04-panel-note) | 
 
-### Panelvideo 
+## Panelvideo 
 
 A video to be displayed directly on the topic or unit resource.
 
@@ -34,7 +37,7 @@ Two files are required:
 
 See video section below for format of this videoid file.
 
-### Paneltalk 
+## Paneltalk 
 
 A PDF document to be displayed directly on the parent resource.
 
@@ -50,7 +53,7 @@ Two files are required:
 | talk.pdf  | The .PDF to display. Its name must be the same as the .md file |
 
 
-### Panelnote 
+## Panelnote 
 
 A panel note is a full web page layed out directly on the parent resource.
 

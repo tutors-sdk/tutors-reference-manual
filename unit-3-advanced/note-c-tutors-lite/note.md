@@ -4,7 +4,7 @@
 
 [[toc]]
 
-## 1. What is Tutors Lite?
+# 1. What is Tutors Lite?
 
 As well as rendering core Tutors course content, the default tutors experience encompasses:
 
@@ -20,7 +20,7 @@ All of the above are delivered via the Tutors Reader application. This is a full
 
 Tutors Lite is a lightweight alternative which does not require Tutors Reader. This means a course can be loaded locally (before publication) and can be deployed on any web server. The format of the course 'source' is identical, although some aspects will be ignored (auth, calendar). The generated course web will not have any of the features listed above - but it will match the overall learning experience for the core course content.
 
-## 2. Why would I use TutorsLite?
+# 2. Why would I use TutorsLite?
 
 - To have a local browsable version of a course before running a full publication cycle. The format will more or less match the full Tutors UX.
 
@@ -34,7 +34,7 @@ Tutors Lite is a lightweight alternative which does not require Tutors Reader. T
 
 - A backup - if there is some issue with Tutors Reader, or if the Tutors Reader application is blocked for some reason.
 
-## 3. How do I use Tutors Lite:
+# 3. How do I use Tutors Lite:
 
 This is the command to build a TutorsLite version:
 
@@ -44,7 +44,7 @@ deno run -A jsr:@tutors/tutors-lite
 
 This will also generate a folder of content in the course folder - this time in a **html** subfolder. You can open this folder and load the **index.html** therein in a browser (generally just double click).  
 
-## 4. Any examples I can look at?
+# 4. Any examples I can look at?
 
 Here is a the Lite version of a course:
 
@@ -55,7 +55,7 @@ This is the full Tutors experience for the same course:
 - <https://tutors.dev/course/wit-hdip-comp-sci-2024-full-stack-1>
 
 
-## 5. How would I publish a TutorsLite version on Netlify?
+# 5. How would I publish a TutorsLite version on Netlify?
 
 Any hosing provider for simple web sites should do. If you want to try on Netlify, then these are the key settings:
 
@@ -64,7 +64,7 @@ Build command     : deno run -A jsr:@tutors/tutors-lite
 Publish directory : html
 ~~~
 
-## 6. How would I publish a TutorsLite version on Github Pages?
+# 6. How would I publish a TutorsLite version on Github Pages?
 
 If you have your course on GitHub - and the course repo is public - you can set up the repo such that any git push will also publish the TutorsLite version as a web site hosted on the [Github Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) facility on your repo. Here is how to do this.
 
