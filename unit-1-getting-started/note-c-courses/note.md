@@ -2,11 +2,11 @@
 icon:
   type: flat-color-icons:genealogy
 ---
-
 # Course Structure
 
 *The structure of a tutors course*
 
+[[toc]]
 
 ## Course Structure
 

@@ -72,7 +72,7 @@ This is how it will look:
 ::video[src="O6Jh_1bxDs4"]::
 
 
-## Video Chapters on Youtube
+### Video Chapters on Youtube
 
 Youtube supports start/end times when linking to a video. This is via appending a start/end in seconds to the videoid file
 
@@ -106,7 +106,7 @@ For the above, the associated videoid files for each chapter would look like thi
 9Srf_ydMdL0?start=2064&6348
 ~~~
 
-## HEANet Hosted Videos
+### HEANet Hosted Videos
 
 If you require an alternative to Youtube, you can use the HEANet service.
 
