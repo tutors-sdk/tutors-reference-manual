@@ -16,7 +16,7 @@ This is a [YAML formatted](https://circleci.com/blog/what-is-yaml-a-beginner-s-g
 
 allow additional aspects to be specified.
 
-## Course attribution/credit
+# Course attribution/credit
 
 The credits entry will be presented as a subtitle on the course home page:
 
@@ -26,7 +26,7 @@ credits: Tutors Team
 
 This can be any suitable string.
 
-## Course Image/Icon
+# Course Image/Icon
 
 A course image/ icon will be displayed in the title bar when on the course home page. The image/icon also appears occasionally on other areas on the course web. It can be specified as a single image file in the root folder:
 
@@ -49,7 +49,7 @@ This icon is drawn from this resource on Iconfy:
 - <https://icon-sets.iconify.design/fa-solid/code-branch/>
 
 
-## Course Parent
+# Course Parent
 
 Any course can also have (optionally) a single `parent` course
 
@@ -60,7 +60,7 @@ parent         : course/wit-hdip-comp-sci-2021.netlify.app
 This can be an absolute link, or a relative link to another tutors course (as shown above). The parent will appear in the breadcrumbs toolbar, represented as a `home` icon. Clicking this link will load that course into the current window (if a relative link as shown in the snippet above is used).
 
 
-## Course Companion Sites
+# Course Companion Sites
 
 The companions toolbar hosts a set of links to external services. These can include:
 
@@ -94,7 +94,7 @@ companions:
 
 The above defines a companion icon to a Piazza service.
 
-## Edit Course Button
+# Edit Course Button
 
 If your course in on GitHub, and you decide to make repo the course public, then you may like to have tutors include an "Edit this page" button on the main header. To enable this, include  a `github` property in properties.yaml. E.g:
 
@@ -114,7 +114,7 @@ It can be particularly useful for labs - with the edit button opening the markdo
 
 On GitHub, when an (non-owner) attempts to edit a page then GitHub will prompt the user to fork the repo, and edits will then be proposed as PRs, which the course author can choose to accept or reject.
 
-## Topic show/hide settings for instructors 
+# Topic show/hide settings for instructors 
 
 When publishing a course, you may wish hide some topics, but have access to them to check formatting or layout aspects. Also, you may have an entire course already laid out, and wish to just publish a subset of the topics.
 
@@ -134,7 +134,7 @@ If the above course had 5 topics, then topics 04 and 05 will be 'ignored', i.e. 
 
 The instructor however, who will make up the `ignorepin`, can see all topics by entering the PIN code anywhere on the course canvas. In this way the instuctor can publish a topic per week (by commenting out an entry), but will be able to inspect unpublished topics by entering the PIN code.
 
-## Global Video Hide
+# Global Video Hide
 
 Occasionally, you may like to remove all videos from your course. This might be as the academic year rolls over perhaps, and you wish to leave the course online, but remove all videos.
 
@@ -144,7 +144,7 @@ hideVideos     : true
 
 This does not delete the video, or remove the video ids, that may be threaded through the content. It merely hides the videos, leaving all the assets in place.
 
-## Authentication
+# Authentication
 
 By default, tutors courses are public. You can force users to authenticate before they have access to the course (apart from the landing page) via this setting:
 
@@ -160,7 +160,7 @@ With this enabled, then entering a topic will trigger an authentication event. U
 
 See [TutorsTime]() for a more detail on data gathering and usage.
 
-## Portfolio
+# Portfolio
 
 For some courses, you may not wish to have any topics at all, just units and links perhaps to other courses. For example [this course here](https://tutors.dev/course/wit-hdip-comp-sci-2023). Notice that this course does not have:
 
@@ -175,7 +175,7 @@ portfolio : true
 
 This is the [source for a course](https://github.com/wit-hdip-comp-sci-2023/programme-home-page) using this property.
 
-## Calendar
+# Calendar
 
 You may choose to prominently display an academic calendar - with the current week number highlighted. To set it up, include a file called `calendar.yaml` into your course folder. Here is an example:
 
@@ -213,7 +213,7 @@ in the format shown in the example above.
 Using a calendar in conjunction with authentication adds another dimension to TutorsTime, showng estimates of the time online across the semester specified in the calendar file. An instructor can use the PIN code they have set up (`ignorepin`) to reveal data for all students.
 
 
-## Enrollment
+# Enrollment
 
 If authentication is enabled, then any user with a GitHub account can sign in to a course. In some circumstances that can make interpreting the TutorsTime data difficult, as it may include data from users not strictly students on the course. To this issue you can (optionally) provide an enrolment file -  `enrollment.yaml`. If present, then the TutorsTime reports will be limited to the students listed.
 
@@ -225,7 +225,7 @@ students:
     github: github-id-2
 ~~~
 
-### Whitelisting
+## Whitelisting
 
 By default, the contents of the enrollment file is not a Whitelist as such - ie. non-students can still access the module. If you would like to only permit the students listed in the enrolment file to access the course, then include the following:
 
@@ -256,7 +256,7 @@ Remember, authentication must also be enabled for this to work:
 auth           : 1
 ~~~
 
-## Auto Numbering
+# Auto Numbering
 
 You may prefer all steps in all your labs to be autonumbered. This will preppend a number, starting at 01, to all steps
 
@@ -266,7 +266,7 @@ labStepsAutoNumber: true
 
 This is independent of the 'sort-key' segment in the lab step name.
 
-## Private
+# Private
 
 Tutors provides the following services:
 
@@ -283,7 +283,7 @@ private: 1
 
 In addition to withdrawing a private course from the above services, the course will also remove the Log in / Profile menus from the header, disabling the dashboard and any sign in capabilities.
 
-## Default PDF reader
+# Default PDF reader
 
 The tutors reader will render talks using the [Adobe PDF Embed API](https://developer.adobe.com/document-services/docs/overview/pdf-embed-api/). An alternative reader based on the [Mozilla pdf.js](https://mozilla.github.io/pdf.js/) project is also available. 
 
@@ -308,7 +308,7 @@ pdfOrientation : portrait
 ~~~
 
 
-## Large Language Model support
+# Large Language Model support
 
 Your course can be made available in a format suitable for processing by Large Language Models (LLMs). This takes the form of a dedicated page on your course. If this is your course url:
 
@@ -350,7 +350,7 @@ llm: 0
 
 llm: 0 is the default behaviour if no setting is found, i.e. no llm content is generated be default.
 
-## Image resizing
+# Image resizing
 
 Some images you mau choose to use may be hi-resolution, appearing to be super sized on the canvas. This can be a particular issue with screen shots. This service here:
 
@@ -359,7 +359,7 @@ Some images you mau choose to use may be hi-resolution, appearing to be super si
 Allows you to resize the image to a suitable 'canvas' size.
 
 
-## Reference Course
+# Reference Course
 
 A reference course is located here:
 

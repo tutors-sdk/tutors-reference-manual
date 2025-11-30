@@ -9,7 +9,7 @@ icon:
 [[toc]]
 
 
-## Cards
+# Cards
 
 The card metaphor is used throughout tutors as a simple visual feature to represent a variety of learning resources. In general the contents of a card are extracted from the following:
 
@@ -20,7 +20,7 @@ The title, image and summary will be presented on the card, along with a suitabl
 
 The Learning resources are typically named to match the context, and are contained in a folder whose name is structured to encode the type of learning resource.
 
-### Resource Names
+## Resource Names
 
 Folder names convey the type of learning resource contained in the folder, with the first letters determining its type. Folders starting with the following names have a significance in Tutors:
 
@@ -57,7 +57,7 @@ For all file & folder names, avoid spaces within a file name.
 | topic-01-introduction  | Topic 01 Introduction
 | topic-02-learning-html | Topic 02 Learning HTML
 
-### File Names
+## File Names
 
 Each resource will typically have the following files:
 
@@ -79,7 +79,7 @@ The following filenames are reserved:
 | videoid         | id of  external video         |
 | githubid        | link to github repo           |
 
-## Image resizing
+# Image resizing
 
 Some images you mau choose to use may be hi-resolution, appearing to be super sized on the canvas. This can be a particular issue with screen shots. This service here:
 

@@ -8,7 +8,7 @@ icon:
 
 [[toc]]
 
-## Course Structure
+# Course Structure
 
 A Tutors course is a folder of learning resources, named according to the conventions described in this manual.
 
@@ -24,7 +24,7 @@ The minimum requirements for a course are a folder containing these three files:
 | course.png     | Course image
 | properies.yaml | Course properties
 
-#### course.md
+## course.md
 
 A markdown file, structured as follows:
 
@@ -34,7 +34,7 @@ Course Title
 Course information - a course outline, description or any other information. 
 ~~~
 
-#### properties.yaml
+## properties.yaml
 
 Course metadata in yaml format. At a minimum, this must contain the following:
 
@@ -50,7 +50,7 @@ A course folder will typically contain topics (see below). Occasionally  you may
 
 Courses typically contain topics, represented as folders with *topic* as the first 5 letters in the folder name. These topics can units (described below) 
 
-### Topic
+## Topic
 
 Top level learning resource for a course. Typically encapsulating a session or week of learning material.
 
@@ -65,7 +65,7 @@ Two files are required:
 | topic.md  | Topic title + summary. Any file name, file type must be .md file type |
 | topic.png | Image for topic. File name must be same as .md file. File type can be .png, .jpg, or .jpeg|
 
-#### topic.md
+## topic.md
 
 The title and subtitle are extracted from the .md file, for example:
 
@@ -77,7 +77,7 @@ Units with presentations, labs + resources
 
 In addition to the title, subtitle + image files specified above, the topic can contain any number of units (see below) or other learning resources.
 
-### Unit
+## Unit
 
 A unit will encapsulate learning resources, framed by a title. Units can be within topics, or can appear directly in a course folder.
 
@@ -94,7 +94,7 @@ One .md file is required:
 
 The title is specified in a single markdown file:
 
-#### unit.md
+## unit.md
 
 ~~~markdown
 Main Lesson
@@ -102,7 +102,7 @@ Main Lesson
 
 Units contain any number of learning resources.
 
-### Side
+## Side
 
 A side will encapsulate learning resources, framed by a title. It is equivalent to a Unit (see above), but framed within a side bar.
 
@@ -118,7 +118,7 @@ On .md file is required:
 
 The title is specified in in this file:
 
-#### side.md
+## side.md
 
 ~~~markdown
 Labs for this Topic
@@ -126,7 +126,7 @@ Labs for this Topic
 
 Side bar can contain any number of learning resources.
 
-## Learning Resources
+# Learning Resources
 
 There are 2 broad types of learning resources
 
