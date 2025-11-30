@@ -16,7 +16,7 @@ Tutors is a collection of open source components and services supporting the cre
 
 These components are [developed in the open](https://github.com/tutors-sdk/tutors) by an active and friendly community, based on a clear [set of values](https://tutors.dev/note/tutors-reference-manual/unit-0/note-12).
 
-### First Course
+## First Course
 
 Visit [this course](https://tutors.dev/course/tutors-starter-course) to become familiar with the general structure of the learning experience. [Download the source](https://github.com/tutors-sdk/tutors-starter/archive/refs/heads/master.zip) for the course and unzip to a local folder. Spend a few minutes exploring the content of the folder using a good editor, for example [Sublime Text](https://www.sublimetext.com/).
 
@@ -34,7 +34,7 @@ curl -fsSL https://deno.land/install.sh | sh
 
 You can also create a free account on the [Netlify](https://www.netlify.com/) service.
 
-### Publish to Netlify
+## Publish to Netlify
 
 Open a [command prompt/terminal at the course folder](https://www.groovypost.com/howto/open-command-window-terminal-window-specific-folder-windows-mac-linux/) you created above and enter the following command:
 
@@ -90,11 +90,11 @@ json
 Any push to the repo will trigger a rebuild of the site.
 
 
-### Publish to Vercel
+## Publish to Vercel
 
 Create an account on [Vercel](https://vercel.com). Once logged in, create a new project. You will need to link the project to a github repo containing the tutors course. Include the following file in your courese:
 
-#### vercel.json
+### vercel.json
 
 ~~~json
 {
@@ -109,7 +109,7 @@ Whenever you push an update to the repo, it will build and deploy on Vercel.
 
 For the hobby (free) account, your course repo must be public.
 
-### Alternative Static Site Publish
+## Alternative Static Site Publish
 
 There is secondary publication mechanism, which is invoked as above, but with a different command:
 
@@ -123,7 +123,7 @@ This will also generate a folder of content in the course folder - this time in 
 
 This does not provide the complete Tutors user experience, but can be a useful as a backup, an alternative UX and also perhaps as the basis for an archive of the course that can be distributed as a zip file (compress and distribute the html folder only) when a course concludes. The archive can be opened by the students independently, with all course assets held locally, except for videos. The **html** folder can also be published to any web server, including Netlify using the same process as outlined above.
 
-### More Course Examples
+## More Course Examples
 
 The first course example above is a typicaly tutors course, with a basic structure. This example:
 
