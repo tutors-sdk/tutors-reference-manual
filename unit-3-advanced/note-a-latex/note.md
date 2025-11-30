@@ -11,7 +11,7 @@ Notes and Books can have Latex content, implemented using the [Katex](https://ka
 
 | Example Resource                                             | Display                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Latex](https://github.com/tutors-sdk/tutors-reference-course/blob/main/topic-01-typical/unit-1/book-a/05.05.md) | [Latex Example](https://tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a/05) |
+| [Latex](https://github.com/tutors-sdk/tutors-reference-course/blob/main/topic-01-typical/unit-1/book-a/06.06.md) | [Latex Example](https://tutors.dev/lab/reference-course/topic-01-typical/unit-1/book-a/06) |
 
 You can express Latex content between "$" symbols. For example:
 
