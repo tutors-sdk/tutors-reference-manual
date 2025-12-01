@@ -6,15 +6,11 @@ icon:
 
 *The properties.yaml file*
 
+---
 [[toc]]
 
-
 This is a [YAML formatted](https://circleci.com/blog/what-is-yaml-a-beginner-s-guide/) file containing course-wide parameters. In addition, two (optional) supporting files :
-
-- calendar.yaml
-- enrolment.yaml
-
-allow additional aspects to be specified.
+---
 
 # Course attribution/credit
 
@@ -349,27 +345,4 @@ llm: 0
 ~~~
 
 llm: 0 is the default behaviour if no setting is found, i.e. no llm content is generated be default.
-
-# Image resizing
-
-Some images you mau choose to use may be hi-resolution, appearing to be super sized on the canvas. This can be a particular issue with screen shots. This service here:
-
-- <https://nodeca.github.io/pica/demo>
-
-Allows you to resize the image to a suitable 'canvas' size.
-
-
-# Reference Course
-
-A reference course is located here:
-
-- <https://github.com/tutors-sdk/tutors-reference-course>
-
-and is published here:
-
-- <https://tutors.dev/course/reference-course>
-
-This course illustrates all Tutors featues. It can be downloaded here:
-
-- <https://github.com/tutors-sdk/tutors-reference-course/archive/refs/heads/main.zip>
 
