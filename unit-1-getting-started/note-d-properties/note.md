@@ -10,6 +10,7 @@ icon:
 [[toc]]
 
 This is a [YAML formatted](https://circleci.com/blog/what-is-yaml-a-beginner-s-guide/) file containing course-wide parameters. In addition, two (optional) supporting files :
+
 ---
 
 # Course attribution/credit
