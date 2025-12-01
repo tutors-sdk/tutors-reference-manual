@@ -7,6 +7,7 @@ icon:
 
 *How to specify the order in which cards appear*
 
+---
 
 ## Ordering Learning Resources
 

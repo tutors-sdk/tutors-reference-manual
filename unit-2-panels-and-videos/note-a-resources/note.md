@@ -7,9 +7,11 @@ icon:
 
 *Enumerating the Tutors Learning Objects*
 
+---
 
 [[toc]]
 
+---
 
 # Learning Resources
 

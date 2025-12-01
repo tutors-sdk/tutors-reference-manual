@@ -8,6 +8,8 @@ order: 6
 
 *The values of the Tutors Open Source Project*
 
+---
+
 *Tutors: An Open Learning Web Toolkit*
 
 A collection of open source components & services supporting the creation of transformative learning experiences using open web standards. Tutors supports three complimentary perspectives:

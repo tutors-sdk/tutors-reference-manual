@@ -7,8 +7,11 @@ icon:
 
 *The Panel Learning Objects*
 
+---
+
 [[toc]]
 
+---
 
 # Panel Resources
 

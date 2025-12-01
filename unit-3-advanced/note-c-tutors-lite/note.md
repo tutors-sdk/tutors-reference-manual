@@ -2,7 +2,11 @@
 
 *The TutorsLite alternative*
 
+---
+
 [[toc]]
+
+---
 
 # 1. What is Tutors Lite?
 

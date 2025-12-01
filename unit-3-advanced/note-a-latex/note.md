@@ -7,6 +7,8 @@ icon:
 
 *How to include Latex notation in labs and notes*
 
+---
+
 Notes and Books can have Latex content, implemented using the [Katex](https://katex.org/) component. 
 
 | Example Resource                                             | Display                                                      |

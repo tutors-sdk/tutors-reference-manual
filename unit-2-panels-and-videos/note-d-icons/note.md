@@ -7,6 +7,7 @@ icon:
 
 *How to include Icons as card images*
 
+---
 
 If no image file is found in a resource, then Tutors will look to display an SVG Icon instead. This Icon is drawn from the Iconify collection:
 

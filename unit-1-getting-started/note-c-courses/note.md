@@ -6,7 +6,11 @@ icon:
 
 *The structure of a tutors course*
 
+---
+
 [[toc]]
+
+---
 
 # Course Structure
 

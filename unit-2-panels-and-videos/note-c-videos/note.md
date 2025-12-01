@@ -5,9 +5,13 @@ icon:
 
 # Videos & Podcasts
 
+*How to include and configure videos*
+
+---
+
 [[toc]]
 
-*How to include and configure videos*
+---
 
 # Panelvideos
 
