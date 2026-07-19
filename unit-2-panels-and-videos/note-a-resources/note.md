@@ -59,6 +59,46 @@ Lecture 1
 A short summary of the talk, no more than two sentences.
 ~~~
 
+## Marp Talk
+
+As an alternative to PDF, you can author talks using [Marp](https://marp.app/) - a markdown-based presentation framework. Instead of providing a `.pdf` file, you include a `.marp` file containing your slides authored directly in markdown.
+
+| Example Resource | Display | Cards |
+| ---------------- | ------- | ----- |
+| [Marp-powered slides](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/talk-marp) | [Marp Slides](https://tutors.dev/talk/reference-course/topic-01-typical/unit-2/talk-marp) | [Talks](https://tutors.dev/wall/talk/reference-course) |
+
+The folder starts with `talk-` just like a standard PDF talk. Instead of a `.pdf` file, include a `.marp` file:
+
+| File name        | Purpose                                                      |
+| ---------------- | ------------------------------------------------------------ |
+| talk-marp.md     | Title + short summary for the talk. Any suitable name, must be .md file type |
+| talk-marp.marp   | The Marp slide deck. Name must match the .md file            |
+
+The `.marp` file is a markdown file with Marp frontmatter and `---` slide separators:
+
+~~~markdown
+---
+marp: true
+theme: default
+paginate: true
+---
+
+# Slide One Title
+
+- First point
+- Second point
+
+---
+
+# Slide Two Title
+
+Content for slide two
+~~~
+
+The `marp: true` frontmatter property is required. You can also specify `theme` and `paginate` options. Marp supports tables, code blocks, images and LaTeX within slides. See the full Marp documentation here:
+
+- <https://marpit.marp.app/markdown>
+
 ## Note 
 
 A note is a full web page, authored in markdown.
