@@ -65,7 +65,7 @@ As an alternative to PDF, you can author talks using [Marp](https://marp.app/) -
 
 | Example Resource | Display | Cards |
 | ---------------- | ------- | ----- |
-| [Marp-powered slides](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/talk-marp) | [Marp Slides](https://tutors.dev/talk/reference-course/topic-01-typical/unit-2/talk-marp) | [Talks](https://tutors.dev/wall/talk/reference-course) |
+| [Marp-powered slides](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-2-explore) | [Lecture 2 (Marp)](https://tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-2-explore) | [Talks](https://tutors.dev/wall/talk/reference-course) |
 
 The folder starts with `talk-` just like a standard PDF talk. Instead of a `.pdf` file, include a `.marp` file:
 
