@@ -43,7 +43,9 @@ Folder names convey the type of learning resource contained in the folder, with 
 | [paneltalk](https://tutors.dev/topic/reference-course/topic-05-panel-talk)                   | [Full screen width  presentation in pdf format    ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-05-panel-talk/paneltalk)|
 | [panelnote](https://tutors.dev/topic/reference-course/topic-04-panel-note)                   | [Full screen width note](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-04-panel-note/panelnote) |
 | [talk](https://tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-1-intro)        | [Standard presentation in pdf format  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-1-intro)|
+| [talk (marp)](https://tutors.dev/talk/reference-course/topic-01-typical/unit-1/talk-2-explore) | [Marp-powered slides as a talk alternative](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/talk-2-explore)|
 | [web](https://tutors.dev/wall/web/reference-course.netlify.app)                              | [Link to an external web site  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/web-1) |
+| [notebook](https://tutors.dev/notebook/reference-course/topic-01-typical/unit-1/notebook-a)  | [Interactive Jupyter Notebook](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/notebook-a) |
 | [podcast](https://tutors.dev/topic/reference-course/topic-09-podcasts)                       | [Podcast episode](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-podcasts/side-unit/podcast) |
 
  To sort the name alphabetically you may append numerals. To enhance meaning, append contextual keywords. For example:
