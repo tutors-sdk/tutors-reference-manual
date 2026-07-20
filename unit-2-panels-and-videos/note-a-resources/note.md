@@ -273,6 +273,35 @@ Problem or exercises sheet, authored as a PDF. This resources Will be presented 
 | ---------------- | ------- | ----- |
 | [Problem or exercises sheet, authored as a PDF  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-02-side/side-unit/book-c) | [Problem Sheet 1](https://tutors.dev/lab/reference-course/topic-02-side/side-unit/book-c) | [Labs](https://tutors.dev/wall/lab/reference-course) |
 
+## Notebook (Jupyter)
+
+An interactive [Jupyter Notebook](https://jupyter.org/), rendered directly in the browser. Notebooks allow you to include executable code alongside explanatory text, making them ideal for programming exercises, data analysis walkthroughs, and interactive tutorials.
+
+| Example Resource | Display | Cards |
+| ---------------- | ------- | ----- |
+| [Interactive Jupyter Notebook](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/notebook-a) | [Lab-02 (jupyter)](https://tutors.dev/notebook/reference-course/topic-01-typical/unit-1/notebook-a) | [Notebooks](https://tutors.dev/wall/notebook/reference-course) |
+
+A notebook folder name starts with `notebook-`. Two files are required:
+
+| Resource                   | Purpose                                                                     |
+| -------------------------- | --------------------------------------------------------------------------- |
+| notebook-a.md              | Title + short summary for the notebook. Any suitable name, must be .md type |
+| python-basics.ipynb        | The Jupyter Notebook file                                                   |
+
+The `.md` file provides the card title + subtitle:
+
+~~~markdown
+Lab-02 (jupyter)
+
+An interactive Jupyter Notebook demonstrating Python fundamentals.
+~~~
+
+Tutors renders the notebook content directly, displaying both markdown and code cells. Code cell outputs are presented with a click-to-reveal pattern. Notebooks support Python, R, Julia and other Jupyter kernels. LaTeX notation within notebook markdown cells is also rendered.
+
+See the full Jupyter documentation here:
+
+- <https://docs.jupyter.org/en/latest/>
+
 ## Web 
 
 A simple link to an external web resource.
