@@ -43,6 +43,40 @@ This monorepo contains **4 distinct subsystems**:
 3. **Applications** - End-user facing applications (reader, catalogue, live)
 4. **Services** - Backend infrastructure (PartyKit for real-time features)
 
+### Repository Structure
+
+```mermaid
+graph LR
+  root["tutors-mono-repo"]
+
+  root --> apps
+  root --> packages
+  root --> services
+
+  apps --> reader["Reader"]
+  apps --> catalogue["Catalogue"]
+  apps --> live["Live"]
+
+  packages --> jsr["JSR"]
+  packages --> svelte["Svelte"]
+
+  jsr --> model["Model"]
+  jsr --> gen["Gen"]
+  jsr --> time["Time"]
+  jsr --> tutors_cli["Tutors"]
+
+  svelte --> runes["Runes"]
+  svelte --> connect["Connect"]
+  svelte --> community["Community"]
+  svelte --> course["Course"]
+  svelte --> themes["Themes"]
+  svelte --> ui_prim["UI-Primitives"]
+  svelte --> ui_comp["UI-Components"]
+  svelte --> utils["Utils"]
+
+  services --> partykit["PartyKit"]
+```
+
 ---
 
 ## Monorepo Architecture
