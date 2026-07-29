@@ -46,7 +46,7 @@ This monorepo contains **4 distinct subsystems**:
 ### Repository Structure
 
 ```mermaid
-graph LR
+graph TD
   root["tutors-mono-repo"]
 
   root --> apps
