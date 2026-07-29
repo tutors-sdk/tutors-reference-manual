@@ -6,7 +6,7 @@ order: 3
 
 Tutors Mono Repo Architecture
 
-Comprehensive architectural overview, onboarding guide, and reference for the Tutors monorepo ecosystem.
+Architectural overview and reference
 
 [[toc]]
 
