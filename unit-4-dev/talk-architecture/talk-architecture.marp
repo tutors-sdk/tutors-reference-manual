@@ -137,9 +137,15 @@ Lazy initialization avoids SSR issues.
 
 ---
 
-## UI Components
+## UI Package Trio
 
-![w:1000](img/07-ui-components.png)
+**`@tutors/ui-primitives`** — Icon, Image, Menu, Sidebar, LoContextTree, StudentCard
+
+**`@tutors/ui-navigators`** — TutorsShell, MainNavigator, SecondaryNavigator, Footer
+
+**`@tutors/ui-components`** — Learning objects, time views + pre-compiled CSS
+
+![w:900](img/07-ui-components.png)
 
 ---
 
@@ -209,7 +215,9 @@ cd apps/reader && pnpm dev    # http://localhost:5173
 # Anonymous mode (no backend)
 echo "PUBLIC_ANON_MODE=TRUE" > apps/reader/.env
 
-# Build
+# Build UI packages (required before app build)
+pnpm --filter @tutors/ui-primitives build
+pnpm --filter @tutors/ui-navigators build
 pnpm --filter @tutors/ui-components build
 pnpm --filter tutors-reader build
 ```
