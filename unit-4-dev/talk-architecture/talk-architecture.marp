@@ -1,0 +1,235 @@
+---
+marp: true
+theme: default
+paginate: true
+---
+
+# Tutors Monorepo Architecture
+
+### Comprehensive Architectural Overview
+
+---
+
+## Overview
+
+The **Tutors Monorepo** unifies the complete Tutors educational platform:
+
+- **Course Generation** — Markdown to structured course data
+- **Course Reading** — Interactive web-based viewer
+- **Platform Features** — i18n, accessibility, OAuth, live collaboration
+
+**4 Subsystems**: JSR Packages, Svelte Packages, Applications, Services
+
+---
+
+## Repository Structure
+
+![w:900](img/01-repo-structure.png)
+
+---
+
+## Architectural Layers
+
+Three layers with strict bottom-up dependencies:
+
+![w:1000](img/02-architectural-layers.png)
+
+---
+
+## Key Principles
+
+1. **Bottom-Up Dependencies** — Lower layers never depend on higher layers
+2. **Package Isolation** — Clear boundaries and responsibilities
+3. **Shared Types** — JSR packages provide TypeScript types across the ecosystem
+4. **Runtime Compatibility** — JSR packages work in both Deno and Node.js
+5. **Svelte-Specific** — Svelte packages leverage Svelte 5 reactivity
+
+---
+
+## Technology Stack
+
+![w:1000](img/03-tech-stack.png)
+
+---
+
+## Package Structure — Directory Layout
+
+![w:900](img/04-directory-layout.png)
+
+---
+
+## JSR Subsystem
+
+Foundation layer — core data models, course generation, CLI utilities.
+
+Deno-first, Node.js compatible. Published to `jsr.io/@tutors/*`.
+
+![w:900](img/05-jsr-subsystem.png)
+
+---
+
+## JSR — Model Package
+
+**`@tutors/tutors-model-lib`** — Core data structures & types
+
+```typescript
+interface Lo {
+  type: LoType;     // "course" | "topic" | "lab" | "talk" | etc.
+  title: string;
+  route: string;
+  los?: Lo[];       // Child learning objects
+}
+
+interface Course extends Lo {
+  type: "course";
+  url: string;
+  topicIndex: Map<string, Lo>;
+}
+```
+
+---
+
+## JSR — Gen Package
+
+**`@tutors/tutors-gen-lib`** — Course content generation
+
+- **CourseBuilder** — Scan folders, identify Lo types, build course tree
+- **ResourceBuilder** — Parse markdown frontmatter & content
+- **TemplateEngine** — Vento-based HTML rendering
+- **CourseEmitter** — Write `tutors.json` or static HTML
+
+---
+
+## Svelte Package Ecosystem
+
+Six layers from foundation to UI — each building on the layer below.
+
+![h:450](img/06-svelte-ecosystem.png)
+
+---
+
+## Runes Package
+
+**`@tutors/runes`** — Global reactive state using Svelte 5 runes
+
+```typescript
+export const currentCourse = {
+  get value() {
+    return (_currentCourse ??= rune(null)).value;
+  },
+  set value(v) {
+    (_currentCourse ??= rune(null)).value = v;
+  }
+};
+```
+
+Lazy initialization avoids SSR issues.
+
+---
+
+## Course Package
+
+**`@tutors/course`** — Course loading, processing, markdown rendering
+
+- **courseService** — Fetch JSON, cache, decorate tree
+- **LiveLab** — Lab step navigation & markdown fetching
+- **markdownService** — Shiki highlighting, Mermaid diagrams, Marp rendering
+
+---
+
+## UI Components
+
+![w:1000](img/07-ui-components.png)
+
+---
+
+## Applications — SvelteKit Architecture
+
+All apps follow the same structure:
+
+- **Reader** — Main course viewer (`/course`, `/lab`, `/talk`, `/video`, `/note`)
+- **Catalogue** — Course discovery & statistics
+- **Live** — Real-time student presence tracking
+
+Route groups: `(auth)/`, `(course-reader)/`, `(home)/`
+
+---
+
+## PartyKit Real-Time Service
+
+Room-based WebSocket broadcasting — one room per course.
+
+![w:900](img/08-partykit.png)
+
+---
+
+## Content Generation Pipeline
+
+![w:1000](img/09-generation-pipeline.png)
+
+---
+
+## Reader — Course Loading Sequence
+
+![w:1000](img/10-course-loading.png)
+
+---
+
+## Reader — Lab Viewing Sequence
+
+![w:1000](img/11-lab-viewing.png)
+
+---
+
+## Analytics & Presence Flow
+
+![w:900](img/12-analytics-presence.png)
+
+---
+
+## Dependency Graph
+
+![h:500](img/13-dependency-graph.png)
+
+---
+
+## Data Flow & State Management
+
+![w:1000](img/14-data-flow.png)
+
+---
+
+## Development Workflow
+
+```bash
+# Install & run
+pnpm install
+cd apps/reader && pnpm dev    # http://localhost:5173
+
+# Anonymous mode (no backend)
+echo "PUBLIC_ANON_MODE=TRUE" > apps/reader/.env
+
+# Build
+pnpm --filter @tutors/ui-components build
+pnpm --filter tutors-reader build
+```
+
+---
+
+## Deployment
+
+- **JSR Packages** → `deno publish` to jsr.io
+- **Reader App** → `pnpm build` → Netlify / Vercel (auto-detected adapter)
+- **PartyKit** → `npx partykit deploy`
+- **Courses** → `deno run -A jsr:@tutors/reader` → deploy `json/` to any static host
+
+---
+
+## Contributing
+
+1. Fork → Clone → Branch from `development`
+2. Follow commit convention: `Add:`, `Update:`, `Fix:`, `Refactor:`
+3. Run `pnpm -r check` for type safety
+4. Submit PR to `development`
+
+**Branch Strategy**: `main` (production) ← `development` ← `feature/*` / `fix/*`
