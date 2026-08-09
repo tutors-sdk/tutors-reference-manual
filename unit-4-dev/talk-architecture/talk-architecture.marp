@@ -14,9 +14,10 @@ paginate: true
 
 The **Tutors Monorepo** unifies the complete Tutors educational platform:
 
-- **Course Generation** — Markdown to structured course data
+- **Course Generation** — Markdown to structured course data (JSON or static HTML)
 - **Course Reading** — Interactive web-based viewer
 - **Platform Features** — i18n, accessibility, OAuth, live collaboration
+- **Time Analytics** — Student engagement tracking and visualisation
 
 **4 Subsystems**: JSR Packages, Svelte Packages, Applications, Services
 
@@ -100,6 +101,23 @@ interface Course extends Lo {
 
 ---
 
+## JSR — Tutors Lite Package
+
+**`@tutors/tutors-lite`** — Static HTML course generation
+
+| Aspect | Tutors | Tutors Lite |
+|--------|--------|-------------|
+| **Output** | `json/tutors.json` | `html/` static site |
+| **Gen function** | `generateDynamicCourse()` | `generateStaticCourse()` |
+| **Templates** | None (JSON only) | Vento (`.vto`) |
+| **Viewer** | Reader web app | Self-contained, open in browser |
+
+```bash
+deno run -A jsr:@tutors/tutors-lite
+```
+
+---
+
 ## Svelte Package Ecosystem
 
 Six layers from foundation to UI — each building on the layer below.
@@ -156,6 +174,7 @@ All apps follow the same structure:
 - **Reader** — Main course viewer (`/course`, `/lab`, `/talk`, `/video`, `/note`)
 - **Catalogue** — Course discovery & statistics
 - **Live** — Real-time student presence tracking
+- **Time** — Student engagement analytics (AG Grid, calendar heatmaps, Supabase)
 
 Route groups: `(auth)/`, `(course-reader)/`, `(home)/`
 
@@ -229,7 +248,8 @@ pnpm --filter tutors-reader build
 - **JSR Packages** → `deno publish` to jsr.io
 - **Reader App** → `pnpm build` → Netlify / Vercel (auto-detected adapter)
 - **PartyKit** → `npx partykit deploy`
-- **Courses** → `deno run -A jsr:@tutors/reader` → deploy `json/` to any static host
+- **Courses (JSON)** → `deno run -A jsr:@tutors/reader` → deploy `json/` to any static host
+- **Courses (HTML)** → `deno run -A jsr:@tutors/tutors-lite` → deploy `html/` to any static host
 
 ---
 

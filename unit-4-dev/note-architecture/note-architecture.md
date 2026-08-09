@@ -40,7 +40,7 @@ This monorepo contains **4 distinct subsystems**:
 
 1. **JSR Packages** - Deno-compatible libraries for course generation and data models
 2. **Svelte Packages** - UI components and services for web applications
-3. **Applications** - End-user facing applications (reader, catalogue, live)
+3. **Applications** - End-user facing applications (reader, catalogue, live, time)
 4. **Services** - Backend infrastructure (PartyKit for real-time features)
 
 ### Repository Structure
@@ -56,6 +56,7 @@ graph TD
   apps --> reader["Reader"]
   apps --> catalogue["Catalogue"]
   apps --> live["Live"]
+  apps --> time_app["Time"]
 
   packages --> jsr["JSR"]
   packages --> svelte["Svelte"]
@@ -64,6 +65,7 @@ graph TD
   jsr --> gen["Gen"]
   jsr --> time["Time"]
   jsr --> tutors_cli["Tutors"]
+  jsr --> tutors_lite["Tutors Lite"]
 
   svelte --> runes["Runes"]
   svelte --> connect["Connect"]
@@ -108,10 +110,11 @@ The monorepo follows a **layered architecture** with clear dependency boundaries
 ```mermaid
 block-beta
   columns 1
-  block:apps["Applications Layer — reader, catalogue, live"]
+  block:apps["Applications Layer — reader, catalogue, live, time"]
     reader["Reader"]
     catalogue["Catalogue"]
     live["Live"]
+    time_app["Time"]
   end
   block:svelte["Svelte Packages Layer — UI Components, Themes, Services, State Management"]
     ui_prim["UI Primitives"]
@@ -128,6 +131,7 @@ block-beta
     time["Time"]
     gen["Gen"]
     tutors["Tutors CLI"]
+    tutors_lite["Tutors Lite CLI"]
   end
 
   apps --> svelte
@@ -234,6 +238,7 @@ graph TD
   jsr --> time["time<br/><i>@tutors/tutors-time-lib</i>"]
   jsr --> gen["gen<br/><i>@tutors/tutors-gen-lib</i>"]
   jsr --> tutors_cli["tutors<br/><i>@tutors/reader CLI</i>"]
+  jsr --> tutors_lite["tutors-lite<br/><i>@tutors/tutors-lite CLI</i>"]
 
   svelte_pkg --> runes["runes<br/><i>@tutors/runes</i>"]
   svelte_pkg --> course["course<br/><i>@tutors/course</i>"]
@@ -251,6 +256,7 @@ graph TD
   apps --> reader_app["reader"]
   apps --> catalogue_app["catalogue"]
   apps --> live_app["live"]
+  apps --> time_app["time"]
 
   services --> party["party<br/><i>PartyKit</i>"]
 ```
@@ -279,10 +285,12 @@ graph LR
     model["Model<br/>Core types & data structures"]
     time["Time<br/>Analytics & tracking"]
     gen["Gen<br/>Course generation"]
-    tutors["Tutors CLI<br/>Entry point"]
+    tutors["Tutors CLI<br/>JSON output"]
+    tutors_lite["Tutors Lite CLI<br/>Static HTML output"]
   end
 
   tutors --> gen
+  tutors_lite --> gen
   gen --> model
   time --> model
 
@@ -291,6 +299,7 @@ graph LR
   time -.-> jsr_registry
   gen -.-> jsr_registry
   tutors -.-> jsr_registry
+  tutors_lite -.-> jsr_registry
 ```
 
 ### 1. Model Package (`packages/jsr/model`)
@@ -587,6 +596,61 @@ await emitter.emit(course);
 console.log(`Course generated: ${args.output}`);
 ```
 
+### 5. Tutors Lite Package (`packages/jsr/tutors-lite`)
+
+**Package Name**: `@tutors/tutors-lite`
+**Purpose**: CLI entry point for static HTML course generation
+
+#### Key Responsibilities
+
+- **Static HTML Generation**: Produces self-contained HTML sites from course source folders
+- **Vento Templating**: Uses the Vento template engine to render course content into HTML pages
+- **Offline-Ready Output**: Generated sites work without a backend server or API
+
+#### Tutors vs Tutors Lite
+
+| Aspect | Tutors (`@tutors/reader`) | Tutors Lite (`@tutors/tutors-lite`) |
+|--------|--------------------------|-------------------------------------|
+| **Output** | `json/tutors.json` | `html/` folder with static site |
+| **Gen function** | `generateDynamicCourse()` | `generateStaticCourse()` |
+| **Templates** | None (JSON only) | Vento (`.vto`) templates |
+| **Viewer** | Reader web app fetches JSON | Self-contained, open in browser |
+| **Use case** | Full platform deployment | Lightweight / offline sharing |
+
+#### Usage
+
+```bash
+# Generate static HTML course
+deno run -A jsr:@tutors/tutors-lite
+
+# Or locally
+deno run -A packages/jsr/tutors-lite/main.ts
+```
+
+#### File Structure
+
+```
+packages/jsr/tutors-lite/
+├── deno.json              # JSR package configuration
+├── main.ts                # CLI entry point
+└── readme.md              # Usage documentation
+```
+
+#### main.ts Structure
+
+```typescript
+import { parseCourse, generateStaticCourse, copyAssets } from "@tutors/tutors-gen-lib";
+
+// Parse course from current directory
+const [course, lr] = parseCourse(srcFolder);
+
+// Generate static HTML using Vento templates
+await generateStaticCourse(course, destFolder);
+
+// Copy assets (images, archives) to output
+copyAssets(lr, destFolder);
+```
+
 ### JSR Publishing Workflow
 
 **Deno Configuration** (`deno.json`):
@@ -597,7 +661,8 @@ console.log(`Course generated: ${args.output}`);
     "./packages/jsr/model",
     "./packages/jsr/time",
     "./packages/jsr/gen",
-    "./packages/jsr/tutors"
+    "./packages/jsr/tutors",
+    "./packages/jsr/tutors-lite"
   ],
   "imports": {
     "@tutors/tutors-model-lib": "jsr:@tutors/tutors-model-lib@^5.0.0",
@@ -1326,9 +1391,12 @@ socket.send(JSON.stringify({
 flowchart LR
   author["Author Creates Content<br/>Markdown, YAML, Assets, Folder Structure"]
 
-  author --> cli["tutors-cli<br/><i>deno run -A jsr:@tutors/reader</i>"]
+  author --> tutors_cli["tutors CLI<br/><i>deno run -A jsr:@tutors/reader</i>"]
+  author --> lite_cli["tutors-lite CLI<br/><i>deno run -A jsr:@tutors/tutors-lite</i>"]
 
-  cli --> builder["Course Builder<br/>Scan folders & identify Lo types"]
+  tutors_cli --> builder["Course Builder<br/>Scan folders & identify Lo types"]
+  lite_cli --> builder
+
   builder --> resource["Resource Builder<br/>Parse markdown frontmatter & content"]
   resource --> emitter{"Course Emitter"}
 
@@ -1943,6 +2011,7 @@ pnpm -r check
 - **PartyKit**: Real-time WebSocket platform
 - **Tutors Connect**: Authentication system
 - **Tutors Time**: Analytics and time tracking
+- **Tutors Lite**: Static HTML course generator using Vento templates
 
 ### Useful Links
 
