@@ -31,7 +31,7 @@ The **Tutors Monorepo** is a comprehensive workspace containing the complete Tut
 - Multi-language support (i18n)
 - Accessibility features (dyslexia-friendly fonts, reduced motion)
 - GitHub OAuth authentication
-- Live collaboration via WebSockets
+- Live collaboration via Supabase Realtime channels
 - Course cataloging and discovery
 
 ### Ecosystem Components
@@ -41,7 +41,7 @@ This monorepo contains **4 distinct subsystems**:
 1. **JSR Packages** - Deno-compatible libraries for course generation and data models
 2. **Svelte Packages** - UI components and services for web applications
 3. **Applications** - End-user facing applications (reader, catalogue, live, time)
-4. **Services** - Backend infrastructure (PartyKit for real-time features)
+4. **Services** - Backend infrastructure (Supabase Realtime for presence, PartyKit for whiteboard collaboration)
 
 ### Repository Structure
 
@@ -77,7 +77,7 @@ graph TD
   svelte --> ui_comp["UI-Components"]
   svelte --> utils["Utils"]
 
-  services --> partykit["PartyKit"]
+  services --> partykit["PartyKit (Whiteboard)"]
 ```
 
 ---
@@ -176,8 +176,9 @@ mindmap
       PDF.js
     Backend
       Supabase
-      PartyKit
+      Supabase Realtime
       Auth.js
+      PartyKit (Whiteboard)
     JSR Ecosystem
       Vento
       archiver
@@ -209,8 +210,9 @@ mindmap
 
 **Backend Services**:
 - **Supabase**: Database, authentication, analytics
-- **PartyKit**: Real-time WebSocket communication
+- **Supabase Realtime**: Broadcast channels for live presence and student activity
 - **Auth.js**: GitHub OAuth integration
+- **PartyKit**: Whiteboard collaboration (Excalidraw, Durable Object storage)
 
 **JSR Ecosystem** (Deno-first):
 - **Vento**: Template engine for HTML generation
@@ -258,7 +260,7 @@ graph TD
   apps --> live_app["live"]
   apps --> time_app["time"]
 
-  services --> party["party<br/><i>PartyKit</i>"]
+  services --> party["party<br/><i>PartyKit (Whiteboard)</i>"]
 ```
 
 ### Package Naming Convention
@@ -1024,11 +1026,11 @@ packages/svelte/themes/src/
 
 **Presence Service**:
 - Course-specific student presence
-- Real-time status updates via PartyKit
+- Real-time status updates via Supabase Realtime Broadcast channels
 
 **Live Service**:
 - Platform-wide live activity monitoring
-- Online student count
+- Online student count via Supabase Realtime channels
 
 **Catalogue Service**:
 - Course directory management
@@ -1272,7 +1274,7 @@ PUBLIC_ANON_MODE=TRUE
 # Or full mode with services
 PUBLIC_SUPABASE_URL=...
 PUBLIC_SUPABASE_ANON_KEY=...
-PUBLIC_party_kit_main_room=...
+PUBLIC_PARTY_KIT_MAIN_ROOM=...
 PRIVATE_AUTH_GITHUB_ID=...
 PRIVATE_AUTH_GITHUB_SECRET=...
 PRIVATE_AUTH_SECRET=...
@@ -1294,15 +1296,17 @@ PRIVATE_AUTH_SECRET=...
 **Features**:
 - Live student count per course
 - Current page views
-- Real-time updates via PartyKit
+- Real-time updates via Supabase Realtime
 
 ---
 
 ## Services
 
-### PartyKit Service (`services/party`)
+### Supabase Realtime (Presence & Live Activity)
 
-**Purpose**: Real-time WebSocket server for live presence
+**Purpose**: Real-time broadcast channels for student presence and live activity tracking
+
+Tutors uses **Supabase Realtime Broadcast channels** for all live presence features. Each course gets its own channel, and a global channel tracks platform-wide activity. This replaces the previous PartyKit WebSocket server for presence.
 
 #### Architecture
 
@@ -1314,72 +1318,88 @@ flowchart TD
     b3["Browser 3"]
   end
 
-  subgraph PartyKit["PartyKit Server"]
-    server["TutorsServer"]
-    subgraph Rooms
-      r1["Room: course-a"]
-      r2["Room: course-b"]
+  subgraph Supabase["Supabase Realtime"]
+    subgraph Channels
+      ch_all["Channel: tutors-all-course-access"]
+      ch_a["Channel: course-a"]
+      ch_b["Channel: course-b"]
     end
   end
 
-  b1 <-->|WebSocket| r1
-  b2 <-->|WebSocket| r1
-  b3 <-->|WebSocket| r2
-
-  r1 --> server
-  r2 --> server
-
-  server -->|"onConnect / onMessage / onClose"| r1
-  server -->|"onConnect / onMessage / onClose"| r2
+  b1 <-->|"broadcast: lo-event"| ch_a
+  b1 <-->|"broadcast: lo-event"| ch_all
+  b2 <-->|"broadcast: lo-event"| ch_a
+  b2 <-->|"broadcast: lo-event"| ch_all
+  b3 <-->|"broadcast: lo-event"| ch_b
+  b3 <-->|"broadcast: lo-event"| ch_all
 ```
 
-#### Server Implementation
+#### How It Works
 
-**src/server.ts**:
+The `presenceService` and `liveService` in the `@tutors/community` package use Supabase's `channel()` API with broadcast mode:
+
+1. **Global channel** (`tutors-all-course-access`) — tracks all student activity across the platform, used by the Live app
+2. **Course channel** (keyed by `courseId`) — tracks students currently viewing a specific course
+
+Both channels use the `lo-event` broadcast event type. When a student navigates to a learning object, the client sends an `LoRecord` payload containing course ID, learning object route, title, and user info.
+
+#### Presence Service
 
 ```typescript
-import type * as Party from "partykit/server";
+// Subscribe to a course channel
+this.channelCourse = supabase
+  .channel(courseId, { config: { broadcast: { self: true } } })
+  .on("broadcast", { event: "lo-event" }, this.studentListener.bind(this))
+  .subscribe();
 
-export default class TutorsServer implements Party.Server {
+// Send a learning object event
+this.channelAll?.send({
+  type: "broadcast",
+  event: "lo-event",
+  payload: loRecord
+});
+```
+
+#### Live Service
+
+```typescript
+// Subscribe to global activity
+channelAll = supabase
+  .channel("tutors-all-course-access", { config: { broadcast: { self: true } } })
+  .on("broadcast", { event: "lo-event" }, this.broadcastListener.bind(this))
+  .subscribe();
+```
+
+The `broadcastListener` delegates to both `courseListener` (tracking which courses are active) and `studentListener` (tracking individual students).
+
+### PartyKit Service (`services/party`)
+
+**Purpose**: Whiteboard collaboration via Excalidraw
+
+PartyKit is retained solely for the **whiteboard collaboration** feature, which uses Excalidraw with Durable Object storage for persistent whiteboard state.
+
+#### Whiteboard Server
+
+```typescript
+// whiteboard-server.ts — Durable Object storage for Excalidraw scenes
+export default class WhiteboardServer implements Party.Server {
   constructor(readonly room: Party.Room) {}
 
-  onConnect(conn: Party.Connection, ctx: Party.ConnectionContext) {
-    // New client connected
-    console.log(`Client ${conn.id} joined room ${this.room.id}`);
-  }
-
-  onMessage(message: string, sender: Party.Connection) {
-    // Broadcast to all clients in the room
+  async onMessage(message: string, sender: Party.Connection) {
+    // Persist and broadcast whiteboard updates
+    await this.room.storage.put("scene", message);
     this.room.broadcast(message, [sender.id]);
   }
 
-  onClose(conn: Party.Connection) {
-    console.log(`Client ${conn.id} left room ${this.room.id}`);
+  async onConnect(conn: Party.Connection) {
+    // Send stored scene to new connections
+    const scene = await this.room.storage.get("scene");
+    if (scene) conn.send(scene as string);
   }
 }
 ```
 
-#### Client Usage
-
-```typescript
-import PartySocket from "partysocket";
-
-const socket = new PartySocket({
-  host: PUBLIC_party_kit_main_room,
-  room: courseId
-});
-
-socket.addEventListener("message", (event) => {
-  const data = JSON.parse(event.data);
-  // Handle presence update
-});
-
-socket.send(JSON.stringify({
-  type: "presence",
-  user: userId,
-  page: currentPage
-}));
-```
+The whiteboard is embedded in the Reader app via `excalidraw-editor.html` using `PartySocket` for real-time collaboration.
 
 ---
 
@@ -1563,7 +1583,7 @@ flowchart TD
   user --> report["analyticsService.reportPageLoad(lo)"]
 
   report --> supabase["Supabase (persistent analytics)<br/>Insert learning_event row<br/>Update user_session"]
-  report --> partykit["PartyKit (real-time broadcast)<br/>Send presence message to room<br/>Other clients receive update<br/>Live view shows current students"]
+  report --> realtime["Supabase Realtime (live broadcast)<br/>Send lo-event to course channel<br/>Send lo-event to global channel<br/>Live view shows current students"]
 ```
 
 ---
@@ -1695,7 +1715,7 @@ flowchart LR
   subgraph Sources
     cdn[("CDN<br/>tutors.json<br/>Markdown, PDFs, Images")]
     supabase[("Supabase<br/>Learning events<br/>User sessions<br/>Analytics")]
-    partykit[("PartyKit<br/>Real-time presence<br/>Live student count")]
+    realtime[("Supabase Realtime<br/>Broadcast channels<br/>Live presence")]
     auth[("Auth.js<br/>GitHub OAuth<br/>Session tokens")]
   end
 
@@ -1716,7 +1736,7 @@ flowchart LR
 
   cdn --> cs
   supabase --> as
-  partykit --> ps
+  realtime --> ps
   auth --> co
 
   cs --> runes
@@ -1740,10 +1760,10 @@ flowchart LR
 - Course catalogue
 - Analytics data
 
-**PartyKit (WebSocket)**:
-- Real-time presence
-- Live student count
-- Current page views
+**Supabase Realtime (Broadcast Channels)**:
+- Real-time presence via `lo-event` broadcasts
+- Live student count across courses
+- Current page views per course channel
 
 **Auth.js (OAuth)**:
 - User authentication
@@ -1908,28 +1928,21 @@ Set in Netlify/Vercel dashboard:
 ```
 PUBLIC_SUPABASE_URL
 PUBLIC_SUPABASE_ANON_KEY
-PUBLIC_party_kit_main_room
+PUBLIC_PARTY_KIT_MAIN_ROOM
 PRIVATE_AUTH_GITHUB_ID
 PRIVATE_AUTH_GITHUB_SECRET
 PRIVATE_AUTH_SECRET
 PUBLIC_PDF_KEY
 ```
 
-### PartyKit Service Deployment
+### PartyKit Service Deployment (Whiteboard Only)
 
 ```bash
 cd services/party
 npx partykit deploy
 ```
 
-Configuration (`partykit.json`):
-
-```json
-{
-  "name": "tutors",
-  "main": "src/server.ts"
-}
-```
+The PartyKit service is only used for whiteboard collaboration. All presence and live activity features use Supabase Realtime channels, which require no separate service deployment — they are part of the Supabase project configuration.
 
 ### Course Deployment
 
@@ -2008,7 +2021,8 @@ pnpm -r check
 - **Rune**: Svelte 5 reactive primitive ($state, $derived, $effect)
 - **SSR**: Server-Side Rendering
 - **CSR**: Client-Side Rendering
-- **PartyKit**: Real-time WebSocket platform
+- **Supabase Realtime**: Broadcast channel service for live presence (replaced PartyKit for presence)
+- **PartyKit**: Real-time WebSocket platform (retained for whiteboard collaboration)
 - **Tutors Connect**: Authentication system
 - **Tutors Time**: Analytics and time tracking
 - **Tutors Lite**: Static HTML course generator using Vento templates
@@ -2018,4 +2032,5 @@ pnpm -r check
 - **Live Platform**: https://tutors.dev
 - **Reference Manual**: https://tutors-reference-manual.netlify.app
 - **JSR Registry**: https://jsr.io/@tutors
-- **PartyKit**: https://partykit.io
+- **Supabase Realtime**: https://supabase.com/docs/guides/realtime
+- **PartyKit** (whiteboard): https://partykit.io

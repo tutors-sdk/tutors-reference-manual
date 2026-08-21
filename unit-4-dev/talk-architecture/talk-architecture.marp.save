@@ -180,11 +180,16 @@ Route groups: `(auth)/`, `(course-reader)/`, `(home)/`
 
 ---
 
-## PartyKit Real-Time Service
+## Supabase Realtime — Presence & Live Activity
 
-Room-based WebSocket broadcasting — one room per course.
+Channel-based broadcast — one channel per course, one global channel for platform-wide activity.
 
-![w:900](img/08-partykit.png)
+All presence features use **Supabase Realtime Broadcast channels**:
+- `tutors-all-course-access` — global channel for platform-wide student tracking
+- Per-course channels — keyed by `courseId`, track students in a specific course
+- `lo-event` broadcast type carries `LoRecord` payloads (course, LO, user info)
+
+PartyKit is retained only for **whiteboard collaboration** (Excalidraw + Durable Object storage).
 
 ---
 
@@ -247,7 +252,8 @@ pnpm --filter tutors-reader build
 
 - **JSR Packages** → `deno publish` to jsr.io
 - **Reader App** → `pnpm build` → Netlify / Vercel (auto-detected adapter)
-- **PartyKit** → `npx partykit deploy`
+- **Presence** → Supabase Realtime (no separate deployment — part of Supabase project)
+- **Whiteboard** → `npx partykit deploy` (PartyKit, for Excalidraw collaboration only)
 - **Courses (JSON)** → `deno run -A jsr:@tutors/reader` → deploy `json/` to any static host
 - **Courses (HTML)** → `deno run -A jsr:@tutors/tutors-lite` → deploy `html/` to any static host
 
