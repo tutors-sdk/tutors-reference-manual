@@ -175,40 +175,101 @@ This is the [source for a course](https://github.com/wit-hdip-comp-sci-2023/prog
 
 # Calendar
 
-You may choose to prominently display an academic calendar - with the current week number highlighted. To set it up, include a file called `calendar.yaml` into your course folder. Here is an example:
+You may choose to prominently display an academic calendar — with the current week highlighted — by including a file called `calendar.yaml` in your course folder. A calendar button will appear in the course navigator, showing the current week's topic. Selecting it opens a sidebar with the full semester schedule.
+
+## Calendar format
+
+~~~yaml
+title: Semester 1
+year: 2026
+
+weeks:
+  - date: 2026-08-31
+    week: 0
+    topic: Induction
+    assessment: ~
+
+  - date: 2026-09-07
+    week: 1
+    topic: Variables and Data Types
+    assessment: ~
+
+  - date: 2026-09-14
+    week: 2
+    topic: Control Flow
+    assessment:
+      name: Assignment 1
+      due: 2026-09-21
+      percentage: 20
+      submission: Online (Moodle)
+
+  - date: 2026-09-21
+    week: ~
+    topic: Reading Week
+    assessment: ~
+
+  - date: 2026-09-28
+    week: 3
+    topic: Functions
+    assessment: ~
+~~~
+
+### Fields
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `title` | Yes | Calendar title displayed in the sidebar header |
+| `year` | No | Appended to the title in the UI |
+| `weeks` | Yes | Array of week entries |
+
+### Week entry fields
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `date` | Yes | Start date of the week (YYYY-MM-DD) |
+| `week` | Yes | Week number. Use `~` (null) for non-teaching weeks such as reading weeks or breaks |
+| `topic` | Yes | Display label for the week |
+| `assessment` | Yes | Assessment details or `~` (null) if none |
+
+### Assessment fields
+
+| Field | Description |
+|-------|-------------|
+| `name` | Assessment title |
+| `due` | Due date (YYYY-MM-DD) |
+| `percentage` | Weighting as a percentage |
+| `submission` | Submission method (e.g. "Online (Moodle)", "In-person interview") |
+
+### Display behaviour
+
+- The current week is highlighted when today's date falls within its range.
+- Weeks with `week: ~` are displayed as break weeks without a week number.
+- Week number and assessment columns only appear when at least one entry uses them.
+- The calendar button in the navigator shows the current week's topic, or falls back to the calendar title if no week matches today.
+
+## Legacy format
+
+The original calendar format is still supported. Each week entry uses a date string as the key with nested `title` and `type` fields:
 
 ~~~yaml
 title: Semester 1
 weeks:
-  - 2021-08-30:
-      title: 1
-      type: tuition
-  - 2021-09-06:
-      title: 2
-      type: tuition
-  - 2021-09-13:
-      title: 3
-      type: tuition
-  - 2021-09-20:
-      title: reading 1
-      type: reading
-  - 2021-09-27:
-      title: 4
-      type: tuition
-  - 2021-10-04:
-      title: 5
-      type: tuition
+  - 2026-09-07:
+      title: Topic 1
+      type: topic
+  - 2026-09-14:
+      title: Topic 2
+      type: topic
+  - 2026-09-28:
+      title: Reading Week
+      type: break
 ~~~
 
-The title of the semester followed by a specification for each week:
+The `type` field is `topic` for teaching weeks or `break` for non-teaching weeks. This format does not support week numbers or assessments. The parser auto-detects which format each entry uses, so both formats will continue to work.
 
-- start date
-- title
-- type
+## Calendar and TutorsTime
 
-in the format shown in the example above.
-
-Using a calendar in conjunction with authentication adds another dimension to TutorsTime, showng estimates of the time online across the semester specified in the calendar file. An instructor can use the PIN code they have set up (`ignorepin`) to reveal data for all students.
+Using a calendar in conjunction with authentication adds another dimension to TutorsTime, showing estimates of the time online across the semester specified in the calendar file. An instructor can use the PIN code they have set up (`ignorepin`) to reveal data for all students.
 
 
 # Enrollment
@@ -252,6 +313,16 @@ Remember, authentication must also be enabled for this to work:
 
 ~~~yaml
 auth           : 1
+~~~
+
+## Educator Roles
+
+You can also designate educators in your enrollment file. Educators gain access to an expanded panel with content locking and enrollment visibility. See [Roles & Content Locking](/note/reference-course/unit-3-advanced/note-e-rbac) for full details.
+
+~~~yaml
+educators:
+  - github-username-1
+  - github-username-2
 ~~~
 
 # Auto Numbering
