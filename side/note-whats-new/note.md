@@ -82,7 +82,7 @@ Courses with an enrollment.yaml can now designate educators. Add an educators ar
 
 The calendar.yaml file now supports a richer format with explicit week numbers, topic labels, and assessment details (name, due date, percentage, submission method). Break weeks are marked with week: ~. The calendar button in the navigator shows the current week, and assessment columns appear automatically when present. The old format continues to work.
 
-::video[src="./img/calerndar.mov"]::
+::video[src="./img/calendar.mov"]::
 
 ## Example
 
