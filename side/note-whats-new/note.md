@@ -1,7 +1,7 @@
 ---
 order: 0
 icon:
-  type: flat-color-icons:org-unit
+  type: fluent-color:news-24
 ---
 
 # Whats new
