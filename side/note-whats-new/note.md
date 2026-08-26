@@ -62,4 +62,12 @@ The calendar.yaml file now supports a richer format with explicit week numbers, 
 
 # Course Prompting
 
-With these new features you can now prompt an entire course into existance. [Example here](https://tutors.dev/course/python-fundmentals), and [source repo here](https://github.com/tutors-sdk/python). I guess the quality of the course will depend on the LLM, the prompt and the context you provide. You should at least provide the [tutors reference manual - llm version](https://tutors-reference-manual.netlify.app/llms/tutors-reference-manual-complete-llms.txt) - and also perhpas an example complete course. Just the course descriptor is not sufficient - however, some of the generated courses may give you an interesting structure to play around with.
+With these new features you can now prompt an entire course into existence.  I guess the quality of the course will depend on the LLM, the prompt and the context you provide. You should at least provide the [tutors reference manual - llm version](https://tutors-reference-manual.netlify.app/llms/tutors-reference-manual-complete-llms.txt) - and also perhaps an example complete course. Just the course descriptor is not sufficient. However, some of the generated courses may give you an interesting structure to play around with.
+
+Here are two examples :
+
+- [Introducing Python](https://tutors.dev/course/python-fundmentals) ([source repo](https://github.com/tutors-sdk/python))
+
+- [Introducing Svelte](https://tutors.dev/course/svelte-kit-course.netlify.app) ([source repo](https://github.com/tutors-sdk/svelte-kit))
+
+When prompting, you could ask the LLM to emulate the use of icons from Iconify as demonstrated in the above repos.
