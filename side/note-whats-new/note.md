@@ -71,3 +71,7 @@ Here are two examples :
 - [Introducing Svelte](https://tutors.dev/course/svelte-kit-course.netlify.app) ([source repo](https://github.com/tutors-sdk/svelte-kit))
 
 When prompting, you could ask the LLM to emulate the use of icons from Iconify as demonstrated in the above repos (give the course source repo, not the course web for context).
+
+# Layout Menu
+
+ Check out the layout menu for internationalisation (including Gaeilge) and a guided tour (unfinished as yet). Also, there have been accessibility updates throughout.
