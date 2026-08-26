@@ -16,7 +16,7 @@ Some updates to Tutors you may find useful for the coming semester
 
 Jupyter notebooks are now a first-class learning object type. Place a notebook-* folder with a .ipynb file and it renders directly in the browser — code cells with syntax highlighting, markdown cells, and outputs. Interactive execution is supported via Pyodide for Python notebooks. Other languages to follow.
 
-::video[src="./img/juypter.mov" poster="img/juypter.img"]::
+::video[src="./img/juypter.mov" poster="img/juypter.png"]::
 
 [Example here](https://tutors.dev/notebook/python-fundmentals/topic-03-operators/unit-1/notebook-operators), and [documentation here](https://tutors.dev/note/tutors-reference-manual/unit-2-panels-and-videos/note-a-resources#notebook-(jupyter))
 
@@ -27,7 +27,7 @@ Jupyter notebooks are now a first-class learning object type. Place a notebook-*
 You can now include Mermaid diagrams directly in any course markdown — notes, labb and notebooks. Just use a standard mermaid code block and the diagram renders inline. Flowcharts, sequence diagrams, class diagrams, ER diagrams, and all other Mermaid types are supported. LLMs love generating mermaid diagrams.
 
 
-::video[src="./img/mermaid.mov" poster="img/mermaid.img"]::
+::video[src="./img/mermaid.mov" poster="img/mermaid.png"]::
 
 [Example here](https://tutors.dev/note/python-fundmentals/topic-03-operators/unit-1/note-1-operator-precedence), and [documentation here](https://tutors.dev/note/tutors-reference-manual/unit-3-advanced/note-a-mermaid)
 
@@ -37,7 +37,7 @@ All the diagrams in [this note](https://tutors.dev/note/tutors-reference-manual/
 
 Talks can now be authored as Marp markdown instead of PDF. Write your slides as a .md file with Marp front matter and they render as a full slide deck in the browser. This gives you version-controlled, text-based presentations alongside your other course content.
 
-::video[src="./img/marp.mov" poster="img/marp.img"]::
+::video[src="./img/marp.mov" poster="img/marp.png"]::
 
 [Example here](https://tutors.dev/talk/python-fundmentals/topic-03-operators/unit-1/talk-1-operators), and [documentation here](https://tutors.dev/note/tutors-reference-manual/unit-2-panels-and-videos/note-a-resources#marp-talk)
 
@@ -47,7 +47,7 @@ Talks can now be authored as Marp markdown instead of PDF. Write your slides as 
 
 Courses with an enrollment.yaml can now designate educators. Add an educators array with GitHub usernames and those users get access to a new educator panel in the course navigator. From there, you can lock and unlock individual topics — locked topics are hidden from students but remain visible to you. This replaces the old ignore/ignorepin approach for progressive content release, with no source file edits or redeployment needed.
 
-::video[src="./img/locks.mov" poster="img/locks.img"]::
+::video[src="./img/locks.mov" poster="img/locks.png"]::
 
 [Documentation here](https://tutors.dev/note/tutors-reference-manual/unit-3-advanced/note-e-rbac)
 
@@ -55,7 +55,7 @@ Courses with an enrollment.yaml can now designate educators. Add an educators ar
 
 The calendar.yaml file now supports a richer format with explicit week numbers, topic labels, and assessment details (name, due date, percentage, submission method). Break weeks are marked with week: ~. The calendar button in the navigator shows the current week, and assessment columns appear automatically when present. The old format continues to work.
 
-::video[src="./img/calendar.mov" poster="img/calendar.img"]::
+::video[src="./img/calendar.mov" poster="img/calendar.png"]::
 
 [Example here](https://tutors.dev/course/python-fundmentals), and [documentation here](https://tutors.dev/note/tutors-reference-manual/unit-1-getting-started/note-d-properties#calendar)
 
