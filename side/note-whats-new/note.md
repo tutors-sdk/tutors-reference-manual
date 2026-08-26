@@ -20,13 +20,8 @@ Jupyter notebooks are now a first-class learning object type. Place a notebook-*
 
 ::video[src="./img/juypter.mov"]::
 
-## Example here:
+[Example here](https://tutors.dev/notebook/python-fundmentals/topic-03-operators/unit-1/notebook-operators), and [documentation here](https://tutors.dev/note/tutors-reference-manual/unit-2-panels-and-videos/note-a-resources#notebook-(jupyter))
 
-- https://tutors.dev/notebook/python-fundmentals/topic-03-operators/unit-1/notebook-operators
-
-## Documentation:
-
-- https://tutors.dev/note/tutors-reference-manual/unit-2-panels-and-videos/note-a-resources#notebook-(jupyter)
 
 
 # Mermaid Diagrams
