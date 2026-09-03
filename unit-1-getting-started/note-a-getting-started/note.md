@@ -22,13 +22,15 @@ These components are [developed in the open](https://github.com/tutors-sdk/tutor
 
 # Create a Course
 
-The quickest way to start is to scaffold a brand-new course. The **Create wizard** asks a few questions — course name, number of units and topics, and whether to include notes, labs, a calendar and an enrollment list — and hands you an editable course zip. The generated course comes pre-wired with sensible defaults, colour icons, a `properties.yaml` documenting every available setting, and a `netlify.toml` ready for deployment.
-
-::video[src="./img/create.mov"]::
+The quickest way to start is to scaffold a brand-new course. The **Create wizard** asks a few questions — course name, number of units and topics, and whether to include notes, labs, a calendar and an enrollment list — and hands you an editable course zip. The generated course comes pre-wired with sensible defaults ready for deployment.
 
 Try it directly in the browser, no installation required:
 
 - [Create a course](https://tutors.dev/create)
+
+Publishing is a simple drag-and-drop. First, create a free account on [Netlify](https://www.netlify.com/). Then drag the generated course folder onto the [Netlify Drop](https://app.netlify.com/drop/) target and your course is live in seconds, on its own public URL. You can edit this URL to something more convenient. Full demonstration here:
+
+::video[src="./img/create.mov"]::
 
 If you prefer the terminal (and have [Deno](https://deno.com/) installed — see the next section), the same scaffolder runs as a CLI, prompting you for the same options and writing the course into a new folder:
 
@@ -36,11 +38,7 @@ If you prefer the terminal (and have [Deno](https://deno.com/) installed — see
 deno run -A jsr:@tutors/tutors-create
 ~~~
 
-Once you have a course folder — whether scaffolded here or started from an example below — you edit its content, then **generate** and **publish** it to the web.
-
-Publishing is a simple drag-and-drop. First, create a free account on [Netlify](https://www.netlify.com/). Then drag the generated course folder onto the [Netlify Drop](https://app.netlify.com/drop/) target and your course is live in seconds, on its own public URL. The full generate-and-publish steps are covered in the sections below. You can edit this URL to something more convenient.
-
-# First Course
+# Download Course Example
 
 If you would rather begin from a worked example than a fresh scaffold, visit [this course](https://tutors.dev/course/tutors-starter-course) to become familiar with the general structure of the learning experience. [Download the source](https://github.com/tutors-sdk/tutors-starter/archive/refs/heads/master.zip) for the course and unzip to a local folder. Spend a few minutes exploring the content of the folder using a good editor, for example [Sublime Text](https://www.sublimetext.com/).
 
