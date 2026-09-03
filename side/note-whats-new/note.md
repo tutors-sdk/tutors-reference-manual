@@ -14,7 +14,7 @@ Some updates to Tutors you may find useful for the coming semester
 
 # Create a Course
 
-You can now scaffold a complete, ready-to-run Tutors course in seconds. The Create wizard walks you through a few options — course name, units, topics, and whether to include notes, labs, a calendar and an enrollment list — and hands you an editable course zip, pre-wired with sensible defaults, colour icons, a `properties.yaml` documenting every setting, and a `netlify.toml` ready for deployment. Prefer the terminal? The same scaffolder runs as a CLI via `deno run -A jsr:@tutors/tutors`.
+You can now scaffold a complete, ready-to-run Tutors course in seconds. The Create wizard walks you through a few options — course name, units, topics, and whether to include notes, labs, a calendar and an enrollment list — and hands you an editable course zip, pre-wired with sensible defaults, colour icons, a `properties.yaml` documenting every setting, and a `netlify.toml` ready for deployment. Prefer the terminal? The same scaffolder runs as a CLI via `deno run -A jsr:@tutors/tutors-create`.
 
 ::video[src="./img/create.mov"]::
 
