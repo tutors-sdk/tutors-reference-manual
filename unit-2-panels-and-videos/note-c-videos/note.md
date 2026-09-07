@@ -130,6 +130,44 @@ heanet=7e4f1e9afedb40d5996d0703702eaaa4
 
 The id will be generated when you upload the video to the HEAnet media service.
 
+## Vimp Hosted Videos
+
+If your institution uses a [Vimp](https://www.vimp.com/) video portal, you can embed videos from that service as an alternative to YouTube.
+
+| Example Resource | Display |
+| ---------------- | ------- |
+| [Vimp Video](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media) | [Media topic example](https://tutors.dev/topic/reference-course/topic-03-media) |
+
+If you wish to use this service, your `videoid` file should look like this:
+
+~~~bash
+vimp=YOUR_MEDIA_KEY
+~~~
+
+The media key is assigned by your Vimp instance when the video is uploaded. Tutors builds the embed URL from that key (for example `https://vimp.oth-regensburg.de/media/embed?key=YOUR_MEDIA_KEY`). The host is institution-specific; the reader currently allows `vimp.oth-regensburg.de`.
+
+## Panopto Hosted Videos
+
+If your institution uses [Panopto](https://www.panopto.com/) for lecture capture, you can embed Panopto sessions in Tutors.
+
+| Example Resource | Display |
+| ---------------- | ------- |
+| [Panopto Video](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-03-media/unit-3-panopto) | [Media topic example](https://tutors.dev/topic/reference-course/topic-03-media) |
+
+**Composite format** (recommended — host and session id separated by `|`):
+
+~~~bash
+panopto=setu-ie.cloud.panopto.eu|f285d4a8-7ebe-40b6-9388-b35b010953bf
+~~~
+
+**Full URL format** (paste from Panopto share or embed):
+
+~~~bash
+panopto=https://setu-ie.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=f285d4a8-7ebe-40b6-9388-b35b010953bf
+~~~
+
+The host is institution-specific (`*.cloud.panopto.eu`, `*.panopto.com`). Private or authenticated videos depend on the viewer's Panopto session.
+
 # Podcasts in Labs & Notes
 
 There is a separate [Podcast learning object](/note/tutors-reference-manual/unit-2-panels-and-videos/note-a-resources#podcast) if you would like a standalone player card on a course.
