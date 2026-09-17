@@ -47,6 +47,7 @@ Folder names convey the type of learning resource contained in the folder, with 
 | [web](https://tutors.dev/wall/web/reference-course.netlify.app)                              | [Link to an external web site  ](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-2/web-1) |
 | [notebook](https://tutors.dev/notebook/reference-course/topic-01-typical/unit-1/notebook-a)  | [Interactive Jupyter Notebook](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-01-typical/unit-1/notebook-a) |
 | [podcast](https://tutors.dev/topic/reference-course/topic-09-podcasts)                       | [Podcast episode](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-09-podcasts/side-unit/podcast) |
+| [quiz](https://tutors.dev/quiz/reference-course/topic-07-reference/quiz-1)                   | [Interactive quiz, authored in markdown](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/quiz-1) |
 
  To sort the name alphabetically you may append numerals. To enhance meaning, append contextual keywords. For example:
 

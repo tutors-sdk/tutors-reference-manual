@@ -12,6 +12,14 @@ Some updates to Tutors you may find useful for the coming semester
 [[toc]]
 ---
 
+# Quizzes
+
+Quizzes are now a learning object type. Create a `quiz-*` folder with a markdown file containing a fenced `quiz` block, and Tutors renders an interactive quiz: one question at a time, free navigation between questions, and a scored results page with a retake. Questions can be multiple-choice or true/false, and question and option text is markdown — so `code`, emphasis and links all render. Prose outside the quiz block renders normally, so a quiz can carry its own instructions or diagrams. Answers are not recorded: this is a self-check for students, not an assessment.
+
+::video[src="./img/quiz.mov" poster="img/quiz.png"]::
+
+[Example here](https://tutors.dev/quiz/reference-course/topic-07-reference/quiz-1), and [documentation here](https://tutors.dev/note/tutors-reference-manual/unit-2-panels-and-videos/note-a-resources#quiz)
+
 # Create a Course
 
 You can now scaffold a complete, ready-to-run Tutors course in seconds. The Create wizard walks you through a few options — course name, units, topics, and whether to include notes, labs, a calendar and an enrollment list — and hands you an editable course zip, pre-wired with sensible defaults, colour icons, a `properties.yaml` documenting every setting, and a `netlify.toml` ready for deployment. Prefer the terminal? The same scaffolder runs as a CLI via `deno run -A jsr:@tutors/tutors-create`.

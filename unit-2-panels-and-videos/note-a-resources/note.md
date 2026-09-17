@@ -302,6 +302,59 @@ See the full Jupyter documentation here:
 
 - <https://docs.jupyter.org/en/latest/>
 
+## Quiz
+
+An interactive self-check quiz, authored in markdown. Students answer one question at a time and get a scored results page they can retake.
+
+| Example Resource | Display | Cards |
+| ---------------- | ------- | ----- |
+| [Quiz](https://github.com/tutors-sdk/tutors-reference-course/tree/main/topic-07-reference/quiz-1) | [Quiz Demo](https://tutors.dev/quiz/reference-course/topic-07-reference/quiz-1) | [Quizzes](https://tutors.dev/wall/quiz/reference-course) |
+
+A quiz folder name starts with `quiz-`. One file is required:
+
+| Resource | Purpose |
+| -------- | ------- |
+| quiz.md  | Title, optional prose, and one fenced `quiz` block. Any suitable name, must be .md type |
+
+An image is optional — without one the card uses the icon from the file's front matter.
+
+The document is an ordinary Tutors note: the first heading becomes the title, and prose outside the quiz block renders normally.
+
+~~~markdown
+# Recursion Check
+
+Answer these before starting the lab.
+
+```quiz
+title: Recursion Fundamentals
+---
+question: What does a base case do?
+options:
+  - Terminates the recursion
+  - Starts the recursion
+correct: 0
+---
+question: Every recursive function needs a base case.
+type: true-false
+correct: true
+```
+~~~
+
+Inside the block, sections are separated by lines containing only `---`. An optional first section is a header carrying `title:` — omit it and the learning object's own title is used. Every remaining section is a question:
+
+| Field | Meaning |
+| ----- | ------- |
+| `question` | The question text. Required |
+| `type` | `multiple-choice` (default) or `true-false` |
+| `options` | A `- ` list, at least two. Not needed for `true-false` |
+| `correct` | Required. 0-based index for multiple-choice; `true` or `false` for true-false |
+
+Question and option text is markdown, so `code`, emphasis and links render.
+
+A question is discarded if it has no `question`, fewer than two `options`, or a `correct` that is missing or out of range. This is deliberate: defaulting a bad `correct` to the first option would silently mark students down. If no question in a block is valid, the quiz renders as a visible authoring error.
+
+Only the first quiz block in a document is parsed.
+
 ## Web 
 
 A simple link to an external web resource.
