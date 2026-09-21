@@ -377,6 +377,16 @@ pdfOrientation : portrait
 ~~~
 
 
+# Whiteboard
+
+The course navigator can include a whiteboard: a fullscreen Excalidraw board shared by everyone in the course. It is off unless you enable it:
+
+~~~yaml
+whiteboard: 1
+~~~
+
+The value must be the number `1`. See [Whiteboards](/note/reference-course/unit-3-advanced/note-g-whiteboard) for how it behaves, and for the whiteboard learning object, which does not need this setting.
+
 # Large Language Model support
 
 Your course can be made available in a format suitable for processing by Large Language Models (LLMs). This takes the form of a dedicated page on your course. If this is your course url:
