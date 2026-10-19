@@ -4,4 +4,4 @@ order: 4
 
 Tutors Repo
 
-The Tutors open Sourece Monorepo
+The Tutors open source mono-repo
