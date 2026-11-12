@@ -10,6 +10,8 @@ Architectural overview and reference
 
 [[toc]]
 
+*This note mirrors [ARCHITECTURE.md](https://github.com/tutors-sdk/tutors-mono-repo/blob/main/ARCHITECTURE.md) on the main branch of the Tutors mono-repo, which is the authority if the two ever differ. How the mono-repo is tested, released and run in production is covered in the next unit, Production.*
+
 ## Overview
 
 The **Tutors Monorepo** is a comprehensive workspace containing the complete Tutors educational platform ecosystem. It unifies course generation tools, UI component libraries, reader applications, and real-time services into a single, well-architected repository using pnpm workspaces.
@@ -31,7 +33,7 @@ The **Tutors Monorepo** is a comprehensive workspace containing the complete Tut
 - Multi-language support (i18n)
 - Accessibility features (dyslexia-friendly fonts, reduced motion)
 - GitHub OAuth authentication
-- Live collaboration via Supabase Realtime channels
+- Live collaboration via WebSockets
 - Course cataloging and discovery
 
 ### Ecosystem Components
@@ -41,44 +43,7 @@ This monorepo contains **4 distinct subsystems**:
 1. **JSR Packages** - Deno-compatible libraries for course generation and data models
 2. **Svelte Packages** - UI components and services for web applications
 3. **Applications** - End-user facing applications (reader, catalogue, live, time)
-4. **Services** - Backend infrastructure (Supabase Realtime for presence, PartyKit for whiteboard collaboration)
-
-### Repository Structure
-
-```mermaid
-graph TD
-  root["tutors-mono-repo"]
-
-  root --> apps
-  root --> packages
-  root --> services
-
-  apps --> reader["Reader"]
-  apps --> catalogue["Catalogue"]
-  apps --> live["Live"]
-  apps --> time_app["Time"]
-
-  packages --> jsr["JSR"]
-  packages --> svelte["Svelte"]
-
-  jsr --> model["Model"]
-  jsr --> gen["Gen"]
-  jsr --> time["Time"]
-  jsr --> tutors_cli["Tutors"]
-  jsr --> tutors_lite["Tutors Lite"]
-
-  svelte --> runes["Runes"]
-  svelte --> connect["Connect"]
-  svelte --> community["Community"]
-  svelte --> course["Course"]
-  svelte --> themes["Themes"]
-  svelte --> ui_prim["UI-Primitives"]
-  svelte --> ui_nav["UI-Navigators"]
-  svelte --> ui_comp["UI-Components"]
-  svelte --> utils["Utils"]
-
-  services --> partykit["PartyKit (Whiteboard)"]
-```
+4. **Services** - Backend infrastructure (Supabase Realtime for presence)
 
 ---
 
@@ -107,35 +72,27 @@ packages:
 
 The monorepo follows a **layered architecture** with clear dependency boundaries:
 
-```mermaid
-block-beta
-  columns 1
-  block:apps["Applications Layer — reader, catalogue, live, time"]
-    reader["Reader"]
-    catalogue["Catalogue"]
-    live["Live"]
-    time_app["Time"]
-  end
-  block:svelte["Svelte Packages Layer — UI Components, Themes, Services, State Management"]
-    ui_prim["UI Primitives"]
-    ui_nav["UI Navigators"]
-    ui_comp["UI Components"]
-    themes["Themes"]
-    community["Community"]
-    connect["Connect"]
-    course["Course"]
-    runes["Runes"]
-  end
-  block:jsr["JSR Packages Layer — Core Models, Time Tracking, Generation Tools (Deno/Node compatible)"]
-    model["Model"]
-    time["Time"]
-    gen["Gen"]
-    tutors["Tutors CLI"]
-    tutors_lite["Tutors Lite CLI"]
-  end
-
-  apps --> svelte
-  svelte --> jsr
+```
+┌─────────────────────────────────────────────────────────┐
+│                   Applications Layer                     │
+│        (reader, catalogue, live, time)                   │
+│        Consumes: All Svelte packages                     │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────┐
+│               Svelte Packages Layer                      │
+│   UI Components, Themes, Services, State Management      │
+│        Consumes: JSR packages, utils                     │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────┐
+│                JSR Packages Layer                        │
+│     Core Models, Time Tracking, Generation Tools         │
+│              (Deno/Node compatible)                      │
+│                 No dependencies                          │
+└─────────────────────────────────────────────────────────┘
 ```
 
 ### Key Principles
@@ -152,39 +109,6 @@ block-beta
 
 ### Core Technologies
 
-```mermaid
-mindmap
-  root((Tutors Platform))
-    Build & Package
-      pnpm 8+
-      Vite 8
-      TypeScript 5
-    Runtimes
-      Deno
-      Node.js 18+
-      Browser
-    Frontend
-      Svelte 5
-      SvelteKit 2
-      Tailwind CSS 4
-      Skeleton UI 5
-    Content
-      markdown-it
-      Shiki
-      Marp
-      Mermaid
-      PDF.js
-    Backend
-      Supabase
-      Supabase Realtime
-      Auth.js
-      PartyKit (Whiteboard)
-    JSR Ecosystem
-      Vento
-      archiver
-      front-matter
-```
-
 **Build & Package Management**:
 - **pnpm 8+**: Fast, disk-efficient package manager with workspace support
 - **Vite 8.x**: Next-generation build tool and dev server
@@ -192,7 +116,7 @@ mindmap
 
 **Runtime Environments**:
 - **Deno**: For JSR packages and CLI tools
-- **Node.js 18+**: For Svelte packages and applications
+- **Node.js 22.12+**: For Svelte packages and applications (`engines.node` in `package.json`)
 - **Browser**: For client-side applications
 
 **Frontend Framework**:
@@ -210,9 +134,8 @@ mindmap
 
 **Backend Services**:
 - **Supabase**: Database, authentication, analytics
-- **Supabase Realtime**: Broadcast channels for live presence and student activity
-- **Auth.js**: GitHub OAuth integration
-- **PartyKit**: Whiteboard collaboration (Excalidraw, Durable Object storage)
+- **Supabase Realtime**: Real-time broadcast communication (presence, live activity)
+- **Better Auth**: GitHub OAuth integration
 
 **JSR Ecosystem** (Deno-first):
 - **Vento**: Template engine for HTML generation
@@ -225,42 +148,45 @@ mindmap
 
 ### Directory Layout
 
-```mermaid
-graph TD
-  root["tutors-mono-repo"]
-
-  root --> packages
-  root --> apps
-  root --> services
-
-  packages --> jsr
-  packages --> svelte_pkg["svelte"]
-
-  jsr --> model["model<br/><i>@tutors/tutors-model-lib</i>"]
-  jsr --> time["time<br/><i>@tutors/tutors-time-lib</i>"]
-  jsr --> gen["gen<br/><i>@tutors/tutors-gen-lib</i>"]
-  jsr --> tutors_cli["tutors<br/><i>@tutors/reader CLI</i>"]
-  jsr --> tutors_lite["tutors-lite<br/><i>@tutors/tutors-lite CLI</i>"]
-
-  svelte_pkg --> runes["runes<br/><i>@tutors/runes</i>"]
-  svelte_pkg --> course["course<br/><i>@tutors/course</i>"]
-  svelte_pkg --> themes["themes<br/><i>@tutors/themes</i>"]
-  svelte_pkg --> community["community<br/><i>@tutors/community</i>"]
-  svelte_pkg --> connect["connect<br/><i>@tutors/connect</i>"]
-  svelte_pkg --> ui_prim["ui-primitives<br/><i>@tutors/ui-primitives</i>"]
-  svelte_pkg --> ui_nav["ui-navigators<br/><i>@tutors/ui-navigators</i>"]
-  svelte_pkg --> ui_comp["ui-components<br/><i>@tutors/ui-components</i>"]
-  svelte_pkg --> utils
-  utils --> logger["logger"]
-  utils --> a11y["a11y"]
-  utils --> i18n["i18n"]
-
-  apps --> reader_app["reader"]
-  apps --> catalogue_app["catalogue"]
-  apps --> live_app["live"]
-  apps --> time_app["time"]
-
-  services --> party["party<br/><i>PartyKit (Whiteboard)</i>"]
+```
+tutors-mono-repo/
+├── packages/
+│   ├── jsr/                    # JSR-published packages (Deno-compatible)
+│   │   ├── model/              # @tutors/tutors-model-lib
+│   │   ├── time/               # @tutors/tutors-time-lib
+│   │   ├── gen/                # @tutors/tutors-gen-lib
+│   │   ├── tutors/             # @tutors/tutors (JSON course generator CLI)
+│   │   ├── tutors-lite/        # @tutors/tutors-lite (static HTML generator CLI)
+│   │   ├── create/             # @tutors/tutors-create (course scaffolder)
+│   │   ├── types/              # @tutors/tutors-types (shared types)
+│   │   ├── identity/           # @tutors/identity (identity contracts)
+│   │   └── realtime/           # @tutors/realtime (Realtime port and budgeted gateway)
+│   │
+│   └── svelte/                 # Svelte-specific packages
+│       ├── runes/              # @tutors/runes
+│       ├── course/             # @tutors/course
+│       ├── themes/             # @tutors/themes
+│       ├── community/          # @tutors/community
+│       ├── connect/            # @tutors/connect
+│       ├── realtime-supabase/  # @tutors/realtime-supabase (Supabase Realtime adapter)
+│       ├── ui-primitives/      # @tutors/ui-primitives
+│       ├── ui-navigators/      # @tutors/ui-navigators
+│       ├── ui-components/      # @tutors/ui-components
+│       ├── app-config/         # @tutors/app-config (shared vite/svelte build config)
+│       └── utils/              # Utility packages
+│           ├── logger/         # @tutors/logger
+│           ├── a11y/           # @tutors/a11y
+│           └── i18n/           # @tutors/i18n
+│
+├── apps/
+│   ├── reader/                 # Main course reader application
+│   ├── catalogue/              # Course catalog/discovery
+│   ├── live/                   # Live presence tracking
+│   └── time/                   # Student activity & time tracking dashboard
+│
+├── deno.json                   # Deno workspace configuration
+├── pnpm-workspace.yaml         # pnpm workspace configuration
+└── package.json                # Root package configuration
 ```
 
 ### Package Naming Convention
@@ -281,32 +207,24 @@ The JSR (JavaScript Registry) subsystem provides the **foundation layer** - core
 
 ### Architecture Overview
 
-```mermaid
-graph LR
-  subgraph JSR["JSR Subsystem (Deno-First, Node-Compatible)"]
-    model["Model<br/>Core types & data structures"]
-    time["Time<br/>Analytics & tracking"]
-    gen["Gen<br/>Course generation"]
-    tutors["Tutors CLI<br/>JSON output"]
-    tutors_lite["Tutors Lite CLI<br/>Static HTML output"]
-  end
-
-  tutors --> gen
-  tutors_lite --> gen
-  gen --> model
-  time --> model
-
-  jsr_registry[("jsr.io/@tutors/*")]
-  model -.-> jsr_registry
-  time -.-> jsr_registry
-  gen -.-> jsr_registry
-  tutors -.-> jsr_registry
-  tutors_lite -.-> jsr_registry
+```
+┌──────────────────────────────────────────────────────────────────────┐
+│                         JSR Subsystem                                │
+│                    (Deno-First, Node-Compatible)                     │
+│                                                                      │
+│  ┌──────────┐  ┌────────┐  ┌──────────┐  ┌──────────┐  ┌────────┐  │
+│  │  Model   │  │  Time  │  │   Gen    │  │  Tutors  │  │ Tutors │  │
+│  │  (Core)  │  │(Track) │  │(Gener.)  │  │  (JSON)  │  │  Lite  │  │
+│  └────┬─────┘  └───┬────┘  └────┬─────┘  └────┬─────┘  └───┬────┘  │
+└───────┼────────────┼────────────┼──────────────┼────────────┼────────┘
+        │            │            │              │            │
+        └────────────┴────────────┴──────────────┴────────────┘
+        All published to jsr.io/@tutors/*
 ```
 
 ### 1. Model Package (`packages/jsr/model`)
 
-**Package Name**: `@tutors/tutors-model-lib`
+**Package Name**: `@tutors/tutors-model-lib`  
 **Purpose**: Core data structures, types, and utilities
 
 #### Key Responsibilities
@@ -331,6 +249,7 @@ interface Lo {
   icon?: IconType;           // Icon configuration
   los?: Lo[];                // Child learning objects
   hide?: boolean;            // Hide from navigation
+  // ... additional properties
 }
 
 // Course - Top-level container
@@ -339,6 +258,7 @@ interface Course extends Lo {
   url: string;               // Base URL for assets
   topicIndex: Map<string, Lo>;
   labIndex: Map<string, Lo>;
+  // ... indices for fast lookup
 }
 
 // Icon configuration
@@ -354,19 +274,19 @@ interface IconType {
 packages/jsr/model/src/
 ├── tutors.ts                # Main export
 ├── types/
-│   ├── learning-objects.ts  # Lo, Course, Topic types
-│   ├── icon-types.ts        # Icon configurations
-│   ├── media-types.ts       # Video, PDF types
-│   ├── calendar-types.ts    # Calendar structures
-│   └── tutors-id-types.ts   # Identifier types
+│   ├── learning-objects.ts # Lo, Course, Topic types
+│   ├── icon-types.ts       # Icon configurations
+│   ├── media-types.ts      # Video, PDF types
+│   ├── calendar-types.ts   # Calendar structures
+│   └── tutors-id-types.ts  # Identifier types
 ├── utils/
-│   ├── lo-utils.ts          # Learning object utilities
-│   ├── course-utils.ts      # Course tree manipulation
-│   ├── markdown-utils.ts    # Markdown processing
-│   └── markdown-plugins.ts  # Custom markdown-it plugins
+│   ├── lo-utils.ts         # Learning object utilities
+│   ├── course-utils.ts     # Course tree manipulation
+│   ├── markdown-utils.ts   # Markdown processing
+│   └── markdown-plugins.ts # Custom markdown-it plugins
 └── services/
-    ├── lo-tree.ts           # Tree traversal and decoration
-    └── search.ts            # Search functionality
+    ├── lo-tree.ts          # Tree traversal and decoration
+    └── search.ts           # Search functionality
 ```
 
 #### Usage Example
@@ -383,7 +303,7 @@ function visitLo(lo: Lo, visitor: (lo: Lo) => void) {
 
 ### 2. Time Package (`packages/jsr/time`)
 
-**Package Name**: `@tutors/tutors-time-lib`
+**Package Name**: `@tutors/tutors-time-lib`  
 **Purpose**: Analytics, time tracking, and learning metrics
 
 #### Key Responsibilities
@@ -459,7 +379,7 @@ packages/jsr/time/src/
 
 ### 3. Gen Package (`packages/jsr/gen`)
 
-**Package Name**: `@tutors/tutors-gen-lib`
+**Package Name**: `@tutors/tutors-gen-lib`  
 **Purpose**: Course content generation from markdown source
 
 #### Key Responsibilities
@@ -469,6 +389,32 @@ packages/jsr/time/src/
 - **HTML Generation**: Create static HTML for tutors-lite
 - **Asset Processing**: Copy and organize course assets
 - **Template Rendering**: Vento-based HTML templates
+
+#### Generation Pipeline
+
+```
+Markdown Source Files
+        │
+        ▼
+┌─────────────────┐
+│  Course Builder │  ← Parse folder structure
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Resource Builder│  ← Extract metadata from markdown
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Template Engine │  ← Render with Vento (for HTML mode)
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Course Emitter  │  ← Write JSON or HTML output
+└─────────────────┘
+```
 
 #### Key Components
 
@@ -523,14 +469,14 @@ Example source structure:
 my-course/
 ├── properties.yaml         # Course metadata
 ├── topic-01/
-│   ├── unit-1/             # Unit container
-│   │   ├── book-a/         # Lab (folder with steps)
-│   │   │   ├── book-a.md   # Lab overview
-│   │   │   ├── 01.md       # Step 1
-│   │   │   ├── 02.md       # Step 2
-│   │   │   └── archives/   # Archives
-│   │   ├── talk-1.md       # Talk (markdown)
-│   │   └── video-1.md      # Video (markdown with video URL)
+│   ├── unit-1/            # Unit container
+│   │   ├── book-a/        # Lab (folder with steps)
+│   │   │   ├── book-a.md  # Lab overview
+│   │   │   ├── 01.md      # Step 1
+│   │   │   ├── 02.md      # Step 2
+│   │   │   └── archives/  # Archives
+│   │   ├── talk-1.md      # Talk (markdown)
+│   │   └── video-1.md     # Video (markdown with video URL)
 │   └── properties.yaml
 └── topic-02/
     └── ...
@@ -540,10 +486,10 @@ Generated output (JSON mode):
 
 ```
 json/
-├── tutors.json             # Course tree structure
+├── tutors.json            # Course tree structure
 ├── topic-01/
 │   ├── book-a/
-│   │   ├── book-a.json     # Lab step data
+│   │   ├── book-a.json   # Lab step data
 │   │   └── ...
 │   └── ...
 └── ...
@@ -551,7 +497,7 @@ json/
 
 ### 4. Tutors Package (`packages/jsr/tutors`)
 
-**Package Name**: `@tutors/reader` (or `@tutors/tutors`)
+**Package Name**: `@tutors/reader` (or `@tutors/tutors`)  
 **Purpose**: CLI entry point for course generation
 
 #### Key Responsibilities
@@ -600,24 +546,14 @@ console.log(`Course generated: ${args.output}`);
 
 ### 5. Tutors Lite Package (`packages/jsr/tutors-lite`)
 
-**Package Name**: `@tutors/tutors-lite`
+**Package Name**: `@tutors/tutors-lite`  
 **Purpose**: CLI entry point for static HTML course generation
 
 #### Key Responsibilities
 
-- **Static HTML Generation**: Produces self-contained HTML sites from course source folders
-- **Vento Templating**: Uses the Vento template engine to render course content into HTML pages
-- **Offline-Ready Output**: Generated sites work without a backend server or API
-
-#### Tutors vs Tutors Lite
-
-| Aspect | Tutors (`@tutors/reader`) | Tutors Lite (`@tutors/tutors-lite`) |
-|--------|--------------------------|-------------------------------------|
-| **Output** | `json/tutors.json` | `html/` folder with static site |
-| **Gen function** | `generateDynamicCourse()` | `generateStaticCourse()` |
-| **Templates** | None (JSON only) | Vento (`.vto`) templates |
-| **Viewer** | Reader web app fetches JSON | Self-contained, open in browser |
-| **Use case** | Full platform deployment | Lightweight / offline sharing |
+- **Static HTML Generation**: Produces a self-contained `html/` folder that can be opened locally or deployed to any static host
+- **Offline Capable**: Generated courses work without a backend — no authentication, analytics, or real-time features
+- **Template Rendering**: Uses Vento templates to produce responsive HTML pages for all learning object types
 
 #### Usage
 
@@ -629,28 +565,21 @@ deno run -A jsr:@tutors/tutors-lite
 deno run -A packages/jsr/tutors-lite/main.ts
 ```
 
+#### How It Differs from `tutors`
+
+| | `tutors` (JSON) | `tutors-lite` (HTML) |
+|---|---|---|
+| Output | `json/tutors.json` | `html/` folder with `index.html` per page |
+| Requires reader app | Yes | No — self-contained static site |
+| Analytics/auth | Supported via Supabase | Not available |
+| Hosting | Needs tutors reader deployment | Any static host or local file:// |
+
 #### File Structure
 
 ```
 packages/jsr/tutors-lite/
 ├── deno.json              # JSR package configuration
-├── main.ts                # CLI entry point
-└── readme.md              # Usage documentation
-```
-
-#### main.ts Structure
-
-```typescript
-import { parseCourse, generateStaticCourse, copyAssets } from "@tutors/tutors-gen-lib";
-
-// Parse course from current directory
-const [course, lr] = parseCourse(srcFolder);
-
-// Generate static HTML using Vento templates
-await generateStaticCourse(course, destFolder);
-
-// Copy assets (images, archives) to output
-copyAssets(lr, destFolder);
+└── main.ts                # CLI entry point
 ```
 
 ### JSR Publishing Workflow
@@ -702,75 +631,33 @@ The Svelte subsystem provides **reactive UI components**, **services**, and **st
 
 ### Architecture Overview
 
-```mermaid
-graph BT
-  subgraph "Layer 0 — Foundation"
-    model_lib["@tutors/tutors-model-lib"]
-    time_lib["@tutors/tutors-time-lib"]
-    logger["@tutors/logger"]
-  end
-
-  subgraph "Layer 1 — State"
-    runes["@tutors/runes"]
-  end
-
-  subgraph "Layer 2 — Core"
-    course["@tutors/course"]
-    a11y["@tutors/a11y"]
-    i18n["@tutors/i18n"]
-  end
-
-  subgraph "Layer 3 — Features"
-    themes["@tutors/themes"]
-    community["@tutors/community"]
-  end
-
-  subgraph "Layer 4 — Auth"
-    connect["@tutors/connect"]
-  end
-
-  subgraph "Layer 5 — UI"
-    ui_prim["@tutors/ui-primitives"]
-    ui_nav["@tutors/ui-navigators"]
-    ui_comp["@tutors/ui-components"]
-  end
-
-  runes --> model_lib
-  course --> runes
-  course --> logger
-  course --> model_lib
-  a11y --> runes
-  a11y --> course
-  i18n --> runes
-  i18n --> course
-  themes --> course
-  themes --> runes
-  themes --> logger
-  community --> course
-  community --> runes
-  community --> logger
-  connect --> community
-  connect --> course
-  connect --> runes
-  ui_prim --> themes
-  ui_prim --> i18n
-  ui_prim --> model_lib
-  ui_nav --> ui_prim
-  ui_nav --> connect
-  ui_nav --> themes
-  ui_nav --> community
-  ui_nav --> i18n
-  ui_nav --> a11y
-  ui_nav --> runes
-  ui_nav --> course
-  ui_nav --> model_lib
-  ui_comp --> ui_nav
-  ui_comp --> ui_prim
-  ui_comp --> themes
-  ui_comp --> community
-  ui_comp --> i18n
-  ui_comp --> a11y
-  ui_comp --> model_lib
+```
+┌─────────────────────────────────────────────────────────┐
+│              Svelte Package Ecosystem                    │
+│                                                           │
+│  ┌──────────────┐                                        │
+│  │ UI Components │  (Domain views, pre-compiled CSS)      │
+│  └──────┬────────┘                                        │
+│         │                                                  │
+│  ┌──────┴─────────┐                                       │
+│  │ UI Navigators  │  (Shell, navbars, layout switchers)   │
+│  └──────┬─────────┘                                       │
+│         │                                                  │
+│  ┌──────┴─────────┐                                       │
+│  │ UI Primitives  │  (Icon, Menu, Sidebar, shared comps)  │
+│  └──────┬─────────┘                                       │
+│         │                                                  │
+│  ┌──────┴──┐  ┌───────────┐  ┌────────┐  ┌──────────┐  │
+│  │ Connect │  │ Community │  │ Themes │  │  i18n    │  │
+│  │ (Auth)  │  │ (Anal.)   │  │(Styles)│  │  a11y    │  │
+│  └────┬────┘  └─────┬─────┘  └───┬────┘  └────┬─────┘  │
+│       └──────────────┴────────────┴────────────┘         │
+│                       │                                   │
+│  ┌──────────┐  ┌─────┴──────┐  ┌─────────────────────┐  │
+│  │  Runes   │  │   Course   │  │   Utils (logger)    │  │
+│  │ (State)  │  │(Processing)│  │                     │  │
+│  └──────────┘  └────────────┘  └─────────────────────┘  │
+└─────────────────────────────────────────────────────────┘
 ```
 
 ### Layer Structure
@@ -778,6 +665,7 @@ graph BT
 **Foundation (Layer 1)**:
 - `runes` - Reactive state management
 - `utils/logger` - Logging
+- `utils/runtime` - Server runtime seams: the clock (`now()`, frozen by `HARNESS_NOW` for the release harness) and the `/version` endpoint. No dependencies
 
 **Core (Layer 2)**:
 - `course` - Course data processing
@@ -787,15 +675,16 @@ graph BT
 **Features (Layer 3)**:
 - `themes` - Theme management
 - `community` - Analytics and presence
+- `connect` - Authentication
 
 **UI (Layer 4)**:
-- `ui-primitives` - Primitive UI components and shared components (Icon, Menu, Sidebar, Image, LoContextTree, LoReference, StudentCard)
-- `ui-navigators` - Navigation components (MainNavigator, SecondaryNavigator, Footer, TutorsShell)
+- `ui-primitives` - Primitive UI components and shared components (Icon, Menu, Sidebar, Image, LoContextTree, StudentCard)
+- `ui-navigators` - Navigation components (MainNavigator, SecondaryNavigator, Footer, TutorsShell, buttons, layout switchers)
 - `ui-components` - Domain UI components (learning objects, time views) + pre-compiled CSS
 
 ### 1. Runes Package (`packages/svelte/runes`)
 
-**Package Name**: `@tutors/runes`
+**Package Name**: `@tutors/runes`  
 **Purpose**: Global reactive state using Svelte 5 runes
 
 #### Key Exports
@@ -873,7 +762,7 @@ export const currentCourse = {
 
 ### 2. Course Package (`packages/svelte/course`)
 
-**Package Name**: `@tutors/course`
+**Package Name**: `@tutors/course`  
 **Purpose**: Course loading, processing, and markdown rendering
 
 #### Sub-modules
@@ -949,7 +838,7 @@ const html = await markdownService.renderMarkdown(content);
 
 ### 3. Themes Package (`packages/svelte/themes`)
 
-**Package Name**: `@tutors/themes`
+**Package Name**: `@tutors/themes`  
 **Purpose**: UI theming, icons, and display modes
 
 #### Features
@@ -1015,7 +904,7 @@ packages/svelte/themes/src/
 
 ### 4. Community Package (`packages/svelte/community`)
 
-**Package Name**: `@tutors/community`
+**Package Name**: `@tutors/community`  
 **Purpose**: Analytics, real-time presence, and social features
 
 #### Sub-services
@@ -1026,11 +915,11 @@ packages/svelte/themes/src/
 
 **Presence Service**:
 - Course-specific student presence
-- Real-time status updates via Supabase Realtime Broadcast channels
+- Real-time status updates via Supabase Realtime
 
 **Live Service**:
 - Platform-wide live activity monitoring
-- Online student count via Supabase Realtime channels
+- Online student count
 
 **Catalogue Service**:
 - Course directory management
@@ -1053,7 +942,7 @@ packages/svelte/community/src/
 
 ### 5. Connect Package (`packages/svelte/connect`)
 
-**Package Name**: `@tutors/connect`
+**Package Name**: `@tutors/connect`  
 **Purpose**: User authentication and session management
 
 #### Features
@@ -1079,20 +968,27 @@ packages/svelte/connect/src/
 
 ### 6. UI Primitives Package (`packages/svelte/ui-primitives`)
 
-**Package Name**: `@tutors/ui-primitives`
+**Package Name**: `@tutors/ui-primitives`  
 **Purpose**: Low-level, reusable primitive UI components and shared components
 
 #### Components
 
+**Primitive Components**:
 - **Icon** - Iconify-based icon rendering with theme-aware type mapping
 - **IconBar** - Horizontal icon strip
 - **Image** - Responsive image with fallback
 - **Menu / MenuItem** - Dropdown menu system
 - **Sidebar** - Collapsible navigation sidebar
 - **SetuIcon / TutorsIcon** - Branding icons
+
+**Shared Components**:
 - **LoContextTree** - Learning object context tree display
-- **LoReference** - Learning object reference component
+- **LoReference** - Learning object reference display
 - **StudentCard** - Student information card
+
+**Utilities**:
+- **animations.ts** - Shared animation helpers
+- **sanitize.ts** - HTML sanitization utilities
 
 #### File Structure
 
@@ -1119,38 +1015,34 @@ packages/svelte/ui-primitives/src/
 
 ### 7. UI Navigators Package (`packages/svelte/ui-navigators`)
 
-**Package Name**: `@tutors/ui-navigators`
+**Package Name**: `@tutors/ui-navigators`  
 **Purpose**: Navigation and shell components
 
-This package sits between `ui-primitives` and `ui-components` in the dependency chain (`ui-components --> ui-navigators --> ui-primitives`). It provides the main application shell and all navigation-related components.
+This package sits between `ui-primitives` and `ui-components` in the dependency chain. It provides the main application shell, navigation bars, and layout switching components. The one-directional dependency flow is: `ui-components` -> `ui-navigators` -> `ui-primitives`.
 
-#### Components
+#### Key Components
 
-- **TutorsShell.svelte** - Main application shell providing the top-level layout
-- **MainNavigator.svelte** - Primary course navigation
-- **SecondaryNavigator.svelte** - Secondary/contextual navigation
-- **LayoutMenu.svelte** - Layout switching menu
-- **Calendar.svelte** - Calendar navigation component
-- **CourseContext.svelte** - Course context display
+- **TutorsShell** - Main app shell providing header, main content area, and footer layout
+- **MainNavigator** - Primary navigation bar
+- **SecondaryNavigator** - Secondary navigation bar
+- **LayoutMenu** - Layout switching menu
+- **Calendar** - Calendar view component
+- **CourseContext** - Course context display
 
 #### Subdirectories
 
-- **buttons/** - Navigation buttons (Breadcrumbs, Search, ToC)
-- **footers/** - Footer components
-- **layout/** - Layout components (ThemeSwitcher, LanguageSwitcher)
-- **titles/** - Title components (CourseTitle, TutorsTitle)
-- **tutors-connect/** - Authentication UI (AnonProfile, ConnectedProfile)
-
-#### Dependencies
-
-`@tutors/ui-primitives`, `@tutors/themes`, `@tutors/i18n`, `@tutors/a11y`, `@tutors/runes`, `@tutors/community`, `@tutors/connect`, `@tutors/course`, `@tutors/logger`, `@tutors/tutors-model-lib`
+- `buttons/` - Navigation buttons (Breadcrumbs, SearchButton, TocButton)
+- `footers/` - Footer components (Footer, TutorsMessage)
+- `layout/` - Layout switchers (ThemeSwitcher, LanguageSwitcher)
+- `titles/` - Title components (CourseTitle, TutorsTitle)
+- `tutors-connect/` - Authentication UI (AnonProfile, ConnectedProfile)
 
 #### File Structure
 
 ```
 packages/svelte/ui-navigators/src/
 ├── index.ts
-├── TutorsShell.svelte       # Main app shell
+├── TutorsShell.svelte
 ├── MainNavigator.svelte
 ├── SecondaryNavigator.svelte
 ├── LayoutMenu.svelte
@@ -1163,40 +1055,44 @@ packages/svelte/ui-navigators/src/
 └── tutors-connect/
 ```
 
-> **Note**: `TutorsShell.svelte` provides the main application shell that wraps all page content, integrating the navigators, footer, and layout controls into a unified structure.
+#### Dependencies
+
+- `@tutors/ui-primitives` - Primitive UI components
+- `@tutors/themes` - Theming and display modes
+- `@tutors/i18n` - Internationalization
+- `@tutors/a11y` - Accessibility
+- `@tutors/runes` - Reactive state
+- `@tutors/community` - Analytics and presence
+- `@tutors/connect` - Authentication
+- `@tutors/course` - Course processing
+- `@tutors/logger` - Logging
+- `@tutors/tutors-model-lib` - Core data models
 
 ### 8. UI Components Package (`packages/svelte/ui-components`)
 
-**Package Name**: `@tutors/ui-components`
+**Package Name**: `@tutors/ui-components`  
 **Purpose**: High-level, domain-specific UI components
 
-This package depends on both `@tutors/ui-navigators` and `@tutors/ui-primitives`. It produces a pre-compiled CSS file (`dist/style.css`) containing all Tailwind utilities and Skeleton theme styles required by the applications. Its `styles.css` uses `@source` directives to scan `ui-navigators` and `ui-primitives` for Tailwind class detection. It must be built before running any app.
+This package depends on both `@tutors/ui-navigators` and `@tutors/ui-primitives` and produces a pre-compiled CSS file (`dist/style.css`) containing all Tailwind utilities and Skeleton theme styles required by the applications. Its `styles.css` uses `@source` directives to scan `ui-navigators` and `ui-primitives` for Tailwind class detection. It must be built before running any app.
 
 #### Component Categories
 
-```mermaid
-graph TD
-  ui_comp["@tutors/ui-components"]
+**Learning Object Components** (`learning-objects/`):
+- `content/` - Lab, Notebook, Talk, Video, Calendar, Note
+- `layout/` - Cards, Panels, Wall, Units
+- `structure/` - Context, LoContext, CourseContext
 
-  ui_comp --> ui_nav["@tutors/ui-navigators<br/>TutorsShell, MainNavigator<br/>SecondaryNavigator, Footer"]
-  ui_comp --> primitives["@tutors/ui-primitives<br/>Icon, Image, Menu, Sidebar"]
-  ui_comp --> lo["Learning Objects"]
-  ui_comp --> time_comp["Time Components"]
+**Time Components** (`time/`):
+- Catalogue, Students, Courses
 
-  lo --> content["Content<br/>Lab, Notebook, Talk<br/>Video, Calendar, Note"]
-  lo --> layout_lo["Layout<br/>Cards, Panels, Wall, Units"]
-  lo --> structure["Structure<br/>Context, LoContext"]
-
-  time_comp --> catalogue_view["Catalogue"]
-  time_comp --> students["Students"]
-  time_comp --> courses["Courses"]
-```
+**Utilities** (`utils/`):
+- Grid helpers
 
 #### File Structure
 
 ```
 packages/svelte/ui-components/src/
-├── styles.css              # Tailwind/Skeleton entry point (@source scans ui-navigators, ui-primitives)
+├── styles.css              # Tailwind/Skeleton entry point (with @source directives)
 ├── _dynamic-classes.css    # Safelist for @apply directives
 ├── _safelist.svelte        # Safelist for dynamic template classes
 ├── learning-objects/
@@ -1210,7 +1106,7 @@ packages/svelte/ui-components/src/
 ### 9. Utility Packages (`packages/svelte/utils/`)
 
 **Logger** (`logger/`):
-- `@tutors/logger` - Logging utility using loglevel
+- `@tutors/logger` - Structured logging (JSON in production, request lifecycle hooks)
 
 **Accessibility** (`a11y/`):
 - `@tutors/a11y` - Reduced motion detection
@@ -1235,11 +1131,10 @@ app/
 │   │   └── [dynamic]/
 │   ├── hooks.client.ts    # Client hooks
 │   ├── hooks.server.ts    # Server hooks
-│   ├── app.css            # Global styles
-│   ├── app.html           # HTML template
-│   └── app.d.ts           # TypeScript definitions
-├── static/                # Static assets
-├── svelte.config.js
+│   ├── app.css           # Global styles
+│   ├── app.html          # HTML template
+│   └── app.d.ts          # TypeScript definitions
+├── static/               # Static assets
 ├── vite.config.ts
 └── package.json
 ```
@@ -1274,7 +1169,6 @@ PUBLIC_ANON_MODE=TRUE
 # Or full mode with services
 PUBLIC_SUPABASE_URL=...
 PUBLIC_SUPABASE_ANON_KEY=...
-PUBLIC_PARTY_KIT_MAIN_ROOM=...
 PRIVATE_AUTH_GITHUB_ID=...
 PRIVATE_AUTH_GITHUB_SECRET=...
 PRIVATE_AUTH_SECRET=...
@@ -1298,108 +1192,123 @@ PRIVATE_AUTH_SECRET=...
 - Current page views
 - Real-time updates via Supabase Realtime
 
+### 4. Time App (`apps/time`)
+
+**Purpose**: Student activity and time tracking dashboard
+
+**URL**: [time.tutors.dev](https://time.tutors.dev)
+
+**Features**:
+- Calendar heatmaps showing daily/weekly student activity
+- AG Grid-based lab and calendar data views with sortable columns
+- Median engagement metrics across students
+- Per-student activity drilldown with avatar, sentiment, and online status
+- Moodle assignment sync via server-side API integration
+
+**Key Dependencies**:
+- `@tutors/tutors-time-lib` (workspace) — analytics models, Supabase queries, calendar/lab data structures
+- `ag-grid-community` — data grids for lab steps, calendar entries, and median views
+- `jheat.js` — calendar heatmap visualisation
+- `@supabase/supabase-js` — direct Supabase access for time data
+
+**Route Structure**:
+- `/` — Course ID entry dialog
+- `/[courseid]` — Redirects to medians view
+- `/[courseid]/medians` — Median engagement across all students
+- `/[courseid]/calendar` — Calendar views (by day, by week, raw)
+- `/[courseid]/lab` — Lab views (by step, by lab, learning records)
+- `/[courseid]/[studentid]` — Individual student calendar view
+- `/[courseid]/assignments` — Moodle assignment data
+
+**Notes**:
+- Runs with `ssr = false` — all rendering is client-side (Supabase client is browser-only)
+- Uses AG Grid in legacy theme mode (`theme: "legacy"`) for compatibility with v35 Theming API
+- Dev server runs on port 5176
+
 ---
 
 ## Services
 
-### Supabase Realtime (Presence & Live Activity)
+### Supabase Realtime (Broadcast Channels)
 
-**Purpose**: Real-time broadcast channels for student presence and live activity tracking
+**Purpose**: Real-time presence and live activity tracking
 
-Tutors uses **Supabase Realtime Broadcast channels** for all live presence features. Each course gets its own channel, and a global channel tracks platform-wide activity. This replaces the previous PartyKit WebSocket server for presence.
+Real-time features use **Supabase Realtime Broadcast channels**, which are part of the existing Supabase project — no separate server or deployment is required.
 
 #### Architecture
 
-```mermaid
-flowchart TD
-  subgraph Clients
-    b1["Browser 1"]
-    b2["Browser 2"]
-    b3["Browser 3"]
-  end
-
-  subgraph Supabase["Supabase Realtime"]
-    subgraph Channels
-      ch_all["Channel: tutors-all-course-access"]
-      ch_a["Channel: course-a"]
-      ch_b["Channel: course-b"]
-    end
-  end
-
-  b1 <-->|"broadcast: lo-event"| ch_a
-  b1 <-->|"broadcast: lo-event"| ch_all
-  b2 <-->|"broadcast: lo-event"| ch_a
-  b2 <-->|"broadcast: lo-event"| ch_all
-  b3 <-->|"broadcast: lo-event"| ch_b
-  b3 <-->|"broadcast: lo-event"| ch_all
+```
+┌─────────────────────────────────────────────────────────┐
+│              Supabase Realtime Broadcast                  │
+│                                                           │
+│  ┌──────────────────────────────────────────────────┐   │
+│  │              Supabase Project                     │   │
+│  │  ┌────────────────┐    ┌────────────────┐        │   │
+│  │  │ Global Channel │    │ Course Channel │  × N   │   │
+│  │  │ (all-course-   │    │ ({courseId})    │        │   │
+│  │  │  access)       │    │                │        │   │
+│  │  └───────┬────────┘    └───────┬────────┘        │   │
+│  │          └──────────┬──────────┘                  │   │
+│  │                     │                              │   │
+│  │          Channel-based broadcasting               │   │
+│  │          (one channel per course)                 │   │
+│  └──────────────────────────────────────────────────┘   │
+│                        ▲                                 │
+│                        │                                 │
+│               ┌────────┴────────┐                       │
+│               │    Clients      │                       │
+│               │   (Browsers)    │                       │
+│               └─────────────────┘                       │
+└─────────────────────────────────────────────────────────┘
 ```
 
-#### How It Works
+#### Client Usage
 
-The `presenceService` and `liveService` in the `@tutors/community` package use Supabase's `channel()` API with broadcast mode:
+Readers never join a course channel: a course channel delivers every student's page view to every other student, so its cost grows with the square of the class. While activity sharing is enabled, the reader stores each page view in `tutors-connect-latest`, updates its own activity locally, sends the page view to its own server (`POST /api/live/activity`), and reads the course online list from `tutors-connect-latest` (rows from the last 5 minutes) on entry and every 60 seconds while the tab is visible. The browser broadcasts nothing; the reader's server publishes to Tutors Live within a daily budget (below). Tutors Live's course page is the only subscriber to a course channel, and its landing page the only subscriber to the platform-wide feed, each only while mounted.
 
-1. **Global channel** (`tutors-all-course-access`) — tracks all student activity across the platform, used by the Live app
-2. **Course channel** (keyed by `courseId`) — tracks students currently viewing a specific course
-
-Both channels use the `lo-event` broadcast event type. When a student navigates to a learning object, the client sends an `LoRecord` payload containing course ID, learning object route, title, and user info.
-
-#### Presence Service
+Every channel and broadcast goes through the Realtime port, `@tutors/realtime`, and the tab's one gateway in `@tutors/community` (`services/realtime.ts`). Only the Supabase adapter, `@tutors/realtime-supabase`, calls `.channel()`; `tests/architecture/realtime-boundary.test.ts` holds that line. The gateway keeps a tab within its budget (10 broadcasts a second, 3 joined channels), leaves a failing channel and rejoins it after a full-jitter exponential backoff (1 s doubling to 30 s), and counts what each topic sends, receives, drops and refuses. Topic names come from `topics`, so they change in one place.
 
 ```typescript
-// Subscribe to a course channel
-this.channelCourse = supabase
-  .channel(courseId, { config: { broadcast: { self: true } } })
-  .on("broadcast", { event: "lo-event" }, this.studentListener.bind(this))
-  .subscribe();
+import { topics } from "@tutors/realtime";
+import { realtime } from "./realtime.ts";
 
-// Send a learning object event
-this.channelAll?.send({
-  type: "broadcast",
-  event: "lo-event",
-  payload: loRecord
+// Publish without joining: one HTTP request, delivered only to the topic's subscribers
+realtime.publish(topics.courseActivity(courseId), "lo-event", loRecord);
+
+// Join (Tutors Live only); the gateway shares the channel if this tab already joined it
+const subscription = realtime.subscribe(topics.courseActivity(courseId), {
+  events: ["lo-event"],
+  onMessage: (event, payload) => {
+    // Handle presence update
+  }
 });
+
+subscription.send("lo-event", loRecord); // false while the link is degraded or the budget is spent
+await subscription.close();
 ```
 
-#### Live Service
+#### Tutors Live's daily budget
 
-```typescript
-// Subscribe to global activity
-channelAll = supabase
-  .channel("tutors-all-course-access", { config: { broadcast: { self: true } } })
-  .on("broadcast", { event: "lo-event" }, this.broadcastListener.bind(this))
-  .subscribe();
+Supabase bills one Realtime message per send plus one per subscriber it is delivered to. The daily budget is 160k messages: 120k for Tutors Live, 30k for whiteboards and presence, 10k headroom. Live's share is enforced in the database by `supabase/migrations/20261016_realtime_live_budget.sql`:
+
+- Each Tutors Live tab calls `realtime_watch(topic, watcher)` when it opens the platform feed or a course page and every 60 seconds after; a watcher not heard from for 90 seconds no longer counts.
+- For each page view, the reader's server (`apps/reader/src/routes/api/live/activity`, logic in `@tutors/community/services/live-activity.ts`) calls `realtime_claim_live_publish(course_id)`, which returns the topics to publish to and charges them (1 + watchers each) to today's `realtime_budget` row. Topics nobody watches cost nothing. From 70% of the day's budget only the course feed is published (the platform feed carries every course and costs most); from 90% nothing is, and Live reads stored activity from `tutors-connect-latest` every 60 seconds instead. If the claim fails (the migration not applied, the database unreachable) the server publishes nothing.
+- The day is the UTC day. The server publishes each event as it arrives, with the public anon key; batching events over a few seconds needs state that outlives a request, which the reader's Netlify functions do not keep, so it waits for the reader to run as one long-lived server on OpenShift. Private topics, and with them a key Live tabs cannot share, follow in phase 4 (#477).
+
+Operator steps, in order:
+
+1. Apply the migration to the Supabase project (SQL editor, or `supabase db push`). Until it is applied the new reader publishes nothing to Live, and Live reads stored activity every 60 seconds.
+2. Deploy the reader and Tutors Live. Readers still on the previous release keep broadcasting from the browser until they reload; Live accepts those events too.
+
+Read today's spend, and change the budget or the thresholds:
+
+```sql
+select * from realtime_budget order by day desc limit 7;
+select * from realtime_settings;
+update realtime_settings set live_daily_budget = 150000;           -- messages a day for Live
+update realtime_settings set slow_at = 0.7, pause_at = 0.9;        -- fractions of the budget
+update realtime_settings set live_daily_budget = 0;                -- stop publishing to Live until raised again
 ```
-
-The `broadcastListener` delegates to both `courseListener` (tracking which courses are active) and `studentListener` (tracking individual students).
-
-### PartyKit Service (`services/party`)
-
-**Purpose**: Whiteboard collaboration via Excalidraw
-
-PartyKit is retained solely for the **whiteboard collaboration** feature, which uses Excalidraw with Durable Object storage for persistent whiteboard state.
-
-#### Whiteboard Server
-
-```typescript
-// whiteboard-server.ts — Durable Object storage for Excalidraw scenes
-export default class WhiteboardServer implements Party.Server {
-  constructor(readonly room: Party.Room) {}
-
-  async onMessage(message: string, sender: Party.Connection) {
-    // Persist and broadcast whiteboard updates
-    await this.room.storage.put("scene", message);
-    this.room.broadcast(message, [sender.id]);
-  }
-
-  async onConnect(conn: Party.Connection) {
-    // Send stored scene to new connections
-    const scene = await this.room.storage.get("scene");
-    if (scene) conn.send(scene as string);
-  }
-}
-```
-
-The whiteboard is embedded in the Reader app via `excalidraw-editor.html` using `PartySocket` for real-time collaboration.
 
 ---
 
@@ -1407,26 +1316,52 @@ The whiteboard is embedded in the Reader app via `excalidraw-editor.html` using 
 
 ### End-to-End Flow
 
-```mermaid
-flowchart LR
-  author["Author Creates Content<br/>Markdown, YAML, Assets, Folder Structure"]
-
-  author --> tutors_cli["tutors CLI<br/><i>deno run -A jsr:@tutors/reader</i>"]
-  author --> lite_cli["tutors-lite CLI<br/><i>deno run -A jsr:@tutors/tutors-lite</i>"]
-
-  tutors_cli --> builder["Course Builder<br/>Scan folders & identify Lo types"]
-  lite_cli --> builder
-
-  builder --> resource["Resource Builder<br/>Parse markdown frontmatter & content"]
-  resource --> emitter{"Course Emitter"}
-
-  emitter -->|JSON Mode| json["json/tutors.json<br/>+ markdown files"]
-  emitter -->|HTML Mode| html["html/ folder<br/>Self-contained static site"]
-
-  json --> cdn["Deploy to CDN<br/>Netlify / Vercel / GitHub Pages"]
-  html --> cdn
-
-  cdn --> reader_app["Reader Application<br/>Fetch & render course"]
+```
+Author Creates Content
+        │
+        ├─ Markdown files (.md)
+        ├─ YAML metadata (properties.yaml)
+        ├─ Assets (images, PDFs, videos)
+        └─ Folder structure
+        │
+        ▼
+┌────────────────────────────────────────┐
+│  tutors CLI                             │
+│  $ deno run -A jsr:@tutors/reader      │
+│  $ deno run -A jsr:@tutors/tutors-lite │
+└──────────────┬─────────────────────────┘
+               │
+               ▼
+┌────────────────────────────────────────┐
+│  Course Builder (@tutors/tutors-gen-lib)│
+│  - Scan folders                         │
+│  - Identify Lo types                    │
+│  - Parse markdown frontmatter           │
+└──────────────┬─────────────────────────┘
+               │
+               ▼
+┌────────────────────────────────────────┐
+│  Course Emitter                         │
+│  - Generate tutors.json                 │
+│  - OR generate HTML (tutors-lite)       │
+└──────────────┬─────────────────────────┘
+               │
+               ▼
+        json/ or html/
+        (Deployable output)
+        │
+        ▼
+┌────────────────────────────────────────┐
+│  Deploy to CDN                          │
+│  - Netlify, Vercel, GitHub Pages, etc.  │
+└──────────────┬─────────────────────────┘
+               │
+               ▼
+┌────────────────────────────────────────┐
+│  Reader Application                     │
+│  - Fetch tutors.json                    │
+│  - Render course with UI components     │
+└────────────────────────────────────────┘
 ```
 
 ### Generation Modes
@@ -1452,6 +1387,9 @@ Output: `html/` folder with self-contained static site
 ```
 course-folder/
 ├── properties.yaml          # Course metadata
+│   # title: Course Title
+│   # summary: Course description
+│   # icon: course-icon
 │
 ├── topic-01/
 │   ├── properties.yaml      # Topic metadata
@@ -1523,67 +1461,79 @@ Additional context...
 
 ### Course Loading Sequence
 
-```mermaid
-sequenceDiagram
-  actor User
-  participant Browser
-  participant SvelteKit as SvelteKit Router
-  participant CourseService as courseService
-  participant CDN as CDN (Static JSON)
-  participant Runes as Runes (State)
-  participant UI as UI Components
-
-  User->>Browser: Navigate to /course/[id]
-  Browser->>SvelteKit: Route match
-  SvelteKit->>CourseService: readCourse(id, fetch)
-  CourseService->>CDN: GET tutors.json
-  CDN-->>CourseService: Course JSON
-  CourseService->>CourseService: Decorate tree (lo-tree)
-  CourseService->>CourseService: Cache in courses Map
-  CourseService->>Runes: currentCourse.value = course
-  Runes-->>UI: Reactive update ($effect)
-  UI-->>Browser: Render cards & panels
-  Browser-->>User: Course displayed
+```
+1. User navigates to /course/[courseid]
+         │
+         ▼
+2. +page.ts (load function)
+   await courseService.readCourse(courseid, fetch)
+         │
+         ▼
+3. courseService.readCourse():
+   - Fetch https://[courseUrl]/tutors.json
+   - Parse JSON
+   - Decorate tree with lo-tree.ts
+   - Cache in courseService.courses Map
+   - Update currentCourse rune
+         │
+         ▼
+4. +page.svelte renders course
+   - Uses currentCourse.value
+   - Displays cards/panels via @tutors/ui-components
+         │
+         ▼
+5. analyticsService.reportPageLoad()
+   - Send event to Supabase
+   - Broadcast presence via Supabase Realtime
 ```
 
 ### Lab Viewing Sequence
 
-```mermaid
-sequenceDiagram
-  actor User
-  participant UI as Lab Component
-  participant CourseService as courseService
-  participant LiveLab
-  participant Markdown as markdownService
-  participant Runes
-
-  User->>UI: Click lab card
-  UI->>CourseService: readLab(course, labId, fetch)
-  CourseService->>LiveLab: Create instance
-  LiveLab->>LiveLab: Fetch step markdown files
-  LiveLab->>Markdown: renderMarkdown(content)
-  Markdown-->>LiveLab: HTML output
-  CourseService->>CourseService: Cache in labs Map
-  CourseService->>Runes: currentLo.value = lab
-  Runes-->>UI: Reactive update
-  UI-->>User: Display step 1
-
-  User->>UI: Click next step
-  UI->>LiveLab: loadStep(stepIndex)
-  LiveLab->>Runes: currentLabStepIndex.value = n
-  Runes-->>UI: Reactive update
-  UI-->>User: Display step n
+```
+1. User clicks lab card
+         │
+         ▼
+2. Navigate to /lab/[courseid]/[...labid]
+         │
+         ▼
+3. +page.ts loads lab
+   await courseService.readLab(course, labid, fetch)
+         │
+         ▼
+4. courseService.readLab():
+   - Create LiveLab instance
+   - Fetch lab markdown files
+   - Convert to HTML with markdownService
+   - Cache in courseService.labs Map
+         │
+         ▼
+5. +page.svelte renders Lab component
+   - Displays steps with navigation
+   - Current step from currentLabStepIndex rune
+         │
+         ▼
+6. User navigates steps
+   - lab.loadStep(stepIndex)
+   - Updates currentLabStepIndex
+   - Fetches step markdown if not cached
 ```
 
 ### Analytics & Presence Flow
 
-```mermaid
-flowchart TD
-  user["User views page"]
-  user --> report["analyticsService.reportPageLoad(lo)"]
-
-  report --> supabase["Supabase (persistent analytics)<br/>Insert learning_event row<br/>Update user_session"]
-  report --> realtime["Supabase Realtime (live broadcast)<br/>Send lo-event to course channel<br/>Send lo-event to global channel<br/>Live view shows current students"]
+```
+User views page
+      │
+      ▼
+analyticsService.reportPageLoad(lo)
+      │
+      ├─► Supabase (persistent analytics)
+      │   - Insert learning_event row
+      │   - Update user_session
+      │
+      └─► Supabase Realtime (broadcast channel)
+          - Send presence message to channel
+          - Other clients receive update
+          - Live view shows current students
 ```
 
 ---
@@ -1592,86 +1542,61 @@ flowchart TD
 
 ### Package Dependencies
 
-```mermaid
-graph TD
-  subgraph Applications
-    reader["reader"]
-    catalogue["catalogue"]
-    live["live"]
-  end
-
-  ui_prim["@tutors/ui-primitives"]
-  ui_nav["@tutors/ui-navigators"]
-  ui_comp["@tutors/ui-components"]
-  connect["@tutors/connect"]
-  community["@tutors/community"]
-  themes["@tutors/themes"]
-  i18n["@tutors/i18n"]
-  a11y["@tutors/a11y"]
-  course["@tutors/course"]
-  runes["@tutors/runes"]
-  logger["@tutors/logger"]
-  model["@tutors/tutors-model-lib"]
-  time["@tutors/tutors-time-lib"]
-
-  reader --> ui_comp
-  reader --> ui_nav
-  reader --> ui_prim
-  catalogue --> ui_comp
-  catalogue --> ui_nav
-  catalogue --> ui_prim
-  live --> ui_comp
-  live --> ui_nav
-  live --> ui_prim
-  reader --> time
-  catalogue --> time
-  live --> time
-
-  ui_comp --> ui_nav
-  ui_comp --> ui_prim
-  ui_comp --> themes
-  ui_comp --> community
-  ui_comp --> i18n
-  ui_comp --> a11y
-  ui_comp --> model
-
-  ui_nav --> ui_prim
-  ui_nav --> connect
-  ui_nav --> themes
-  ui_nav --> community
-  ui_nav --> i18n
-  ui_nav --> a11y
-  ui_nav --> runes
-  ui_nav --> course
-  ui_nav --> model
-
-  ui_prim --> themes
-  ui_prim --> i18n
-  ui_prim --> model
-
-  connect --> community
-  connect --> course
-  connect --> runes
-
-  community --> course
-  community --> runes
-  community --> logger
-
-  themes --> course
-  themes --> runes
-  themes --> logger
-
-  i18n --> runes
-  i18n --> course
-
-  a11y --> runes
-  a11y --> course
-
-  course --> runes
-  course --> logger
-  course --> model
-
-  runes --> model
+```
+Applications (reader, catalogue, live, time)
+        │
+        ├─► @tutors/ui-components
+        │   ├─► @tutors/ui-navigators
+        │   │   ├─► @tutors/ui-primitives
+        │   │   │   ├─► @tutors/themes
+        │   │   │   ├─► @tutors/i18n
+        │   │   │   └─► @tutors/tutors-model-lib
+        │   │   │
+        │   │   ├─► @tutors/connect
+        │   │   │   ├─► @tutors/community
+        │   │   │   ├─► @tutors/course
+        │   │   │   └─► @tutors/runes
+        │   │   │
+        │   │   ├─► @tutors/themes
+        │   │   ├─► @tutors/community
+        │   │   ├─► @tutors/i18n
+        │   │   ├─► @tutors/a11y
+        │   │   ├─► @tutors/runes
+        │   │   ├─► @tutors/course
+        │   │   ├─► @tutors/logger
+        │   │   └─► @tutors/tutors-model-lib
+        │   │
+        │   ├─► @tutors/ui-primitives
+        │   │
+        │   ├─► @tutors/community
+        │   │   ├─► @tutors/course
+        │   │   │   ├─► @tutors/runes
+        │   │   │   │   └─► @tutors/tutors-model-lib
+        │   │   │   ├─► @tutors/logger
+        │   │   │   └─► @tutors/tutors-model-lib
+        │   │   ├─► @tutors/runes
+        │   │   └─► @tutors/logger
+        │   │
+        │   ├─► @tutors/themes
+        │   │   ├─► @tutors/course
+        │   │   ├─► @tutors/runes
+        │   │   └─► @tutors/logger
+        │   │
+        │   ├─► @tutors/i18n
+        │   │   ├─► @tutors/runes
+        │   │   └─► @tutors/course
+        │   │
+        │   ├─► @tutors/a11y
+        │   │   ├─► @tutors/runes
+        │   │   └─► @tutors/course
+        │   │
+        │   └─► @tutors/tutors-model-lib
+        │
+        ├─► @tutors/ui-navigators
+        │
+        ├─► @tutors/ui-primitives
+        │
+        └─► @tutors/tutors-time-lib
 ```
 
 ### Dependency Layers (Bottom-Up)
@@ -1685,7 +1610,7 @@ graph TD
 - `@tutors/runes` → model
 
 **Layer 2** (depends on runes + foundation):
-- `@tutors/course` → runes, logger, model
+- `@tutors/course` → runes, runtime, logger, model
 - `@tutors/a11y` → runes, course
 - `@tutors/i18n` → runes, course
 
@@ -1697,12 +1622,13 @@ graph TD
 - `@tutors/connect` → community, course, runes, model
 
 **Layer 5** (UI):
-- `@tutors/ui-primitives` → themes, i18n, model
-- `@tutors/ui-navigators` → ui-primitives, connect, themes, community, i18n, a11y, runes, course, model
+- `@tutors/ui-primitives` → themes, i18n, model, runes, a11y, community
+- `@tutors/ui-navigators` → ui-primitives, themes, i18n, a11y, runes, community, connect, course, logger, model
 - `@tutors/ui-components` → ui-navigators, ui-primitives + all packages
 
 **Layer 6** (applications):
 - `reader`, `catalogue`, `live` → ui-primitives, ui-navigators, ui-components + other packages
+- `time` → @tutors/tutors-time-lib, ag-grid-community, jheat.js, @supabase/supabase-js (standalone dashboard, does not consume Svelte UI packages)
 
 ---
 
@@ -1710,41 +1636,28 @@ graph TD
 
 ### State Management Flow
 
-```mermaid
-flowchart LR
-  subgraph Sources
-    cdn[("CDN<br/>tutors.json<br/>Markdown, PDFs, Images")]
-    supabase[("Supabase<br/>Learning events<br/>User sessions<br/>Analytics")]
-    realtime[("Supabase Realtime<br/>Broadcast channels<br/>Live presence")]
-    auth[("Auth.js<br/>GitHub OAuth<br/>Session tokens")]
-  end
-
-  subgraph Services
-    cs["courseService"]
-    as["analyticsService"]
-    ps["presenceService"]
-    co["connectService"]
-  end
-
-  subgraph State
-    runes["Runes<br/>currentCourse<br/>currentLo<br/>currentLabStepIndex"]
-  end
-
-  subgraph UI
-    components["Svelte Components<br/>$effect() reactive rendering"]
-  end
-
-  cdn --> cs
-  supabase --> as
-  realtime --> ps
-  auth --> co
-
-  cs --> runes
-  as --> runes
-  ps --> runes
-  co --> runes
-
-  runes --> components
+```
+User Action (e.g., click lab card)
+        │
+        ▼
+Event Handler in UI Component
+        │
+        ▼
+Call Service Method
+  courseService.readLab()
+        │
+        ▼
+Service Updates State
+  - Fetch data
+  - Process data
+  - Update rune: currentLo.value = lab
+        │
+        ▼
+Reactive Components Re-render
+  $effect(() => { ... })
+        │
+        ▼
+UI Updates
 ```
 
 ### Data Sources
@@ -1760,12 +1673,12 @@ flowchart LR
 - Course catalogue
 - Analytics data
 
-**Supabase Realtime (Broadcast Channels)**:
-- Real-time presence via `lo-event` broadcasts
-- Live student count across courses
-- Current page views per course channel
+**Supabase Realtime (Broadcast)**:
+- Real-time presence
+- Live student count
+- Current page views
 
-**Auth.js (OAuth)**:
+**Better Auth (OAuth)**:
 - User authentication
 - Session tokens
 
@@ -1793,17 +1706,16 @@ pnpm dev
 **Anonymous Mode** (no backend):
 
 ```bash
-# apps/reader/.env
+# .env (repository root)
 PUBLIC_ANON_MODE=TRUE
 ```
 
 **Full Mode** (with services):
 
 ```bash
-# apps/reader/.env
+# .env (repository root)
 PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 PUBLIC_SUPABASE_ANON_KEY=xxx
-PUBLIC_party_kit_main_room=https://tutors.partykit.dev
 PRIVATE_AUTH_GITHUB_ID=xxx
 PRIVATE_AUTH_GITHUB_SECRET=xxx
 PRIVATE_AUTH_SECRET=xxx
@@ -1824,6 +1736,7 @@ pnpm build     # Build reader app
 pnpm --filter reader dev
 pnpm --filter catalogue dev
 pnpm --filter live dev
+pnpm --filter tutors-time dev
 ```
 
 **Per Package**:
@@ -1908,18 +1821,17 @@ pnpm build
 # Outputs to build/
 ```
 
-**Adapter Configuration** (`svelte.config.js`):
+**Build Configuration** (`vite.config.ts`):
+
+Every app builds on the shared helpers in `@tutors/app-config` (`packages/svelte/app-config`) and overrides only what is unique to it:
 
 ```javascript
-import adapter from "@sveltejs/adapter-auto";
-
-export default {
-  kit: {
-    adapter: adapter()
-    // Auto-detects Netlify, Vercel, Cloudflare
-  }
-};
+// vite.config.ts
+import { createViteConfig } from "@tutors/app-config/vite";
+export default createViteConfig(import.meta.url /*, { ...vite overrides } */);
 ```
+
+`createViteConfig` reads `.env` from the repo root, sets `APP_VERSION` from the app's `package.json`, adds the Tailwind and SvelteKit plugins, and bundles every `@tutors/*` package into the server build (`ssr.noExternal`). It supplies the plugin options from `createSvelteKitOptions` in `@tutors/app-config/svelte`: `adapter-auto` (detects Netlify, Vercel, Cloudflare) by default, or `adapter-node` when `SVELTEKIT_ADAPTER=node`, which is what the container image sets. The shared options also read `.env` from the repo root and, when the build has a `GIT_SHA`, name the SvelteKit build after a hash of it so two builds of one commit are identical. Vite overrides are the helper's second argument; flattened SvelteKit option overrides are its third argument.
 
 **Environment Variables** (production):
 
@@ -1928,21 +1840,11 @@ Set in Netlify/Vercel dashboard:
 ```
 PUBLIC_SUPABASE_URL
 PUBLIC_SUPABASE_ANON_KEY
-PUBLIC_PARTY_KIT_MAIN_ROOM
 PRIVATE_AUTH_GITHUB_ID
 PRIVATE_AUTH_GITHUB_SECRET
 PRIVATE_AUTH_SECRET
 PUBLIC_PDF_KEY
 ```
-
-### PartyKit Service Deployment (Whiteboard Only)
-
-```bash
-cd services/party
-npx partykit deploy
-```
-
-The PartyKit service is only used for whiteboard collaboration. All presence and live activity features use Supabase Realtime channels, which require no separate service deployment — they are part of the Supabase project configuration.
 
 ### Course Deployment
 
@@ -1999,16 +1901,28 @@ Test: Add or update tests
 pnpm -r check
 ```
 
+**Linting** (if configured):
+
+```bash
+pnpm lint
+```
+
+**Formatting** (if configured):
+
+```bash
+pnpm format
+```
+
 ### Pull Request Checklist
 
-- Branch from `development`
-- Code follows existing patterns
-- No TypeScript errors
-- Changes tested locally
-- Dependencies updated if needed
-- Documentation updated
-- Commit messages are clear
-- PR description explains changes
+- [ ] Branch from `development`
+- [ ] Code follows existing patterns
+- [ ] No TypeScript errors
+- [ ] Changes tested locally
+- [ ] Dependencies updated if needed
+- [ ] Documentation updated
+- [ ] Commit messages are clear
+- [ ] PR description explains changes
 
 ---
 
@@ -2021,16 +1935,31 @@ pnpm -r check
 - **Rune**: Svelte 5 reactive primitive ($state, $derived, $effect)
 - **SSR**: Server-Side Rendering
 - **CSR**: Client-Side Rendering
-- **Supabase Realtime**: Broadcast channel service for live presence (replaced PartyKit for presence)
-- **PartyKit**: Real-time WebSocket platform (retained for whiteboard collaboration)
+- **Supabase Realtime**: Real-time broadcast channel platform (part of Supabase)
 - **Tutors Connect**: Authentication system
-- **Tutors Time**: Analytics and time tracking
-- **Tutors Lite**: Static HTML course generator using Vento templates
+- **Tutors Time**: Analytics and time tracking (app at `apps/time`, library at `packages/jsr/time`)
 
 ### Useful Links
 
-- **Live Platform**: https://tutors.dev
-- **Reference Manual**: https://tutors-reference-manual.netlify.app
-- **JSR Registry**: https://jsr.io/@tutors
-- **Supabase Realtime**: https://supabase.com/docs/guides/realtime
-- **PartyKit** (whiteboard): https://partykit.io
+- **Live Platform**: [https://tutors.dev](https://tutors.dev)
+- **Reference Manual**: [https://tutors-reference-manual.netlify.app](https://tutors-reference-manual.netlify.app)
+- **JSR Registry**: [https://jsr.io/@tutors](https://jsr.io/@tutors)
+- **Supabase Realtime**: [https://supabase.com/docs/guides/realtime](https://supabase.com/docs/guides/realtime)
+
+### Version History
+
+- **1.0.0** (July 2026): Initial monorepo migration
+
+---
+
+## License
+
+This project is licensed under the **MIT License**. See LICENSE file for details.
+
+---
+
+**Last Updated**: July 2026  
+**Maintainer**: Tutors SDK Team  
+**Contributors**: See repository contributors
+
+For questions about this architecture, please open an issue on GitHub.

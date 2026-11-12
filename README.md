@@ -28,10 +28,12 @@ This repo is the Tutors Reference Manual - and can be viewed [here](https://tuto
 
 # Tutors Repos
 
-- [Tutors](https://github.com/tutors-sdk/tutors): The course reader application. This is a SvelteKit application, written in TypeScript with a user experience implemented using Tailwind & Skeleton.
-- [Tutors Apps](https://github.com/tutors-sdk/tutors-apps): A monorepo encapsulating the generators, tests + support tools and applications. It is written in TypeScript.
+- [Tutors Mono Repo](https://github.com/tutors-sdk/tutors-mono-repo): One repository for the whole platform. It holds the four applications (the course reader behind tutors.dev, the catalogue, Tutors Live and Tutors Time), the course generators published to JSR (`@tutors/tutors`, `@tutors/tutors-lite`, `@tutors/tutors-create`) and the shared libraries they are built from. It is written in TypeScript, with SvelteKit for the applications.
+- [Tutors Release Harness](https://github.com/tutors-sdk/tutors-release-harness): Runs each release candidate of the mono-repo beside production and fails on any difference nobody claimed. Its reports are published [here](https://tutors-sdk.github.io/tutors-release-harness/).
 - [Tutors Reference Manual](https://github.com/tutors-sdk/tutors-reference-manual): The manual is itself a tutors course, and is largely written in Markdown.
 - [Tutors Reference Course](https://github.com/tutors-sdk/tutors-reference-course): A Tutors course to included all tutors learning objects and structures.
+
+The earlier per-application repositories ([tutors](https://github.com/tutors-sdk/tutors), [tutors-apps](https://github.com/tutors-sdk/tutors-apps)) were folded into the mono-repo, and new work happens there.
 
 
 ### License
