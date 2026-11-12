@@ -41,7 +41,7 @@ This monorepo contains **4 distinct subsystems**:
 1. **JSR Packages** - Deno-compatible libraries for course generation and data models
 2. **Svelte Packages** - UI components and services for web applications
 3. **Applications** - End-user facing applications (reader, catalogue, live, time)
-4. **Services** - Backend infrastructure (Supabase Realtime for presence, PartyKit for whiteboard collaboration)
+4. **Services** - Backend infrastructure (Supabase Realtime for presence and whiteboard collaboration)
 
 ### Repository Structure
 
@@ -77,7 +77,7 @@ graph TD
   svelte --> ui_comp["UI-Components"]
   svelte --> utils["Utils"]
 
-  services --> partykit["PartyKit (Whiteboard)"]
+  services --> realtime["Supabase Realtime<br/><i>Presence, whiteboard</i>"]
 ```
 
 ---
@@ -178,7 +178,6 @@ mindmap
       Supabase
       Supabase Realtime
       Auth.js
-      PartyKit (Whiteboard)
     JSR Ecosystem
       Vento
       archiver
@@ -210,9 +209,8 @@ mindmap
 
 **Backend Services**:
 - **Supabase**: Database, authentication, analytics
-- **Supabase Realtime**: Broadcast channels for live presence and student activity
+- **Supabase Realtime**: Broadcast channels for live presence, student activity and whiteboard collaboration
 - **Auth.js**: GitHub OAuth integration
-- **PartyKit**: Whiteboard collaboration (Excalidraw, Durable Object storage)
 
 **JSR Ecosystem** (Deno-first):
 - **Vento**: Template engine for HTML generation
@@ -260,7 +258,7 @@ graph TD
   apps --> live_app["live"]
   apps --> time_app["time"]
 
-  services --> party["party<br/><i>PartyKit (Whiteboard)</i>"]
+  services --> realtime["realtime<br/><i>Supabase Realtime</i>"]
 ```
 
 ### Package Naming Convention
