@@ -355,6 +355,17 @@ A question is discarded if it has no `question`, fewer than two `options`, or a 
 
 Only the first quiz block in a document is parsed.
 
+### What a quiz is, and is not
+
+A quiz is a formative self-check, not a graded assessment. The answer key is part of the course markdown, so it is sent to the browser and can be read by anyone who looks. Scoring runs in the browser, and answers and scores are not recorded anywhere: leaving the page discards them. There is no gradebook, attempt limit or identity check. Use a system built for assessment, such as Moodle, for anything that counts towards a grade.
+
+Say so in the learning object's description, so students know what the result means. Suggested wording for the prose above the `quiz` block:
+
+~~~markdown
+This quiz is a self-check to help you test your understanding. It is not
+graded and your answers are not recorded. Assessed quizzes are on Moodle.
+~~~
+
 ## Web 
 
 A simple link to an external web resource.
